@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: read
+  issues: write
 
 concurrency:
   group: telnexa-web-ci-${{ github.ref }}
@@ -58,7 +59,27 @@ jobs:
           cat /tmp/telnexa-web.log
           exit 1
       - name: Smoke pages, localized sitemap URLs, and all forms
-        run: npm run test:smoke
+        id: smoke
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          npm run test:smoke 2>&1 | tee /tmp/telnexa-smoke.txt
+      - name: Publish bounded smoke diagnostic to PR 1
+        if: steps.smoke.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo '### Runtime smoke failure'
+            echo
+            echo "Head: \`${GITHUB_SHA}\`"
+            echo
+            echo '```text'
+            tail -n 80 /tmp/telnexa-smoke.txt
+            echo '```'
+          } >/tmp/telnexa-smoke-comment.md
+          gh api -X POST "repos/${GITHUB_REPOSITORY}/issues/1/comments" -F body=@/tmp/telnexa-smoke-comment.md
+          exit 1
       - name: Capture application log
         if: always()
         run: |
