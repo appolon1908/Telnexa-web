@@ -1,10 +1,11 @@
 # syntax=docker/dockerfile:1.7
-FROM node:22-alpine AS dependencies
+FROM node:24.19.0-alpine3.24 AS dependencies
 WORKDIR /app
-ENV NUXT_TELEMETRY_DISABLED=1
-COPY package.json package-lock.json* ./
+ENV NODE_ENV=development \
+    NUXT_TELEMETRY_DISABLED=1
+COPY package.json package-lock.json ./
 RUN --mount=type=cache,target=/root/.npm \
-    if [ -f package-lock.json ]; then npm ci --ignore-scripts; else npm install --ignore-scripts; fi
+    npm ci --ignore-scripts --no-audit --no-fund
 
 FROM dependencies AS build
 COPY . .
@@ -12,13 +13,14 @@ ARG NUXT_PUBLIC_RELEASE_SHA=development
 ENV NUXT_PUBLIC_RELEASE_SHA=$NUXT_PUBLIC_RELEASE_SHA
 RUN npm run postinstall && npm run validate && npm test && npm run build
 
-FROM node:22-alpine AS runtime
+FROM node:24.19.0-alpine3.24 AS runtime
 WORKDIR /app
 ENV NODE_ENV=production \
     NITRO_HOST=0.0.0.0 \
     NITRO_PORT=3000 \
     NUXT_TELEMETRY_DISABLED=1
-RUN addgroup -S -g 10001 telnexa && adduser -S -D -H -u 10001 -G telnexa telnexa
+RUN addgroup -S -g 10001 telnexa \
+    && adduser -S -D -H -u 10001 -G telnexa telnexa
 COPY --from=build --chown=telnexa:telnexa /app/.output ./.output
 USER 10001:10001
 EXPOSE 3000
