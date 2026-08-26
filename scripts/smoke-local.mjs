@@ -15,13 +15,23 @@ await expectOk('/healthz')
 await expectOk('/version')
 
 const routeChecks = [
-  ...pages.pages.map(page => page.path),
-  ...pages.pages.filter(page => page.indexable).map(page => page.path === '/' ? '/es' : `/es${page.path}`)
+  ...pages.pages.map(page => ({ path: page.path, indexable: page.indexable })),
+  ...pages.pages
+    .filter(page => page.indexable)
+    .map(page => ({ path: page.path === '/' ? '/es' : `/es${page.path}`, indexable: true }))
 ]
-for (const path of routeChecks) {
-  const response = await expectOk(path)
+for (const route of routeChecks) {
+  const response = await expectOk(route.path)
   const html = await response.text()
-  if (!html.includes('Telnexa')) throw new Error(`${path} did not render Telnexa content`)
+  if (route.indexable && !html.includes('Telnexa')) {
+    throw new Error(`${route.path} did not render Telnexa content`)
+  }
+  if (!route.indexable) {
+    const robots = response.headers.get('x-robots-tag') || ''
+    if (!robots.toLowerCase().includes('noindex')) {
+      throw new Error(`${route.path} is a utility route without an x-robots-tag noindex header`)
+    }
+  }
 }
 
 const sitemapResponse = await expectOk('/sitemap.xml')
