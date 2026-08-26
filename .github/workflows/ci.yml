@@ -1,0 +1,96 @@
+name: Application CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - feat/nuxt-production-platform
+
+permissions:
+  contents: read
+
+concurrency:
+  group: telnexa-web-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-build-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: ${{ hashFiles('package-lock.json') != '' && 'npm' || '' }}
+
+      - name: Install dependencies
+        run: |
+          if [[ -f package-lock.json ]]; then
+            npm ci --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Validate route, form, CTA, and security contracts
+        run: npm run validate
+
+      - name: Run contract tests
+        run: npm test
+
+      - name: Build production Nuxt output
+        env:
+          NUXT_PUBLIC_SITE_URL: https://telnexa.co
+          NUXT_PUBLIC_API_BASE: /api
+          NUXT_PUBLIC_ENVIRONMENT: test
+          NUXT_PUBLIC_RELEASE_SHA: ${{ github.sha }}
+        run: npm run build
+
+      - name: Boot isolated production output
+        env:
+          NITRO_HOST: 127.0.0.1
+          NITRO_PORT: 3000
+          NUXT_PUBLIC_SITE_URL: https://telnexa.co
+          NUXT_PUBLIC_ENVIRONMENT: test
+          NUXT_PUBLIC_RELEASE_SHA: ${{ github.sha }}
+          TELNEXA_DEV_FORM_SINK_ENABLED: 'true'
+        run: |
+          node .output/server/index.mjs >/tmp/telnexa-web.log 2>&1 &
+          echo $! >/tmp/telnexa-web.pid
+          for attempt in {1..60}; do
+            if curl -fsS http://127.0.0.1:3000/healthz >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/telnexa-web.log
+          exit 1
+
+      - name: Smoke all pages, sitemap URLs, and forms
+        run: node scripts/smoke-local.mjs
+
+      - name: Capture application log
+        if: always()
+        run: |
+          cat /tmp/telnexa-web.log 2>/dev/null || true
+          if [[ -f /tmp/telnexa-web.pid ]]; then
+            kill "$(cat /tmp/telnexa-web.pid)" 2>/dev/null || true
+          fi
+
+  docker-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Build non-root application image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          provenance: false
+          build-args: |
+            NUXT_PUBLIC_RELEASE_SHA=${{ github.sha }}
+          tags: telnexa-web:${{ github.sha }}
