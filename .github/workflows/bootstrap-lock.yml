@@ -25,6 +25,7 @@ jobs:
         with:
           node-version-file: .node-version
           registry-url: https://registry.npmjs.org
+          package-manager-cache: false
       - name: Confirm the branch still needs a lock
         id: lock
         run: |
