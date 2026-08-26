@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: write
-  issues: write
 
 concurrency:
   group: telnexa-web-bootstrap-lock
@@ -29,7 +28,7 @@ jobs:
       - name: Confirm the branch still needs a lock
         id: lock
         run: |
-          if [[ -f package-lock.json ]]; then
+          if [[ -f package-lock.json || -f .ci/npm-lock-failure.log ]]; then
             echo "needed=false" >> "$GITHUB_OUTPUT"
           else
             echo "needed=true" >> "$GITHUB_OUTPUT"
@@ -40,8 +39,9 @@ jobs:
         continue-on-error: true
         run: |
           set -o pipefail
-          node --version | tee /tmp/npm-lock.log
-          npm --version | tee -a /tmp/npm-lock.log
+          : >/tmp/npm-lock.log
+          node --version 2>&1 | tee -a /tmp/npm-lock.log
+          npm --version 2>&1 | tee -a /tmp/npm-lock.log
           npm view nuxt@4.5.2 version 2>&1 | tee -a /tmp/npm-lock.log
           for attempt in 1 2 3; do
             echo "npm lock attempt ${attempt}" | tee -a /tmp/npm-lock.log
@@ -51,21 +51,15 @@ jobs:
             sleep $((attempt * 5))
           done
           exit 1
-      - name: Publish bounded failure diagnostics to PR 1
+      - name: Commit bounded failure diagnostics
         if: steps.generate.outcome == 'failure'
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
-          {
-            echo '### Dependency-lock bootstrap failure'
-            echo
-            echo 'Exact runner output from the latest application head:'
-            echo
-            echo '```text'
-            tail -n 120 /tmp/npm-lock.log
-            echo '```'
-          } >/tmp/npm-lock-comment.md
-          gh api -X POST "repos/${GITHUB_REPOSITORY}/issues/1/comments" -F body=@/tmp/npm-lock-comment.md
+          install -D -m 0644 /tmp/npm-lock.log .ci/npm-lock-failure.log
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add .ci/npm-lock-failure.log
+          git commit -m "ci: capture dependency lock failure"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
           exit 1
       - name: Remove one-time workflow and commit lock
         if: steps.lock.outputs.needed == 'true' && steps.generate.outcome == 'success'
