@@ -15,6 +15,15 @@ Production-oriented Nuxt 4 and Vue 3 website for Telnexa voice, SMS, email, CRM,
 - accessible responsive layouts for phones, tablets, laptops, and desktops
 - non-root Docker image and exact release identity through `/version`
 
+## Runtime toolchain
+
+- Node.js 24.19.0 LTS
+- npm 11.17.0
+- Nuxt 4.5.2
+- Vue 3 through the Nuxt dependency graph
+
+The exact dependency graph is committed in `package-lock.json`; CI and Docker use `npm ci` rather than resolving new versions during review or release.
+
 ## Branches
 
 - `main` — reviewed release history only
