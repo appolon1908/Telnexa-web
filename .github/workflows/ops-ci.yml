@@ -1,0 +1,78 @@
+name: Operations CI
+
+on:
+  pull_request:
+    paths:
+      - 'deployment/**'
+      - 'docs/GO_LIVE_CHECKLIST.md'
+      - '.github/workflows/deploy-production.yml'
+      - '.github/workflows/release.yml'
+      - '.github/workflows/ops-ci.yml'
+  push:
+    branches:
+      - ops/production-deployment
+
+permissions:
+  contents: read
+
+concurrency:
+  group: telnexa-web-ops-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-operations-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Check shell syntax and whitespace
+        run: |
+          bash -n deployment/scripts/*.sh
+          git diff --check
+
+      - name: Reject private material and unsafe SSH settings
+        run: |
+          unsafe_pattern='[B]EGIN (OPENSSH|RSA|EC) PRIVATE KEY|PasswordAuthentication[[:space:]]+yes|StrictHostKeyChecking[[:space:]]+no|ForwardAgent[[:space:]]+yes'
+          if grep -RInE "$unsafe_pattern" deployment .github/workflows; then
+            echo 'Unsafe private material or SSH configuration detected.' >&2
+            exit 1
+          fi
+
+      - name: Validate Nuxt runtime boundary and capability freeze
+        run: |
+          grep -q '^NUXT_MIDDLEWARE_BASE_URL=' deployment/.env.production.example
+          grep -q '^NUXT_MIDDLEWARE_SERVICE_TOKEN=REPLACE_IN_SERVER_SECRET_STORE$' deployment/.env.production.example
+          grep -q '^NUXT_DEV_FORM_SINK_ENABLED=false$' deployment/.env.production.example
+          ! grep -Rqs 'TELNEXA_MIDDLEWARE_BASE_URL=' deployment
+          ! grep -Rqs 'TELNEXA_MIDDLEWARE_SERVICE_TOKEN=' deployment
+          for key in LIVE_SMS_DELIVERY LIVE_EMAIL_DELIVERY LIVE_PSTN_DIALING ENABLE_PROVIDER_SUBMISSION ENABLE_AUTOMATIC_PROVISIONING ODOO_DIRECT_PUBLIC_ACCESS N8N_DIRECT_PUBLIC_ACCESS; do
+            grep -q "^${key}=false$" deployment/.env.production.example
+          done
+
+      - name: Validate loopback-only Compose rendering
+        run: |
+          grep -q 'KONG_ADMIN_LISTEN: "off"' deployment/docker-compose.production.yml
+          grep -q '127.0.0.1:3300:3000' deployment/docker-compose.production.yml
+          grep -q '127.0.0.1:38000:8000' deployment/docker-compose.production.yml
+          grep -q '127.0.0.1:38100:8100' deployment/docker-compose.production.yml
+          ! grep -Eq '^[[:space:]]*-[[:space:]]*"?((0\.0\.0\.0:)?(80|443):)' deployment/docker-compose.production.yml
+          cp deployment/.env.production.example deployment/.env.production
+          trap 'rm -f deployment/.env.production deployment/generated/kong.yml' EXIT
+          sed -i 's/REPLACE_WITH_APPROVED_DIGEST/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/g' deployment/.env.production
+          sed -i 's/REPLACE_WITH_MERGED_SHA/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/g' deployment/.env.production
+          sed -i 's#REPLACE_IN_SERVER_SECRET_STORE#ci-only-placeholder#g' deployment/.env.production
+          cp deployment/kong.yml deployment/generated/kong.yml
+          docker compose --env-file deployment/.env.production -f deployment/docker-compose.production.yml config --quiet
+
+      - name: Validate Caddy and Kong boundaries
+        run: |
+          grep -q '^telnexa\.co {' deployment/Caddyfile.telnexa
+          grep -q '^api\.telnexa\.co {' deployment/Caddyfile.telnexa
+          grep -q 'reverse_proxy 127\.0\.0\.1:3300' deployment/Caddyfile.telnexa
+          grep -q 'reverse_proxy 127\.0\.0\.1:38000' deployment/Caddyfile.telnexa
+          ! grep -Eqi 'reverse_proxy .*odoo|reverse_proxy .*n8n' deployment/Caddyfile.telnexa
+          grep -q 'url: http://web:3000' deployment/kong.yml
+          grep -q 'paths:' deployment/kong.yml
+          grep -q 'request-size-limiting' deployment/kong.yml
+          grep -q 'rate-limiting' deployment/kong.yml

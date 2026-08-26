@@ -1,0 +1,97 @@
+name: telnexa-web
+
+services:
+  web:
+    image: ${TELNEXA_WEB_IMAGE:?TELNEXA_WEB_IMAGE must be an immutable digest}
+    restart: unless-stopped
+    env_file:
+      - .env.production
+    environment:
+      NITRO_HOST: 0.0.0.0
+      NITRO_PORT: 3000
+    expose:
+      - "3000"
+    ports:
+      - "127.0.0.1:3300:3000"
+    networks:
+      - edge
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/healthz').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 20s
+      timeout: 5s
+      start_period: 20s
+      retries: 5
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "5"
+    deploy:
+      resources:
+        limits:
+          cpus: "2.00"
+          memory: 2G
+        reservations:
+          memory: 256M
+
+  kong:
+    image: ${KONG_IMAGE:?KONG_IMAGE must be an immutable digest}
+    restart: unless-stopped
+    depends_on:
+      web:
+        condition: service_healthy
+    environment:
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG: /etc/kong/kong.yml
+      KONG_PROXY_LISTEN: 0.0.0.0:8000
+      KONG_ADMIN_LISTEN: "off"
+      KONG_STATUS_LISTEN: 0.0.0.0:8100
+      KONG_NGINX_WORKER_PROCESSES: "2"
+      KONG_LOG_LEVEL: notice
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+    volumes:
+      - ./generated/kong.yml:/etc/kong/kong.yml:ro
+    ports:
+      - "127.0.0.1:38000:8000"
+      - "127.0.0.1:38100:8100"
+    networks:
+      - edge
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+      - /usr/local/kong:size=64m,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    healthcheck:
+      test: ["CMD-SHELL", "kong health || exit 1"]
+      interval: 20s
+      timeout: 8s
+      start_period: 30s
+      retries: 5
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "5"
+    deploy:
+      resources:
+        limits:
+          cpus: "1.00"
+          memory: 768M
+        reservations:
+          memory: 128M
+
+networks:
+  edge:
+    name: telnexa-web-edge
+    driver: bridge

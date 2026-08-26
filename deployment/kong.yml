@@ -1,0 +1,89 @@
+_format_version: "3.0"
+_transform: true
+
+services:
+  - name: telnexa-web-runtime
+    url: http://web:3000
+    connect_timeout: 5000
+    read_timeout: 15000
+    write_timeout: 15000
+    retries: 0
+    routes:
+      - name: telnexa-website-forms
+        paths:
+          - /api/v1/website
+        methods:
+          - POST
+          - OPTIONS
+        strip_path: false
+        preserve_host: true
+        protocols:
+          - http
+        plugins:
+          - name: correlation-id
+            config:
+              header_name: X-Request-ID
+              generator: uuid
+              echo_downstream: true
+          - name: rate-limiting
+            config:
+              minute: 60
+              policy: local
+              fault_tolerant: false
+              hide_client_headers: false
+          - name: request-size-limiting
+            config:
+              allowed_payload_size: 1
+              size_unit: megabytes
+              require_content_length: true
+          - name: cors
+            config:
+              origins:
+                - https://telnexa.co
+                - https://www.telnexa.co
+              methods:
+                - POST
+                - OPTIONS
+              headers:
+                - Accept
+                - Content-Type
+                - Idempotency-Key
+                - X-Request-ID
+              exposed_headers:
+                - X-Request-ID
+                - RateLimit-Limit
+                - RateLimit-Remaining
+                - RateLimit-Reset
+              credentials: false
+              max_age: 3600
+              preflight_continue: false
+
+      - name: telnexa-operational-readiness
+        paths:
+          - /healthz
+          - /readyz
+          - /version
+        methods:
+          - GET
+        strip_path: false
+        preserve_host: true
+        protocols:
+          - http
+        plugins:
+          - name: correlation-id
+            config:
+              header_name: X-Request-ID
+              generator: uuid
+              echo_downstream: true
+          - name: rate-limiting
+            config:
+              minute: 240
+              policy: local
+              fault_tolerant: false
+
+plugins:
+  - name: response-transformer
+    config:
+      add:
+        headers:
+          - X-Telnexa-Gateway:kong

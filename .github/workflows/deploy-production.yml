@@ -1,0 +1,193 @@
+name: Deploy production (manual approval)
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_sha:
+        description: Exact 40-character SHA currently at main
+        required: true
+      web_image:
+        description: Immutable GHCR website image reference including @sha256 digest
+        required: true
+      kong_image:
+        description: Approved immutable Kong image reference including @sha256 digest
+        required: true
+      apply_caddy:
+        description: Validate and apply the reviewed Caddy site fragment
+        type: boolean
+        default: false
+      run_integration_canary:
+        description: Create one approved Odoo/n8n canary record after public smoke passes
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: telnexa-web-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Validate exact main release and immutable images
+        env:
+          RELEASE_SHA: ${{ inputs.release_sha }}
+          WEB_IMAGE: ${{ inputs.web_image }}
+          KONG_IMAGE: ${{ inputs.kong_image }}
+        run: |
+          [[ "$RELEASE_SHA" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$WEB_IMAGE" =~ ^ghcr\.io/appolon1908-hue/telnexa-web@sha256:[0-9a-f]{64}$ ]]
+          [[ "$KONG_IMAGE" =~ @sha256:[0-9a-f]{64}$ ]]
+          git fetch origin main
+          [[ "$(git rev-parse origin/main)" == "$RELEASE_SHA" ]]
+
+      - name: Configure strict key-only SSH
+        env:
+          SSH_KEY: ${{ secrets.TELNEXA_DEPLOY_SSH_PRIVATE_KEY }}
+          KNOWN_HOSTS: ${{ secrets.TELNEXA_DEPLOY_KNOWN_HOSTS }}
+        run: |
+          [[ -n "$SSH_KEY" ]] || { echo 'TELNEXA_DEPLOY_SSH_PRIVATE_KEY is missing'; exit 1; }
+          [[ -n "$KNOWN_HOSTS" ]] || { echo 'TELNEXA_DEPLOY_KNOWN_HOSTS is missing'; exit 1; }
+          install -d -m 0700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/telnexa_prod_ed25519
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 0600 ~/.ssh/telnexa_prod_ed25519 ~/.ssh/known_hosts
+          cat > ~/.ssh/config <<'CONFIG'
+          Host telnexa-prod
+            HostName 49.12.145.107
+            User codestra-admin
+            IdentityFile ~/.ssh/telnexa_prod_ed25519
+            IdentitiesOnly yes
+            PasswordAuthentication no
+            KbdInteractiveAuthentication no
+            StrictHostKeyChecking yes
+            UserKnownHostsFile ~/.ssh/known_hosts
+            ForwardAgent no
+            ServerAliveInterval 30
+            ServerAliveCountMax 3
+          CONFIG
+          chmod 0600 ~/.ssh/config
+          ssh -o BatchMode=yes telnexa-prod 'printf SSH_PREFLIGHT=PASS\n'
+
+      - name: Create protected release environment and source archive
+        env:
+          RELEASE_SHA: ${{ inputs.release_sha }}
+          TELNEXA_WEB_IMAGE: ${{ inputs.web_image }}
+          KONG_IMAGE: ${{ inputs.kong_image }}
+          MIDDLEWARE_URL: ${{ secrets.TELNEXA_MIDDLEWARE_BASE_URL }}
+          MIDDLEWARE_TOKEN: ${{ secrets.TELNEXA_MIDDLEWARE_SERVICE_TOKEN }}
+          GTM_ID: ${{ secrets.TELNEXA_PUBLIC_GTM_ID }}
+        run: |
+          [[ -n "$MIDDLEWARE_URL" ]] || { echo 'TELNEXA_MIDDLEWARE_BASE_URL is missing'; exit 1; }
+          [[ -n "$MIDDLEWARE_TOKEN" ]] || { echo 'TELNEXA_MIDDLEWARE_SERVICE_TOKEN is missing'; exit 1; }
+          umask 077
+          git archive --format=tar.gz --output=/tmp/telnexa-web-release.tar.gz "$RELEASE_SHA"
+          cat >/tmp/telnexa-release.env <<EOF
+          TELNEXA_WEB_IMAGE=$TELNEXA_WEB_IMAGE
+          KONG_IMAGE=$KONG_IMAGE
+          NUXT_PUBLIC_SITE_URL=https://telnexa.co
+          NUXT_PUBLIC_API_BASE=/api
+          NUXT_PUBLIC_PORTAL_URL=https://app.telnexa.co
+          NUXT_PUBLIC_STATUS_URL=https://status.telnexa.co
+          NUXT_PUBLIC_GTM_ID=$GTM_ID
+          NUXT_PUBLIC_ENVIRONMENT=production
+          NUXT_PUBLIC_RELEASE_SHA=$RELEASE_SHA
+          NUXT_MIDDLEWARE_BASE_URL=$MIDDLEWARE_URL
+          NUXT_MIDDLEWARE_SERVICE_TOKEN=$MIDDLEWARE_TOKEN
+          NUXT_DEV_FORM_SINK_ENABLED=false
+          LIVE_SMS_DELIVERY=false
+          LIVE_EMAIL_DELIVERY=false
+          LIVE_PSTN_DIALING=false
+          ENABLE_PROVIDER_SUBMISSION=false
+          ENABLE_AUTOMATIC_PROVISIONING=false
+          ODOO_DIRECT_PUBLIC_ACCESS=false
+          N8N_DIRECT_PUBLIC_ACCESS=false
+          EOF
+
+      - name: Transfer exact release package
+        env:
+          RELEASE_SHA: ${{ inputs.release_sha }}
+        run: |
+          scp /tmp/telnexa-web-release.tar.gz telnexa-prod:/tmp/telnexa-web-${RELEASE_SHA}.tar.gz
+          scp /tmp/telnexa-release.env telnexa-prod:/tmp/telnexa-web-${RELEASE_SHA}.env
+
+      - name: Activate release and run public no-write smoke
+        env:
+          RELEASE_SHA: ${{ inputs.release_sha }}
+          APPLY_CADDY: ${{ inputs.apply_caddy && '1' || '0' }}
+        run: |
+          ssh telnexa-prod "RELEASE_SHA='$RELEASE_SHA' APPLY_CADDY='$APPLY_CADDY' bash -s" <<'REMOTE'
+          set -Eeuo pipefail
+          BASE=/opt/telnexa-web
+          RELEASE_DIR="$BASE/releases/$RELEASE_SHA"
+          RUNTIME="$BASE/runtime"
+          NEXT="$BASE/runtime.next"
+          PREVIOUS="$BASE/runtime.previous"
+          ARCHIVE="/tmp/telnexa-web-$RELEASE_SHA.tar.gz"
+          RELEASE_ENV="/tmp/telnexa-web-$RELEASE_SHA.env"
+
+          sudo install -d -o "$(id -un)" -g "$(id -gn)" -m 0750 "$BASE" "$BASE/releases"
+          rm -rf "$RELEASE_DIR" "$NEXT"
+          install -d -m 0750 "$RELEASE_DIR" "$NEXT"
+          tar -xzf "$ARCHIVE" -C "$RELEASE_DIR"
+          cp -a "$RELEASE_DIR/deployment" "$NEXT/deployment"
+          cp -a "$RELEASE_DIR/manifests" "$NEXT/manifests"
+
+          rm -rf "$PREVIOUS"
+          if [[ -d "$RUNTIME" ]]; then mv "$RUNTIME" "$PREVIOUS"; fi
+          mv "$NEXT" "$RUNTIME"
+
+          restore_runtime() {
+            status=$?
+            if (( status != 0 )) && [[ -d "$PREVIOUS" ]]; then
+              rm -rf "$RUNTIME"
+              mv "$PREVIOUS" "$RUNTIME"
+              if [[ -f "$RUNTIME/deployment/.env.production" ]]; then
+                cd "$RUNTIME/deployment"
+                docker compose --env-file .env.production -f docker-compose.production.yml up -d --remove-orphans || true
+              fi
+            fi
+            rm -f "$ARCHIVE" "$RELEASE_ENV"
+            exit "$status"
+          }
+          trap restore_runtime EXIT
+
+          cd "$RUNTIME/deployment"
+          EXPECTED_IP=49.12.145.107 APPLY_CADDY="$APPLY_CADDY" bash scripts/deploy.sh "$RELEASE_ENV"
+          trap - EXIT
+          rm -f "$ARCHIVE" "$RELEASE_ENV"
+          printf 'REMOTE_DEPLOYMENT=PASS RELEASE_SHA=%s\n' "$RELEASE_SHA"
+          REMOTE
+
+      - name: Run explicitly approved Odoo and n8n canary
+        if: ${{ inputs.run_integration_canary }}
+        env:
+          RELEASE_SHA: ${{ inputs.release_sha }}
+          CANARY_EMAIL: ${{ secrets.TELNEXA_CANARY_EMAIL }}
+          CANARY_STATUS_URL: ${{ secrets.TELNEXA_CANARY_STATUS_URL }}
+          CANARY_STATUS_TOKEN: ${{ secrets.TELNEXA_CANARY_STATUS_TOKEN }}
+        run: |
+          [[ -n "$CANARY_EMAIL" && -n "$CANARY_STATUS_URL" && -n "$CANARY_STATUS_TOKEN" ]]
+          umask 077
+          {
+            printf 'CANARY_EMAIL=%q\n' "$CANARY_EMAIL"
+            printf 'CANARY_STATUS_URL=%q\n' "$CANARY_STATUS_URL"
+            printf 'CANARY_STATUS_TOKEN=%q\n' "$CANARY_STATUS_TOKEN"
+          } >/tmp/telnexa-canary.env
+          scp /tmp/telnexa-canary.env telnexa-prod:/tmp/telnexa-canary-${RELEASE_SHA}.env
+          ssh telnexa-prod "set -Eeuo pipefail; set -a; source /tmp/telnexa-canary-${RELEASE_SHA}.env; set +a; rm -f /tmp/telnexa-canary-${RELEASE_SHA}.env; cd /opt/telnexa-web/runtime/deployment; ALLOW_TEST_RECORD_CREATE=YES LIVE_SMS_DELIVERY=false LIVE_EMAIL_DELIVERY=false LIVE_PSTN_DIALING=false bash scripts/integration-canary.sh"
+
+      - name: Remove local sensitive material
+        if: always()
+        run: |
+          rm -f /tmp/telnexa-release.env /tmp/telnexa-web-release.tar.gz /tmp/telnexa-canary.env
+          rm -f ~/.ssh/telnexa_prod_ed25519
