@@ -1,0 +1,12 @@
+v22.16.0
+10.9.2
+4.5.2
+npm lock attempt 1
+npm error Cannot read properties of null (reading 'edgesOut')
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-08-26T20_30_20_287Z-debug-0.log
+npm lock attempt 2
+npm error Cannot read properties of null (reading 'edgesOut')
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-08-26T20_30_34_414Z-debug-0.log
+npm lock attempt 3
+npm error Cannot read properties of null (reading 'edgesOut')
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-08-26T20_30_46_922Z-debug-0.log
