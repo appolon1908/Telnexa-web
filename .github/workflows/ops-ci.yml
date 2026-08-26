@@ -33,9 +33,11 @@ jobs:
 
       - name: Reject private material and unsafe SSH settings
         run: |
-          ! grep -RIE \
-            'BEGIN (OPENSSH|RSA|EC) PRIVATE KEY|PasswordAuthentication yes|StrictHostKeyChecking no|ForwardAgent yes' \
-            deployment .github/workflows
+          unsafe_pattern='[B]EGIN (OPENSSH|RSA|EC) PRIVATE KEY|PasswordAuthentication[[:space:]]+yes|StrictHostKeyChecking[[:space:]]+no|ForwardAgent[[:space:]]+yes'
+          if grep -RInE "$unsafe_pattern" deployment .github/workflows; then
+            echo 'Unsafe private material or SSH configuration detected.' >&2
+            exit 1
+          fi
 
       - name: Validate Nuxt runtime boundary and capability freeze
         run: |
@@ -54,7 +56,7 @@ jobs:
           grep -q '127.0.0.1:3300:3000' deployment/docker-compose.production.yml
           grep -q '127.0.0.1:38000:8000' deployment/docker-compose.production.yml
           grep -q '127.0.0.1:38100:8100' deployment/docker-compose.production.yml
-          ! grep -Eq '(^|[[:space:]])(0\.0\.0\.0:|["'"']80:|["'"']443:)' deployment/docker-compose.production.yml
+          ! grep -Eq '^[[:space:]]*-[[:space:]]*"?((0\.0\.0\.0:)?(80|443):)' deployment/docker-compose.production.yml
           cp deployment/.env.production.example deployment/.env.production
           trap 'rm -f deployment/.env.production deployment/generated/kong.yml' EXIT
           sed -i 's/REPLACE_WITH_APPROVED_DIGEST/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/g' deployment/.env.production
