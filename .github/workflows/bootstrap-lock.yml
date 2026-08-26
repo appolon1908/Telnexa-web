@@ -1,0 +1,41 @@
+name: Bootstrap dependency lock
+
+on:
+  push:
+    branches:
+      - feat/nuxt-production-platform
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: telnexa-web-lock-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  lockfile:
+    if: ${{ hashFiles('package-lock.json') == '' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - name: Generate deterministic npm lockfile
+        run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+
+      - name: Commit lockfile to implementation branch
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add package-lock.json
+          git commit -m "build: lock Nuxt dependencies"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
