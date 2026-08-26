@@ -1,41 +1,38 @@
-name: Bootstrap dependency lock
+name: Bootstrap exact dependency lock
 
 on:
   push:
     branches:
       - feat/nuxt-production-platform
-  workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: telnexa-web-lock-${{ github.ref }}
+  group: telnexa-web-bootstrap-lock
   cancel-in-progress: false
 
 jobs:
   lockfile:
     if: ${{ hashFiles('package-lock.json') == '' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.ref_name }}
           fetch-depth: 0
-
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
-          node-version: 22
+          node-version-file: .node-version
           registry-url: https://registry.npmjs.org
-
-      - name: Generate deterministic npm lockfile
+      - name: Generate exact dependency graph
         run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
-
-      - name: Commit lockfile to implementation branch
+      - name: Remove one-time workflow and commit lock
         run: |
+          rm .github/workflows/bootstrap-lock.yml
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add package-lock.json
+          git add package-lock.json .github/workflows/bootstrap-lock.yml
           git commit -m "build: lock Nuxt dependencies"
           git push origin "HEAD:${GITHUB_REF_NAME}"
