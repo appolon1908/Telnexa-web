@@ -18,17 +18,17 @@ export default defineNuxtConfig({
     }
   },
   runtimeConfig: {
-    middlewareBaseUrl: process.env.TELNEXA_MIDDLEWARE_BASE_URL || '',
-    middlewareServiceToken: process.env.TELNEXA_MIDDLEWARE_SERVICE_TOKEN || '',
-    devFormSinkEnabled: process.env.TELNEXA_DEV_FORM_SINK_ENABLED === 'true',
+    middlewareBaseUrl: '',
+    middlewareServiceToken: '',
+    devFormSinkEnabled: false,
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://telnexa.co',
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api',
-      portalUrl: process.env.NUXT_PUBLIC_PORTAL_URL || 'https://app.telnexa.co',
-      statusUrl: process.env.NUXT_PUBLIC_STATUS_URL || 'https://status.telnexa.co',
-      gtmId: process.env.NUXT_PUBLIC_GTM_ID || '',
-      environment: process.env.NUXT_PUBLIC_ENVIRONMENT || 'development',
-      releaseSha: process.env.NUXT_PUBLIC_RELEASE_SHA || 'development'
+      siteUrl: 'https://telnexa.co',
+      apiBase: '/api',
+      portalUrl: 'https://app.telnexa.co',
+      statusUrl: 'https://status.telnexa.co',
+      gtmId: '',
+      environment: 'development',
+      releaseSha: 'development'
     }
   },
   routeRules: {
