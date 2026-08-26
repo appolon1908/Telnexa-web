@@ -1,0 +1,19 @@
+
+> telnexa-web@1.0.0 test:smoke
+> node scripts/smoke-local.mjs
+
+file:///home/runner/work/Telnexa-web/Telnexa-web/scripts/smoke-local.mjs:76
+    throw new Error(`${form.key} returned ${response.status}: ${await response.text()}`)
+          ^
+
+Error: contact returned 503: {
+  "error": true,
+  "url": "http://127.0.0.1:3000/api/v1/website/forms/contact",
+  "statusCode": 503,
+  "statusMessage": "Form delivery is not configured",
+  "message": "Form delivery is not configured"
+}
+    at file:///home/runner/work/Telnexa-web/Telnexa-web/scripts/smoke-local.mjs:76:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+Node.js v24.19.0
