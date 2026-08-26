@@ -1,0 +1,88 @@
+(telnexa_security_headers) {
+  header {
+    -Server
+    Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options "nosniff"
+    X-Frame-Options "DENY"
+    Referrer-Policy "strict-origin-when-cross-origin"
+    Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+    Cross-Origin-Opener-Policy "same-origin"
+    Content-Security-Policy "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:"
+  }
+}
+
+www.telnexa.co {
+  redir https://telnexa.co{uri} permanent
+}
+
+telnexa.co {
+  import telnexa_security_headers
+  encode zstd gzip
+
+  @api path /api/*
+  handle @api {
+    request_body {
+      max_size 1MB
+    }
+    reverse_proxy 127.0.0.1:38000 {
+      header_up Host {host}
+      header_up X-Forwarded-Proto {scheme}
+      header_up X-Real-IP {remote_host}
+    }
+  }
+
+  @immutable path /_nuxt/* /icons/*
+  header @immutable Cache-Control "public, max-age=31536000, immutable"
+
+  reverse_proxy 127.0.0.1:3300 {
+    header_up Host {host}
+    header_up X-Forwarded-Proto {scheme}
+    header_up X-Real-IP {remote_host}
+  }
+
+  log {
+    output file /var/log/caddy/telnexa-access.log {
+      roll_size 50MiB
+      roll_keep 10
+      roll_keep_for 168h
+    }
+    format json
+  }
+}
+
+api.telnexa.co {
+  import telnexa_security_headers
+  encode zstd gzip
+
+  handle_path /v1/website/* {
+    request_body {
+      max_size 1MB
+    }
+    rewrite * /api/v1/website{path}
+    reverse_proxy 127.0.0.1:38000 {
+      header_up Host telnexa.co
+      header_up X-Forwarded-Proto {scheme}
+      header_up X-Real-IP {remote_host}
+    }
+  }
+
+  @operational path /healthz /readyz /version
+  handle @operational {
+    reverse_proxy 127.0.0.1:38000 {
+      header_up Host telnexa.co
+      header_up X-Forwarded-Proto {scheme}
+      header_up X-Real-IP {remote_host}
+    }
+  }
+
+  respond 404
+
+  log {
+    output file /var/log/caddy/telnexa-api-access.log {
+      roll_size 50MiB
+      roll_keep 10
+      roll_keep_for 168h
+    }
+    format json
+  }
+}

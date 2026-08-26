@@ -1,0 +1,6 @@
+.env.production
+.env.production.previous
+generated/*
+!generated/.gitkeep
+evidence/*
+!evidence/.gitkeep
