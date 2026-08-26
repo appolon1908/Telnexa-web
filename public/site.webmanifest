@@ -1,0 +1,12 @@
+{
+  "name": "Telnexa Communications",
+  "short_name": "Telnexa",
+  "description": "Voice, SMS, email, CRM, automation, and private communications systems.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#07111f",
+  "icons": [
+    {"src":"/icons/favicon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
