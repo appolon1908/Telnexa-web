@@ -48,6 +48,7 @@ export default defineNuxtConfig({
     '/login': { ssr: false, headers: { 'x-robots-tag': 'noindex, nofollow' } },
     '/signup': { ssr: false, headers: { 'x-robots-tag': 'noindex, nofollow' } },
     '/portal': { ssr: false, headers: { 'x-robots-tag': 'noindex, nofollow' } },
+    '/support': { headers: { 'x-robots-tag': 'noindex, nofollow' } },
     '/request-quote': { headers: { 'x-robots-tag': 'noindex, nofollow' } },
     '/schedule-demo': { headers: { 'x-robots-tag': 'noindex, nofollow' } },
     '/port-number': { headers: { 'x-robots-tag': 'noindex, nofollow' } },
