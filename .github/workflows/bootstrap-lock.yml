@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: telnexa-web-bootstrap-lock
@@ -34,10 +35,40 @@ jobs:
             echo "needed=true" >> "$GITHUB_OUTPUT"
           fi
       - name: Generate exact dependency graph
+        id: generate
         if: steps.lock.outputs.needed == 'true'
-        run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          node --version | tee /tmp/npm-lock.log
+          npm --version | tee -a /tmp/npm-lock.log
+          npm view nuxt@4.5.2 version 2>&1 | tee -a /tmp/npm-lock.log
+          for attempt in 1 2 3; do
+            echo "npm lock attempt ${attempt}" | tee -a /tmp/npm-lock.log
+            if npm install --package-lock-only --ignore-scripts --no-audit --no-fund 2>&1 | tee -a /tmp/npm-lock.log; then
+              exit 0
+            fi
+            sleep $((attempt * 5))
+          done
+          exit 1
+      - name: Publish bounded failure diagnostics to PR 1
+        if: steps.generate.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo '### Dependency-lock bootstrap failure'
+            echo
+            echo 'Exact runner output from the latest application head:'
+            echo
+            echo '```text'
+            tail -n 120 /tmp/npm-lock.log
+            echo '```'
+          } >/tmp/npm-lock-comment.md
+          gh api -X POST "repos/${GITHUB_REPOSITORY}/issues/1/comments" -F body=@/tmp/npm-lock-comment.md
+          exit 1
       - name: Remove one-time workflow and commit lock
-        if: steps.lock.outputs.needed == 'true'
+        if: steps.lock.outputs.needed == 'true' && steps.generate.outcome == 'success'
         run: |
           rm .github/workflows/bootstrap-lock.yml
           git config user.name github-actions[bot]
