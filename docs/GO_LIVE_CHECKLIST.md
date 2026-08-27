@@ -4,12 +4,25 @@
 
 - [ ] Application PR is based on the latest `main`.
 - [ ] Application branch has no merge conflicts.
-- [ ] Route, form, CTA, security, Nuxt build, runtime smoke, and Docker build checks pass on the exact head SHA.
+- [ ] Route, form, CTA, security, compliance, Nuxt build, runtime smoke, operations, and Docker checks pass on the exact head SHA.
 - [ ] Dependency lockfile is committed and reviewed.
 - [ ] Independent approval applies to the unchanged exact application SHA.
-- [ ] Application PR is merged through GitHub controls.
-- [ ] Operations branch is updated from the resulting protected `main` SHA.
-- [ ] Operations PR has no merge conflicts and receives exact-head CI and review.
+- [ ] Application and operations changes are merged through GitHub controls.
+- [ ] `main` rules require pull requests, successful checks, linear history, and no force pushes.
+
+## Legal publication and service onboarding
+
+- [ ] `manifests/legal-entity.json` contains the approved contracting entity, registration number, address, country, and contacts.
+- [ ] The responsible owner and counsel approve every publication-required English document.
+- [ ] Counsel approves every Spanish translation.
+- [ ] Each publication-required document has an effective date and non-draft version.
+- [ ] Every approved policy version has an immutable SHA-256 archive entry.
+- [ ] `npm run validate:production-compliance` passes.
+- [ ] SMS onboarding covers use case, consent, opt-out, sender registration, privacy, and policy acceptance.
+- [ ] Business VoIP onboarding covers calling purpose, emergency services, caller identity, recording, privacy, and policy acceptance.
+- [ ] AI voice onboarding covers use case, AI identity disclosure, contact permission, voice rights, human handoff, recording, privacy, and policy acceptance.
+- [ ] Wholesale onboarding covers entity profile, downstream KYB, nested resale, traffic profile, routing, identity, mitigation, traceback, privacy, and policy flow-down.
+- [ ] Submission creates only a manual-review record and never changes a live capability flag.
 
 ## Immutable artifacts
 
@@ -44,10 +57,13 @@
 - [ ] `/healthz` is HTTP 200.
 - [ ] `/readyz` is HTTP 200 with application and form delivery ready.
 - [ ] `/version` matches the approved merged SHA.
-- [ ] All 68 base pages and 61 Spanish alternate pages return HTTP 200.
-- [ ] Sitemap contains exactly 122 indexable URLs.
+- [ ] All 113 base pages return HTTP 200.
+- [ ] All 78 Spanish indexable alternate pages return HTTP 200.
+- [ ] Sitemap contains exactly 156 indexable URLs.
 - [ ] No rendered CTA uses an empty URL, `#`, or `javascript:`.
-- [ ] All 13 form routes reject invalid payloads without creating records.
+- [ ] All 14 form routes reject invalid payloads without creating records.
+- [ ] The compliance-onboarding route rejects incomplete pages, stale policy versions, and activation requests.
+- [ ] Actual request-body byte limits are enforced even without a trustworthy `Content-Length`.
 - [ ] Rate limiting, payload limits, request IDs, and idempotency are observable through Kong.
 
 ## Odoo and n8n
@@ -55,7 +71,8 @@
 - [ ] Browser traffic cannot address Odoo or n8n directly.
 - [ ] Middleware service identity has only the required permissions.
 - [ ] Explicit canary approval is recorded.
-- [ ] One canary creates exactly one Odoo record.
+- [ ] One website canary creates exactly one Odoo record.
+- [ ] One compliance-onboarding canary creates exactly one review record and no provider action.
 - [ ] One corresponding n8n workflow completes.
 - [ ] Replay of the same idempotency key creates no duplicate record or workflow execution.
 - [ ] Failure and retry evidence is available without exposing submitted personal data.
@@ -75,6 +92,6 @@
 - [ ] Previous deployment environment and image digests are retained securely.
 - [ ] Rollback was rehearsed and restored the prior release identity.
 - [ ] Logs and deployment evidence contain no secrets or submitted form bodies.
-- [ ] Operations, security, and business owners approve public activation.
+- [ ] Legal, compliance, privacy, operations, security, and business owners approve public activation.
 
 `PRODUCTION_GO=YES` is permitted only when every required item above is complete on the exact release SHA. Otherwise record `PRODUCTION_GO=NO` with the precise blocker.

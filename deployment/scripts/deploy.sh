@@ -39,6 +39,11 @@ trap rollback_on_error EXIT
 [[ -f "$RELEASE_ENV" ]] || fail "release environment file not found: $RELEASE_ENV"
 [[ -f "$COMPOSE_FILE" ]] || fail "Compose file missing"
 [[ -f "$KONG_SOURCE" ]] || fail "Kong declarative configuration missing"
+[[ -x "$SCRIPT_DIR/validate-compliance.sh" ]] || fail "Production compliance validator missing"
+
+# This deliberately fails until counsel-approved documents, effective dates,
+# legal-entity details, and immutable version archives are present.
+"$SCRIPT_DIR/validate-compliance.sh"
 
 "$SCRIPT_DIR/preflight.sh"
 
@@ -110,6 +115,7 @@ stamp="$(date -u +%Y%m%dT%H%M%SZ)"
   echo "WEB_IMAGE=$TELNEXA_WEB_IMAGE"
   echo "KONG_IMAGE=$KONG_IMAGE"
   echo "CADDY_APPLIED=$APPLY_CADDY"
+  echo "PRODUCTION_COMPLIANCE_GATE=PASS"
   echo "LIVE_CAPABILITIES_ENABLED=NO"
 } >"$EVIDENCE_DIR/deployment-$stamp.env"
 chmod 0640 "$EVIDENCE_DIR/deployment-$stamp.env"
