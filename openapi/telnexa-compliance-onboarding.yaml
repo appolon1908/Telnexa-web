@@ -1,0 +1,278 @@
+openapi: 3.1.0
+info:
+  title: Telnexa Compliance Onboarding API
+  version: 1.0.0
+  description: >
+    Same-origin website contract for submitting SMS, business VoIP, AI voice,
+    and wholesale/reseller service requests for manual compliance review.
+    Submission never activates a provider or live traffic.
+servers:
+  - url: https://telnexa.co
+    description: Canonical public website
+paths:
+  /api/v1/website/onboarding/compliance:
+    post:
+      operationId: submitComplianceOnboarding
+      summary: Submit a completed compliance onboarding packet
+      description: >
+        Validates every applicable page, required acknowledgment, and exact
+        policy version before forwarding the review packet to Codestra Middleware.
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+        - $ref: '#/components/parameters/RequestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ComplianceOnboardingRequest'
+      responses:
+        '202':
+          description: Accepted for manual compliance review; no activation occurred.
+          headers:
+            X-Request-ID:
+              schema:
+                type: string
+                format: uuid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComplianceOnboardingAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          description: One or more accepted policy versions are stale.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '413':
+          description: The actual request body exceeds the 512 KiB limit.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Required pages, fields, acknowledgments, or policies are incomplete.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Middleware delivery is unavailable or production policies are not approved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/website/forms/privacy-request:
+    post:
+      operationId: submitPrivacyRequest
+      summary: Submit a privacy-rights or sale/share opt-out request
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+        - $ref: '#/components/parameters/RequestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrivacyRequest'
+      responses:
+        '202':
+          description: Accepted for identity verification and processing.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '413':
+          description: The actual request body exceeds the 64 KiB form limit.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Required request information is missing.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: The governed form-delivery path is unavailable.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  parameters:
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      description: Client-generated unique key, 16 to 128 approved characters.
+      schema:
+        type: string
+        minLength: 16
+        maxLength: 128
+        pattern: '^[A-Za-z0-9._:-]+$'
+    RequestId:
+      name: X-Request-ID
+      in: header
+      required: false
+      description: Correlation identifier. The server generates one when omitted.
+      schema:
+        type: string
+  schemas:
+    ServiceKey:
+      type: string
+      enum:
+        - sms
+        - business-voip
+        - ai-voice
+        - wholesale
+    PolicyAcceptance:
+      type: object
+      additionalProperties: false
+      required:
+        - key
+        - version
+        - statusAtAcceptance
+        - accepted
+        - acceptedAt
+      properties:
+        key:
+          type: string
+        version:
+          type: string
+        statusAtAcceptance:
+          type: string
+        accepted:
+          const: true
+        acceptedAt:
+          type: string
+          format: date-time
+    ComplianceOnboardingRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - schemaVersion
+        - selectedServices
+        - answers
+        - acknowledgments
+        - policyAcceptances
+        - completedSteps
+        - locale
+        - sourcePage
+        - activationRequested
+      properties:
+        schemaVersion:
+          const: '1.0'
+        selectedServices:
+          type: array
+          minItems: 1
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/ServiceKey'
+        answers:
+          type: object
+          description: Flat answer map keyed by the reviewed field contracts.
+          additionalProperties: true
+        acknowledgments:
+          type: object
+          additionalProperties:
+            type: boolean
+        policyAcceptances:
+          type: array
+          minItems: 3
+          items:
+            $ref: '#/components/schemas/PolicyAcceptance'
+        completedSteps:
+          type: array
+          minItems: 6
+          uniqueItems: true
+          items:
+            type: string
+        locale:
+          type: string
+          enum: [en, es]
+        sourcePage:
+          type: string
+        activationRequested:
+          const: false
+    ComplianceOnboardingAccepted:
+      type: object
+      additionalProperties: false
+      required:
+        - accepted
+        - requestId
+        - state
+        - activationAllowed
+        - manualReviewRequired
+        - receivedAt
+      properties:
+        accepted:
+          const: true
+        requestId:
+          type: string
+        state:
+          type: string
+          enum: [submitted]
+        activationAllowed:
+          const: false
+        manualReviewRequired:
+          const: true
+        simulation:
+          type: boolean
+          description: Present only in a non-production isolated test sink.
+        receivedAt:
+          type: string
+          format: date-time
+    PrivacyRequest:
+      type: object
+      additionalProperties: true
+      required:
+        - name
+        - email
+        - requestType
+        - jurisdiction
+        - details
+      properties:
+        name:
+          type: string
+          maxLength: 320
+        email:
+          type: string
+          format: email
+          maxLength: 320
+        requestType:
+          type: string
+        jurisdiction:
+          type: string
+        details:
+          type: string
+          maxLength: 3000
+    FormAccepted:
+      type: object
+      required: [accepted, requestId]
+      properties:
+        accepted:
+          const: true
+        requestId:
+          type: string
+        simulation:
+          type: boolean
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+        statusMessage:
+          type: string
+  responses:
+    BadRequest:
+      description: Invalid JSON, request identifier, or idempotency key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

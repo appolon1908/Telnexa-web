@@ -1,0 +1,160 @@
+{
+  "version": "1.0.0",
+  "lastReviewed": "2026-08-27",
+  "notice": "Engineering references used to structure disclosure and onboarding controls. They are not a substitute for jurisdiction-specific legal advice.",
+  "sources": [
+    {
+      "key": "ftc-tsr",
+      "authority": "U.S. Federal Trade Commission",
+      "title": "Complying with the Telemarketing Sales Rule",
+      "url": "https://www.ftc.gov/business-guidance/resources/complying-telemarketing-sales-rule",
+      "topics": [
+        "seller identification",
+        "material disclosures",
+        "do-not-call",
+        "prerecorded telemarketing",
+        "opt-out"
+      ]
+    },
+    {
+      "key": "ctia-messaging",
+      "authority": "CTIA",
+      "title": "Messaging Principles and Best Practices",
+      "url": "https://www.ctia.org/programs/messaging-principles-and-best-practices",
+      "topics": [
+        "consumer consent",
+        "sender identity",
+        "opt-out",
+        "unwanted messaging"
+      ]
+    },
+    {
+      "key": "eu-ai-act",
+      "authority": "European Union",
+      "title": "Regulation (EU) 2024/1689 — Artificial Intelligence Act",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng",
+      "topics": [
+        "AI interaction disclosure",
+        "synthetic content transparency",
+        "machine-readable marking"
+      ]
+    },
+    {
+      "key": "gdpr",
+      "authority": "European Union",
+      "title": "Regulation (EU) 2016/679 — General Data Protection Regulation",
+      "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng",
+      "topics": [
+        "transparency",
+        "lawful basis",
+        "data subject rights",
+        "processors",
+        "security"
+      ]
+    },
+    {
+      "key": "ccpa",
+      "authority": "California Department of Justice",
+      "title": "California Consumer Privacy Act",
+      "url": "https://oag.ca.gov/privacy/ccpa",
+      "topics": [
+        "notice at collection",
+        "consumer rights",
+        "sale/share opt-out",
+        "sensitive personal information"
+      ]
+    },
+    {
+      "key": "fcc-cpni",
+      "authority": "U.S. Federal Communications Commission",
+      "title": "Customer Proprietary Network Information",
+      "url": "https://www.fcc.gov/general/customer-proprietary-network-information",
+      "topics": [
+        "telecommunications customer data",
+        "VoIP CPNI",
+        "authentication",
+        "annual certification"
+      ]
+    },
+    {
+      "key": "fcc-form499",
+      "authority": "U.S. Federal Communications Commission",
+      "title": "FCC Form 499 telecommunications reporting",
+      "url": "https://www.fcc.gov/licensing-databases/fees/universal-service-fund-contribution-factor",
+      "topics": [
+        "telecommunications provider registration",
+        "interconnected VoIP",
+        "contribution reporting"
+      ]
+    },
+    {
+      "key": "fcc-accessibility",
+      "authority": "U.S. Federal Communications Commission",
+      "title": "Accessibility for advanced communications services",
+      "url": "https://www.fcc.gov/accessibility",
+      "topics": [
+        "VoIP accessibility",
+        "electronic messaging accessibility",
+        "consumer contact"
+      ]
+    },
+    {
+      "key": "fcc-ai-voice",
+      "authority": "U.S. Federal Communications Commission",
+      "title": "Declaratory Ruling on AI-generated voices under the TCPA",
+      "url": "https://docs.fcc.gov/public/attachments/FCC-24-17A1.pdf",
+      "topics": [
+        "artificial voice",
+        "consent",
+        "caller identification",
+        "opt-out"
+      ]
+    },
+    {
+      "key": "fcc-e911",
+      "authority": "U.S. Federal Communications Commission",
+      "title": "VoIP and 911 Service",
+      "url": "https://www.fcc.gov/consumers/guides/voip-and-911-service",
+      "topics": [
+        "emergency calling",
+        "registered location",
+        "power and internet dependency",
+        "subscriber notice"
+      ]
+    },
+    {
+      "key": "fcc-number-porting",
+      "authority": "U.S. Federal Communications Commission",
+      "title": "Porting: Keeping Your Phone Number",
+      "url": "https://www.fcc.gov/consumers/guides/porting-keeping-your-phone-number-when-you-change-providers",
+      "topics": [
+        "number porting",
+        "subscriber authorization",
+        "service transition"
+      ]
+    },
+    {
+      "key": "fcc-rmd",
+      "authority": "U.S. Federal Communications Commission",
+      "title": "Robocall Mitigation Database",
+      "url": "https://www.fcc.gov/robocall-mitigation-database",
+      "topics": [
+        "voice provider mitigation filing",
+        "illegal robocall prevention",
+        "provider status"
+      ]
+    },
+    {
+      "key": "ftc-can-spam",
+      "authority": "U.S. Federal Trade Commission",
+      "title": "CAN-SPAM Act: A Compliance Guide for Business",
+      "url": "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business",
+      "topics": [
+        "commercial email identification",
+        "opt-out",
+        "sender address",
+        "third-party responsibility"
+      ]
+    }
+  ]
+}

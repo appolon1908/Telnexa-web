@@ -1,0 +1,3215 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-08-27",
+  "submissionEndpoint": "/api/v1/website/onboarding/compliance",
+  "services": [
+    {
+      "key": "sms",
+      "label": {
+        "en": "Business SMS",
+        "es": "SMS empresarial"
+      },
+      "description": {
+        "en": "Application, support, notification, and campaign messaging with documented consent, sender identity, opt-out, and traffic controls.",
+        "es": "Mensajería de aplicaciones, soporte, notificaciones y campañas con consentimiento documentado, identidad del remitente, exclusión y controles de tráfico."
+      },
+      "startPath": "/get-started/sms",
+      "marketingPath": "/messaging/business-sms",
+      "requiredDocuments": [
+        "terms",
+        "privacy",
+        "acceptable-use",
+        "messaging-policy",
+        "anti-spam"
+      ]
+    },
+    {
+      "key": "business-voip",
+      "label": {
+        "en": "Business VoIP",
+        "es": "VoIP empresarial"
+      },
+      "description": {
+        "en": "Cloud calling, SIP, numbers, routing, contact-center, and recording services with emergency-services and caller-identity review.",
+        "es": "Llamadas en la nube, SIP, números, enrutamiento, centro de contacto y grabación con revisión de servicios de emergencia e identidad de llamadas."
+      },
+      "startPath": "/get-started/voice",
+      "marketingPath": "/voice/business-voip",
+      "requiredDocuments": [
+        "terms",
+        "privacy",
+        "acceptable-use",
+        "voice-services",
+        "emergency-services",
+        "call-recording",
+        "number-porting"
+      ]
+    },
+    {
+      "key": "ai-voice",
+      "label": {
+        "en": "AI voice over IP",
+        "es": "Voz con IA sobre IP"
+      },
+      "description": {
+        "en": "AI-assisted or AI-generated voice interactions that require clear identity, AI disclosure, consent, recording, human-escalation, and abuse controls.",
+        "es": "Interacciones de voz asistidas o generadas por IA que requieren identidad clara, divulgación de IA, consentimiento, grabación, escalamiento humano y controles de abuso."
+      },
+      "startPath": "/get-started/ai-voice",
+      "marketingPath": "/voice/ai-voice",
+      "requiredDocuments": [
+        "terms",
+        "privacy",
+        "acceptable-use",
+        "voice-services",
+        "ai-voice",
+        "call-recording"
+      ]
+    },
+    {
+      "key": "wholesale",
+      "label": {
+        "en": "Wholesale and reseller services",
+        "es": "Servicios mayoristas y de reventa"
+      },
+      "description": {
+        "en": "Voice, SMS, number, or platform capacity resold to downstream customers with KYB, traffic-profile, traceability, flow-down, and mitigation obligations.",
+        "es": "Capacidad de voz, SMS, números o plataforma revendida a clientes posteriores con obligaciones de verificación comercial, perfil de tráfico, trazabilidad, traslado contractual y mitigación."
+      },
+      "startPath": "/get-started/wholesale",
+      "marketingPath": "/wholesale",
+      "requiredDocuments": [
+        "terms",
+        "privacy",
+        "acceptable-use",
+        "wholesale-reseller",
+        "security-disclosure",
+        "data-processing-addendum",
+        "regulatory-fees"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "key": "overview",
+      "path": "/get-started",
+      "title": {
+        "en": "Start a governed Telnexa service request",
+        "es": "Inicia una solicitud de servicio Telnexa con controles"
+      },
+      "description": {
+        "en": "Choose the services you need, complete each applicable compliance page, accept the exact policy versions, and submit for manual review. Completing this process never activates live traffic automatically.",
+        "es": "Selecciona los servicios necesarios, completa cada página de cumplimiento aplicable, acepta las versiones exactas de las políticas y envía la solicitud para revisión manual. Completar este proceso nunca activa tráfico real automáticamente."
+      },
+      "requiredFor": [
+        "all"
+      ],
+      "kind": "overview",
+      "fields": [],
+      "acknowledgments": [],
+      "nextPath": "/get-started/business-verification",
+      "legalLinks": [
+        "legal-center",
+        "privacy",
+        "terms"
+      ]
+    },
+    {
+      "key": "business-verification",
+      "path": "/get-started/business-verification",
+      "title": {
+        "en": "Business verification",
+        "es": "Verificación comercial"
+      },
+      "description": {
+        "en": "Identify the contracting business, its authorized representative, beneficial ownership, and compliance contacts before any communications capability can be reviewed.",
+        "es": "Identifica la empresa contratante, su representante autorizado, beneficiarios finales y contactos de cumplimiento antes de revisar cualquier capacidad de comunicaciones."
+      },
+      "requiredFor": [
+        "all"
+      ],
+      "kind": "form",
+      "fields": [
+        {
+          "key": "business.legalName",
+          "label": {
+            "en": "Legal business name",
+            "es": "Nombre legal de la empresa"
+          },
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "business.dba",
+          "label": {
+            "en": "Doing-business-as name",
+            "es": "Nombre comercial"
+          },
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "business.registrationNumber",
+          "label": {
+            "en": "Registration or tax number",
+            "es": "Número de registro o identificación fiscal"
+          },
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "business.country",
+          "label": {
+            "en": "Country of registration",
+            "es": "País de registro"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "us",
+              "label": {
+                "en": "United States",
+                "es": "Estados Unidos"
+              }
+            },
+            {
+              "value": "ca",
+              "label": {
+                "en": "Canada",
+                "es": "Canadá"
+              }
+            },
+            {
+              "value": "latam",
+              "label": {
+                "en": "Latin America and Caribbean",
+                "es": "América Latina y el Caribe"
+              }
+            },
+            {
+              "value": "eu-eea",
+              "label": {
+                "en": "European Union / EEA",
+                "es": "Unión Europea / EEE"
+              }
+            },
+            {
+              "value": "uk",
+              "label": {
+                "en": "United Kingdom",
+                "es": "Reino Unido"
+              }
+            },
+            {
+              "value": "other",
+              "label": {
+                "en": "Other",
+                "es": "Otro"
+              }
+            }
+          ]
+        },
+        {
+          "key": "business.address",
+          "label": {
+            "en": "Registered business address",
+            "es": "Dirección comercial registrada"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "business.website",
+          "label": {
+            "en": "Business website",
+            "es": "Sitio web de la empresa"
+          },
+          "type": "url",
+          "required": true
+        },
+        {
+          "key": "business.contactName",
+          "label": {
+            "en": "Authorized representative",
+            "es": "Representante autorizado"
+          },
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "business.contactEmail",
+          "label": {
+            "en": "Representative email",
+            "es": "Correo del representante"
+          },
+          "type": "email",
+          "required": true
+        },
+        {
+          "key": "business.contactPhone",
+          "label": {
+            "en": "Representative phone",
+            "es": "Teléfono del representante"
+          },
+          "type": "tel",
+          "required": true
+        },
+        {
+          "key": "business.beneficialOwners",
+          "label": {
+            "en": "Beneficial owners and controlling persons",
+            "es": "Beneficiarios finales y personas de control"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "business.complianceContact",
+          "label": {
+            "en": "Compliance or abuse contact",
+            "es": "Contacto de cumplimiento o abuso"
+          },
+          "type": "email",
+          "required": true
+        }
+      ],
+      "acknowledgments": [
+        {
+          "key": "business.authority",
+          "label": {
+            "en": "I am authorized to submit this request for the identified business.",
+            "es": "Estoy autorizado para enviar esta solicitud en nombre de la empresa identificada."
+          },
+          "required": true
+        },
+        {
+          "key": "business.accurate",
+          "label": {
+            "en": "The business and ownership information is complete and accurate.",
+            "es": "La información de la empresa y propiedad es completa y exacta."
+          },
+          "required": true
+        }
+      ],
+      "nextPath": "/get-started/service-selection"
+    },
+    {
+      "key": "service-selection",
+      "path": "/get-started/service-selection",
+      "title": {
+        "en": "Select services and operating regions",
+        "es": "Selecciona servicios y regiones operativas"
+      },
+      "description": {
+        "en": "Your selections determine which disclosure, consent, emergency-services, privacy, and wholesale pages must be completed.",
+        "es": "Tus selecciones determinan qué páginas de divulgación, consentimiento, servicios de emergencia, privacidad y mayoristas deben completarse."
+      },
+      "requiredFor": [
+        "all"
+      ],
+      "kind": "form",
+      "fields": [
+        {
+          "key": "services",
+          "label": {
+            "en": "Services requested",
+            "es": "Servicios solicitados"
+          },
+          "type": "multiselect",
+          "required": true,
+          "options": [
+            {
+              "value": "sms",
+              "label": {
+                "en": "Business SMS",
+                "es": "SMS empresarial"
+              }
+            },
+            {
+              "value": "business-voip",
+              "label": {
+                "en": "Business VoIP",
+                "es": "VoIP empresarial"
+              }
+            },
+            {
+              "value": "ai-voice",
+              "label": {
+                "en": "AI voice over IP",
+                "es": "Voz con IA sobre IP"
+              }
+            },
+            {
+              "value": "wholesale",
+              "label": {
+                "en": "Wholesale and reseller services",
+                "es": "Servicios mayoristas y de reventa"
+              }
+            }
+          ]
+        },
+        {
+          "key": "business.customerType",
+          "label": {
+            "en": "Customer relationship",
+            "es": "Relación del cliente"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "direct",
+              "label": {
+                "en": "Direct business user",
+                "es": "Usuario empresarial directo"
+              }
+            },
+            {
+              "value": "reseller",
+              "label": {
+                "en": "Reseller serving downstream customers",
+                "es": "Revendedor que atiende clientes posteriores"
+              }
+            },
+            {
+              "value": "wholesaler",
+              "label": {
+                "en": "Wholesale carrier or platform provider",
+                "es": "Operador mayorista o proveedor de plataforma"
+              }
+            }
+          ]
+        },
+        {
+          "key": "operatingRegions",
+          "label": {
+            "en": "Origin and destination regions",
+            "es": "Regiones de origen y destino"
+          },
+          "type": "multiselect",
+          "required": true,
+          "options": [
+            {
+              "value": "us",
+              "label": {
+                "en": "United States",
+                "es": "Estados Unidos"
+              }
+            },
+            {
+              "value": "ca",
+              "label": {
+                "en": "Canada",
+                "es": "Canadá"
+              }
+            },
+            {
+              "value": "latam",
+              "label": {
+                "en": "Latin America and Caribbean",
+                "es": "América Latina y el Caribe"
+              }
+            },
+            {
+              "value": "eu-eea",
+              "label": {
+                "en": "European Union / EEA",
+                "es": "Unión Europea / EEE"
+              }
+            },
+            {
+              "value": "uk",
+              "label": {
+                "en": "United Kingdom",
+                "es": "Reino Unido"
+              }
+            },
+            {
+              "value": "other",
+              "label": {
+                "en": "Other",
+                "es": "Otro"
+              }
+            }
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "key": "selection.reviewScope",
+          "label": {
+            "en": "I understand that each selected service creates additional review requirements.",
+            "es": "Entiendo que cada servicio seleccionado crea requisitos de revisión adicionales."
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "key": "sms-overview",
+      "path": "/get-started/sms",
+      "title": {
+        "en": "Business SMS readiness",
+        "es": "Preparación para SMS empresarial"
+      },
+      "description": {
+        "en": "Before SMS traffic can be considered, document the use case, recipient relationship, opt-in evidence, sender identity, opt-out handling, message examples, countries, and expected volume.",
+        "es": "Antes de considerar tráfico SMS, documenta el caso de uso, relación con destinatarios, evidencia de suscripción, identidad del remitente, gestión de exclusión, ejemplos de mensajes, países y volumen esperado."
+      },
+      "requiredFor": [
+        "sms"
+      ],
+      "kind": "overview",
+      "fields": [],
+      "acknowledgments": [],
+      "nextPath": "/get-started/sms/use-case",
+      "legalLinks": [
+        "messaging-policy",
+        "anti-spam",
+        "privacy"
+      ]
+    },
+    {
+      "key": "sms-use-case",
+      "path": "/get-started/sms/use-case",
+      "title": {
+        "en": "SMS use case and traffic profile",
+        "es": "Caso de uso y perfil de tráfico SMS"
+      },
+      "description": {
+        "en": "Describe exactly what will be sent, to whom, from where, and at what volume. Generic labels such as “marketing” are not sufficient.",
+        "es": "Describe exactamente qué se enviará, a quién, desde dónde y con qué volumen. Etiquetas genéricas como «marketing» no son suficientes."
+      },
+      "requiredFor": [
+        "sms"
+      ],
+      "kind": "form",
+      "fields": [
+        {
+          "key": "sms.useCaseCategory",
+          "label": {
+            "en": "Messaging use case",
+            "es": "Caso de uso de mensajería"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "transactional",
+              "label": {
+                "en": "Transactional or account notifications",
+                "es": "Transaccional o notificaciones de cuenta"
+              }
+            },
+            {
+              "value": "support",
+              "label": {
+                "en": "Two-way customer support",
+                "es": "Soporte bidireccional al cliente"
+              }
+            },
+            {
+              "value": "otp",
+              "label": {
+                "en": "One-time passcodes or authentication",
+                "es": "Códigos de un solo uso o autenticación"
+              }
+            },
+            {
+              "value": "marketing",
+              "label": {
+                "en": "Marketing or promotional messages",
+                "es": "Mensajes de marketing o promocionales"
+              }
+            },
+            {
+              "value": "mixed",
+              "label": {
+                "en": "Mixed traffic",
+                "es": "Tráfico mixto"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sms.audience",
+          "label": {
+            "en": "Recipient relationship",
+            "es": "Relación con destinatarios"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "customers",
+              "label": {
+                "en": "Existing customers",
+                "es": "Clientes existentes"
+              }
+            },
+            {
+              "value": "employees",
+              "label": {
+                "en": "Employees or contractors",
+                "es": "Empleados o contratistas"
+              }
+            },
+            {
+              "value": "members",
+              "label": {
+                "en": "Members or subscribers",
+                "es": "Miembros o suscriptores"
+              }
+            },
+            {
+              "value": "prospects",
+              "label": {
+                "en": "Prospects with documented opt-in",
+                "es": "Prospectos con suscripción documentada"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sms.description",
+          "label": {
+            "en": "Detailed message journey",
+            "es": "Recorrido detallado del mensaje"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "sms.originCountries",
+          "label": {
+            "en": "Origin countries",
+            "es": "Países de origen"
+          },
+          "type": "multiselect",
+          "required": true,
+          "options": [
+            {
+              "value": "us",
+              "label": {
+                "en": "United States",
+                "es": "Estados Unidos"
+              }
+            },
+            {
+              "value": "ca",
+              "label": {
+                "en": "Canada",
+                "es": "Canadá"
+              }
+            },
+            {
+              "value": "latam",
+              "label": {
+                "en": "Latin America and Caribbean",
+                "es": "América Latina y el Caribe"
+              }
+            },
+            {
+              "value": "eu-eea",
+              "label": {
+                "en": "European Union / EEA",
+                "es": "Unión Europea / EEE"
+              }
+            },
+            {
+              "value": "uk",
+              "label": {
+                "en": "United Kingdom",
+                "es": "Reino Unido"
+              }
+            },
+            {
+              "value": "other",
+              "label": {
+                "en": "Other",
+                "es": "Otro"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sms.destinationCountries",
+          "label": {
+            "en": "Destination countries",
+            "es": "Países de destino"
+          },
+          "type": "multiselect",
+          "required": true,
+          "options": [
+            {
+              "value": "us",
+              "label": {
+                "en": "United States",
+                "es": "Estados Unidos"
+              }
+            },
+            {
+              "value": "ca",
+              "label": {
+                "en": "Canada",
+                "es": "Canadá"
+              }
+            },
+            {
+              "value": "latam",
+              "label": {
+                "en": "Latin America and Caribbean",
+                "es": "América Latina y el Caribe"
+              }
+            },
+            {
+              "value": "eu-eea",
+              "label": {
+                "en": "European Union / EEA",
+                "es": "Unión Europea / EEE"
+              }
+            },
+            {
+              "value": "uk",
+              "label": {
+                "en": "United Kingdom",
+                "es": "Reino Unido"
+              }
+            },
+            {
+              "value": "other",
+              "label": {
+                "en": "Other",
+                "es": "Otro"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sms.monthlyVolume",
+          "label": {
+            "en": "Estimated monthly messages",
+            "es": "Mensajes mensuales estimados"
+          },
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "sms.sampleMessages",
+          "label": {
+            "en": "Representative message examples",
+            "es": "Ejemplos representativos de mensajes"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "sms.shortenedLinks",
+          "label": {
+            "en": "Will messages use shortened links?",
+            "es": "¿Los mensajes usarán enlaces acortados?"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "yes",
+              "label": {
+                "en": "Yes",
+                "es": "Sí"
+              }
+            },
+            {
+              "value": "no",
+              "label": {
+                "en": "No",
+                "es": "No"
+              }
+            }
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "key": "sms.noProhibitedContent",
+          "label": {
+            "en": "The traffic will not include phishing, fraud, illegal products, unlawful lead generation, or content prohibited by the acceptable-use policy.",
+            "es": "El tráfico no incluirá phishing, fraude, productos ilegales, generación ilícita de prospectos ni contenido prohibido por la política de uso aceptable."
+          },
+          "required": true
+        }
+      ],
+      "legalLinks": [
+        "messaging-policy",
+        "acceptable-use"
+      ]
+    },
+    {
+      "key": "sms-consent",
+      "path": "/get-started/sms/consent",
+      "title": {
+        "en": "SMS consent, frequency, and opt-out",
+        "es": "Consentimiento, frecuencia y exclusión de SMS"
+      },
+      "description": {
+        "en": "Provide the actual opt-in path and the disclosures recipients see before agreeing. Consent cannot be inferred from a purchased list or unrelated transaction.",
+        "es": "Proporciona la ruta real de suscripción y las divulgaciones que ven los destinatarios antes de aceptar. El consentimiento no puede inferirse de una lista comprada ni de una transacción no relacionada."
+      },
+      "requiredFor": [
+        "sms"
+      ],
+      "kind": "form",
+      "fields": [
+        {
+          "key": "sms.optInMethod",
+          "label": {
+            "en": "Opt-in method",
+            "es": "Método de suscripción"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "web-form",
+              "label": {
+                "en": "Website form",
+                "es": "Formulario web"
+              }
+            },
+            {
+              "value": "keyword",
+              "label": {
+                "en": "SMS keyword",
+                "es": "Palabra clave por SMS"
+              }
+            },
+            {
+              "value": "paper",
+              "label": {
+                "en": "Written or paper agreement",
+                "es": "Acuerdo escrito o en papel"
+              }
+            },
+            {
+              "value": "account-setting",
+              "label": {
+                "en": "Authenticated account setting",
+                "es": "Configuración de cuenta autenticada"
+              }
+            },
+            {
+              "value": "other",
+              "label": {
+                "en": "Other documented method",
+                "es": "Otro método documentado"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sms.optInUrl",
+          "label": {
+            "en": "Opt-in page or evidence URL",
+            "es": "Página de suscripción o URL de evidencia"
+          },
+          "type": "url",
+          "required": true
+        },
+        {
+          "key": "sms.optInDisclosure",
+          "label": {
+            "en": "Exact opt-in disclosure",
+            "es": "Divulgación exacta de suscripción"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "sms.messageFrequency",
+          "label": {
+            "en": "Frequency disclosure",
+            "es": "Divulgación de frecuencia"
+          },
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "sms.stopResponse",
+          "label": {
+            "en": "STOP response text",
+            "es": "Texto de respuesta a STOP"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "sms.helpResponse",
+          "label": {
+            "en": "HELP response text",
+            "es": "Texto de respuesta a HELP"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "sms.consentRetention",
+          "label": {
+            "en": "Consent record retention period",
+            "es": "Período de retención del consentimiento"
+          },
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "sms.thirdPartyLists",
+          "label": {
+            "en": "Will any purchased, rented, appended, or third-party lead lists be used?",
+            "es": "¿Se usarán listas compradas, alquiladas, agregadas o de terceros?"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "yes",
+              "label": {
+                "en": "Yes",
+                "es": "Sí"
+              }
+            },
+            {
+              "value": "no",
+              "label": {
+                "en": "No",
+                "es": "No"
+              }
+            }
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "key": "sms.consentRecords",
+          "label": {
+            "en": "Consent evidence, source, timestamp, disclosure version, and recipient identifier will be retained and producible.",
+            "es": "La evidencia, fuente, fecha, versión de divulgación e identificador del destinatario se conservarán y podrán presentarse."
+          },
+          "required": true
+        },
+        {
+          "key": "sms.optOutImmediate",
+          "label": {
+            "en": "STOP and equivalent opt-out requests will be honored promptly across all applicable sender identities.",
+            "es": "Las solicitudes STOP y equivalentes se respetarán prontamente en todas las identidades de remitente aplicables."
+          },
+          "required": true
+        },
+        {
+          "key": "sms.noThirdPartyConsent",
+          "label": {
+            "en": "No third-party list will be treated as consent unless reviewed and expressly approved for the exact use case.",
+            "es": "Ninguna lista de terceros se tratará como consentimiento salvo revisión y aprobación expresa para el caso de uso exacto."
+          },
+          "required": true
+        }
+      ],
+      "legalLinks": [
+        "messaging-policy",
+        "anti-spam",
+        "privacy"
+      ]
+    },
+    {
+      "key": "sms-sender-registration",
+      "path": "/get-started/sms/sender-registration",
+      "title": {
+        "en": "SMS sender and campaign registration",
+        "es": "Registro de remitente y campaña SMS"
+      },
+      "description": {
+        "en": "Identify the brand, sender type, campaign, public support information, and the websites where recipients can review privacy and terms.",
+        "es": "Identifica la marca, tipo de remitente, campaña, información pública de soporte y los sitios donde los destinatarios pueden revisar privacidad y términos."
+      },
+      "requiredFor": [
+        "sms"
+      ],
+      "kind": "form",
+      "fields": [
+        {
+          "key": "sms.senderType",
+          "label": {
+            "en": "Sender type",
+            "es": "Tipo de remitente"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "10dlc",
+              "label": {
+                "en": "US 10DLC local number",
+                "es": "Número local 10DLC de EE. UU."
+              }
+            },
+            {
+              "value": "toll-free",
+              "label": {
+                "en": "Toll-free number",
+                "es": "Número gratuito"
+              }
+            },
+            {
+              "value": "short-code",
+              "label": {
+                "en": "Short code",
+                "es": "Código corto"
+              }
+            },
+            {
+              "value": "alphanumeric",
+              "label": {
+                "en": "Alphanumeric sender ID",
+                "es": "Identificador alfanumérico"
+              }
+            },
+            {
+              "value": "other",
+              "label": {
+                "en": "Other",
+                "es": "Otro"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sms.brandName",
+          "label": {
+            "en": "Public brand name",
+            "es": "Nombre público de la marca"
+          },
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "sms.campaignName",
+          "label": {
+            "en": "Campaign or program name",
+            "es": "Nombre de campaña o programa"
+          },
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "sms.supportEmail",
+          "label": {
+            "en": "Recipient support email",
+            "es": "Correo de soporte para destinatarios"
+          },
+          "type": "email",
+          "required": true
+        },
+        {
+          "key": "sms.supportUrl",
+          "label": {
+            "en": "Recipient support URL",
+            "es": "URL de soporte para destinatarios"
+          },
+          "type": "url",
+          "required": true
+        },
+        {
+          "key": "sms.privacyUrl",
+          "label": {
+            "en": "Public privacy policy URL",
+            "es": "URL pública de política de privacidad"
+          },
+          "type": "url",
+          "required": true
+        },
+        {
+          "key": "sms.termsUrl",
+          "label": {
+            "en": "Public terms URL",
+            "es": "URL pública de términos"
+          },
+          "type": "url",
+          "required": true
+        }
+      ],
+      "acknowledgments": [
+        {
+          "key": "sms.senderAuthorized",
+          "label": {
+            "en": "The business owns or is authorized to use the submitted brand and sender identities.",
+            "es": "La empresa posee o está autorizada para usar la marca e identidades de remitente presentadas."
+          },
+          "required": true
+        },
+        {
+          "key": "sms.registrationChanges",
+          "label": {
+            "en": "Material changes to content, volume, opt-in, links, or audience will be submitted for re-review.",
+            "es": "Los cambios materiales de contenido, volumen, suscripción, enlaces o audiencia se enviarán para nueva revisión."
+          },
+          "required": true
+        }
+      ],
+      "legalLinks": [
+        "messaging-policy",
+        "privacy",
+        "terms"
+      ]
+    },
+    {
+      "key": "voice-overview",
+      "path": "/get-started/voice",
+      "title": {
+        "en": "Business VoIP readiness",
+        "es": "Preparación para VoIP empresarial"
+      },
+      "description": {
+        "en": "Business voice activation requires a lawful use case, verified caller identity, emergency-services configuration, number rights, recording disclosures, and outbound calling controls.",
+        "es": "La activación de voz empresarial requiere un caso de uso lícito, identidad de llamada verificada, configuración de servicios de emergencia, derechos sobre números, divulgaciones de grabación y controles de llamadas salientes."
+      },
+      "requiredFor": [
+        "business-voip"
+      ],
+      "kind": "overview",
+      "fields": [],
+      "acknowledgments": [],
+      "nextPath": "/get-started/voice/use-case",
+      "legalLinks": [
+        "voice-services",
+        "emergency-services",
+        "call-recording"
+      ]
+    },
+    {
+      "key": "voice-use-case",
+      "path": "/get-started/voice/use-case",
+      "title": {
+        "en": "Voice use case and calling profile",
+        "es": "Caso de uso y perfil de llamadas"
+      },
+      "description": {
+        "en": "Explain the inbound and outbound call journeys, audience, countries, purpose, volume, and suppression controls.",
+        "es": "Explica los recorridos de llamadas entrantes y salientes, audiencia, países, propósito, volumen y controles de supresión."
+      },
+      "requiredFor": [
+        "business-voip"
+      ],
+      "kind": "form",
+      "fields": [
+        {
+          "key": "voice.callDirection",
+          "label": {
+            "en": "Call direction",
+            "es": "Dirección de llamadas"
+          },
+          "type": "multiselect",
+          "required": true,
+          "options": [
+            {
+              "value": "inbound",
+              "label": {
+                "en": "Inbound",
+                "es": "Entrantes"
+              }
+            },
+            {
+              "value": "outbound",
+              "label": {
+                "en": "Outbound",
+                "es": "Salientes"
+              }
+            }
+          ]
+        },
+        {
+          "key": "voice.callPurpose",
+          "label": {
+            "en": "Primary purpose",
+            "es": "Propósito principal"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "business-operations",
+              "label": {
+                "en": "Internal or operational calling",
+                "es": "Llamadas internas u operativas"
+              }
+            },
+            {
+              "value": "customer-support",
+              "label": {
+                "en": "Customer service and support",
+                "es": "Servicio y soporte al cliente"
+              }
+            },
+            {
+              "value": "appointments",
+              "label": {
+                "en": "Appointments or requested callbacks",
+                "es": "Citas o devoluciones solicitadas"
+              }
+            },
+            {
+              "value": "sales",
+              "label": {
+                "en": "Sales or telemarketing",
+                "es": "Ventas o telemarketing"
+              }
+            },
+            {
+              "value": "collections",
+              "label": {
+                "en": "Collections or account servicing",
+                "es": "Cobranza o gestión de cuentas"
+              }
+            },
+            {
+              "value": "emergency",
+              "label": {
+                "en": "Emergency or high-impact communications",
+                "es": "Comunicaciones de emergencia o alto impacto"
+              }
+            }
+          ]
+        },
+        {
+          "key": "voice.audience",
+          "label": {
+            "en": "Called-party relationship",
+            "es": "Relación con las personas llamadas"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "voice.description",
+          "label": {
+            "en": "Detailed call flow",
+            "es": "Flujo detallado de llamadas"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "voice.originCountries",
+          "label": {
+            "en": "Calling origin countries",
+            "es": "Países de origen"
+          },
+          "type": "multiselect",
+          "required": true,
+          "options": [
+            {
+              "value": "us",
+              "label": {
+                "en": "United States",
+                "es": "Estados Unidos"
+              }
+            },
+            {
+              "value": "ca",
+              "label": {
+                "en": "Canada",
+                "es": "Canadá"
+              }
+            },
+            {
+              "value": "latam",
+              "label": {
+                "en": "Latin America and Caribbean",
+                "es": "América Latina y el Caribe"
+              }
+            },
+            {
+              "value": "eu-eea",
+              "label": {
+                "en": "European Union / EEA",
+                "es": "Unión Europea / EEE"
+              }
+            },
+            {
+              "value": "uk",
+              "label": {
+                "en": "United Kingdom",
+                "es": "Reino Unido"
+              }
+            },
+            {
+              "value": "other",
+              "label": {
+                "en": "Other",
+                "es": "Otro"
+              }
+            }
+          ]
+        },
+        {
+          "key": "voice.destinationCountries",
+          "label": {
+            "en": "Calling destination countries",
+            "es": "Países de destino"
+          },
+          "type": "multiselect",
+          "required": true,
+          "options": [
+            {
+              "value": "us",
+              "label": {
+                "en": "United States",
+                "es": "Estados Unidos"
+              }
+            },
+            {
+              "value": "ca",
+              "label": {
+                "en": "Canada",
+                "es": "Canadá"
+              }
+            },
+            {
+              "value": "latam",
+              "label": {
+                "en": "Latin America and Caribbean",
+                "es": "América Latina y el Caribe"
+              }
+            },
+            {
+              "value": "eu-eea",
+              "label": {
+                "en": "European Union / EEA",
+                "es": "Unión Europea / EEE"
+              }
+            },
+            {
+              "value": "uk",
+              "label": {
+                "en": "United Kingdom",
+                "es": "Reino Unido"
+              }
+            },
+            {
+              "value": "other",
+              "label": {
+                "en": "Other",
+                "es": "Otro"
+              }
+            }
+          ]
+        },
+        {
+          "key": "voice.monthlyMinutes",
+          "label": {
+            "en": "Estimated monthly minutes",
+            "es": "Minutos mensuales estimados"
+          },
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "voice.dncProcess",
+          "label": {
+            "en": "Do-not-call and internal suppression process",
+            "es": "Proceso de no llamar y supresión interna"
+          },
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "acknowledgments": [
+        {
+          "key": "voice.lawfulPurpose",
+          "label": {
+            "en": "Calls will be placed only for a lawful, accurately described purpose.",
+            "es": "Las llamadas se realizarán únicamente con un propósito lícito y descrito con exactitud."
+          },
+          "required": true
+        },
+        {
+          "key": "voice.suppression",
+          "label": {
+            "en": "Applicable do-not-call, revocation, and account-specific suppression requests will be honored.",
+            "es": "Se respetarán las solicitudes aplicables de no llamar, revocación y supresión específica de cuenta."
+          },
+          "required": true
+        }
+      ],
+      "legalLinks": [
+        "voice-services",
+        "acceptable-use"
+      ]
+    },
+    {
+      "key": "voice-emergency-services",
+      "path": "/get-started/voice/emergency-services",
+      "title": {
+        "en": "Emergency-services configuration",
+        "es": "Configuración de servicios de emergencia"
+      },
+      "description": {
+        "en": "Document how emergency calling, registered locations, nomadic users, outage notices, and customer training will be handled for the proposed VoIP service.",
+        "es": "Documenta cómo se gestionarán las llamadas de emergencia, ubicaciones registradas, usuarios nómadas, avisos de interrupción y capacitación del cliente para el servicio VoIP propuesto."
+      },
+      "requiredFor": [
+        "business-voip"
+      ],
+      "kind": "form",
+      "fields": [
+        {
+          "key": "voice.emergencyModel",
+          "label": {
+            "en": "Emergency-services model",
+            "es": "Modelo de servicios de emergencia"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "provider-managed",
+              "label": {
+                "en": "Provider-managed emergency service",
+                "es": "Servicio de emergencia gestionado por proveedor"
+              }
+            },
+            {
+              "value": "customer-managed",
+              "label": {
+                "en": "Customer-managed with approved provider",
+                "es": "Gestionado por cliente con proveedor aprobado"
+              }
+            },
+            {
+              "value": "not-applicable",
+              "label": {
+                "en": "Service design excludes public calling (requires review)",
+                "es": "El diseño excluye llamadas públicas (requiere revisión)"
+              }
+            }
+          ]
+        },
+        {
+          "key": "voice.locationProcess",
+          "label": {
+            "en": "Registered dispatchable-location process",
+            "es": "Proceso de ubicación despachable registrada"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "voice.nomadicUsers",
+          "label": {
+            "en": "Nomadic or remote-user process",
+            "es": "Proceso para usuarios nómadas o remotos"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "voice.outageNotice",
+          "label": {
+            "en": "Power, internet, and service-outage notice",
+            "es": "Aviso de energía, internet e interrupción"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "voice.emergencyAdmin",
+          "label": {
+            "en": "Emergency-services administrator email",
+            "es": "Correo del administrador de servicios de emergencia"
+          },
+          "type": "email",
+          "required": true
+        }
+      ],
+      "acknowledgments": [
+        {
+          "key": "voice.e911NotTraditional",
+          "label": {
+            "en": "Users will be informed that VoIP emergency calling can differ from traditional telephone service and can depend on power, internet, registered location, and service availability.",
+            "es": "Se informará a los usuarios que las llamadas de emergencia VoIP pueden diferir del servicio telefónico tradicional y depender de energía, internet, ubicación registrada y disponibilidad."
+          },
+          "required": true
+        },
+        {
+          "key": "voice.locationAccuracy",
+          "label": {
+            "en": "The customer will maintain accurate emergency-service locations and train administrators and end users.",
+            "es": "El cliente mantendrá ubicaciones exactas de servicios de emergencia y capacitará a administradores y usuarios."
+          },
+          "required": true
+        }
+      ],
+      "legalLinks": [
+        "emergency-services",
+        "voice-services"
+      ]
+    },
+    {
+      "key": "voice-caller-id",
+      "path": "/get-started/voice/caller-id",
+      "title": {
+        "en": "Numbers, caller identity, and authorization",
+        "es": "Números, identidad de llamada y autorización"
+      },
+      "description": {
+        "en": "Every displayed calling number and identity must be owned, assigned, or expressly authorized, and must not mislead called parties.",
+        "es": "Cada número e identidad mostrados deben ser propiedad, estar asignados o expresamente autorizados, y no deben engañar a las personas llamadas."
+      },
+      "requiredFor": [
+        "business-voip"
+      ],
+      "kind": "form",
+      "fields": [
+        {
+          "key": "voice.numberSource",
+          "label": {
+            "en": "Number source",
+            "es": "Origen de números"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "telnexa",
+              "label": {
+                "en": "Telnexa-provisioned numbers",
+                "es": "Números aprovisionados por Telnexa"
+              }
+            },
+            {
+              "value": "ported",
+              "label": {
+                "en": "Numbers to be ported",
+                "es": "Números a portar"
+              }
+            },
+            {
+              "value": "byoc",
+              "label": {
+                "en": "Customer-owned / bring your own carrier",
+                "es": "Propiedad del cliente / operador propio"
+              }
+            },
+            {
+              "value": "mixed",
+              "label": {
+                "en": "Mixed sources",
+                "es": "Fuentes mixtas"
+              }
+            }
+          ]
+        },
+        {
+          "key": "voice.callerIdList",
+          "label": {
+            "en": "Representative caller IDs and ownership evidence",
+            "es": "Identificadores representativos y evidencia de propiedad"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "voice.displayName",
+          "label": {
+            "en": "Requested caller name or brand",
+            "es": "Nombre o marca solicitada"
+          },
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "voice.identityProcess",
+          "label": {
+            "en": "Caller-identity authorization and change-control process",
+            "es": "Proceso de autorización y control de cambios de identidad"
+          },
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "acknowledgments": [
+        {
+          "key": "voice.noSpoofing",
+          "label": {
+            "en": "Caller identity will not be altered to deceive, defraud, cause harm, or evade blocking or traceback.",
+            "es": "La identidad de llamada no se alterará para engañar, defraudar, causar daño ni evadir bloqueos o trazabilidad."
+          },
+          "required": true
+        },
+        {
+          "key": "voice.numberRights",
+          "label": {
+            "en": "Documented rights exist for every number and caller name submitted.",
+            "es": "Existen derechos documentados para cada número y nombre de llamada presentado."
+          },
+          "required": true
+        }
+      ],
+      "legalLinks": [
+        "voice-services",
+        "number-porting",
+        "acceptable-use"
+      ]
+    },
+    {
+      "key": "voice-call-recording",
+      "path": "/get-started/voice/call-recording",
+      "title": {
+        "en": "Call recording, transcription, and monitoring",
+        "es": "Grabación, transcripción y monitoreo de llamadas"
+      },
+      "description": {
+        "en": "Identify where calls are made and received, when recording or transcription starts, the disclosure used, who can access recordings, and how long content is retained.",
+        "es": "Identifica dónde se realizan y reciben llamadas, cuándo comienza la grabación o transcripción, la divulgación utilizada, quién accede y cuánto tiempo se conserva."
+      },
+      "requiredFor": [
+        "business-voip",
+        "ai-voice"
+      ],
+      "kind": "form",
+      "fields": [
+        {
+          "key": "recording.mode",
+          "label": {
+            "en": "Recording mode",
+            "es": "Modo de grabación"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "none",
+              "label": {
+                "en": "No recording or transcription",
+                "es": "Sin grabación ni transcripción"
+              }
+            },
+            {
+              "value": "on-demand",
+              "label": {
+                "en": "User-initiated or on-demand",
+                "es": "Iniciada por usuario o bajo demanda"
+              }
+            },
+            {
+              "value": "always",
+              "label": {
+                "en": "Always-on for selected queues",
+                "es": "Siempre activa para colas seleccionadas"
+              }
+            },
+            {
+              "value": "ai-transcription",
+              "label": {
+                "en": "AI transcription or analysis",
+                "es": "Transcripción o análisis con IA"
+              }
+            }
+          ]
+        },
+        {
+          "key": "recording.jurisdictions",
+          "label": {
+            "en": "Calling and recording jurisdictions",
+            "es": "Jurisdicciones de llamadas y grabación"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "recording.disclosure",
+          "label": {
+            "en": "Exact recording or transcription disclosure",
+            "es": "Divulgación exacta de grabación o transcripción"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "recording.consentMethod",
+          "label": {
+            "en": "Consent or lawful-basis process",
+            "es": "Proceso de consentimiento o base legal"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "recording.retention",
+          "label": {
+            "en": "Retention period",
+            "es": "Período de retención"
+          },
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "recording.access",
+          "label": {
+            "en": "Authorized roles and access controls",
+            "es": "Roles autorizados y controles de acceso"
+          },
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "acknowledgments": [
+        {
+          "key": "recording.jurisdictionReview",
+          "label": {
+            "en": "The customer is responsible for reviewing recording, monitoring, biometric, labor, and privacy requirements in every applicable jurisdiction.",
+            "es": "El cliente es responsable de revisar requisitos de grabación, monitoreo, biometría, laborales y de privacidad en cada jurisdicción aplicable."
+          },
+          "required": true
+        },
+        {
+          "key": "recording.disclosureBeforeCapture",
+          "label": {
+            "en": "Required disclosures and consent will occur before or at the legally required point of capture.",
+            "es": "Las divulgaciones y consentimientos requeridos ocurrirán antes o en el punto legalmente exigido de captura."
+          },
+          "required": true
+        }
+      ],
+      "legalLinks": [
+        "call-recording",
+        "privacy"
+      ]
+    },
+    {
+      "key": "ai-voice-overview",
+      "path": "/get-started/ai-voice",
+      "title": {
+        "en": "AI voice over IP readiness",
+        "es": "Preparación para voz con IA sobre IP"
+      },
+      "description": {
+        "en": "AI voice requires a legitimate use case, clear disclosure that the user is interacting with AI, responsible-business identity, consent where required, human escalation, voice-rights controls, and strict prohibition on impersonation or deceptive synthetic voice.",
+        "es": "La voz con IA requiere un caso de uso legítimo, divulgación clara de que el usuario interactúa con IA, identidad de la empresa responsable, consentimiento cuando corresponda, escalamiento humano, controles de derechos de voz y prohibición estricta de suplantación o voz sintética engañosa."
+      },
+      "requiredFor": [
+        "ai-voice"
+      ],
+      "kind": "overview",
+      "fields": [],
+      "acknowledgments": [],
+      "nextPath": "/get-started/ai-voice/use-case",
+      "legalLinks": [
+        "ai-voice",
+        "voice-services",
+        "privacy"
+      ]
+    },
+    {
+      "key": "ai-voice-use-case",
+      "path": "/get-started/ai-voice/use-case",
+      "title": {
+        "en": "AI voice use case and risk profile",
+        "es": "Caso de uso y perfil de riesgo de voz con IA"
+      },
+      "description": {
+        "en": "Describe the AI agent’s purpose, decisions, users, language, call direction, countries, human oversight, and any sensitive or high-impact context.",
+        "es": "Describe el propósito del agente de IA, decisiones, usuarios, idioma, dirección de llamada, países, supervisión humana y cualquier contexto sensible o de alto impacto."
+      },
+      "requiredFor": [
+        "ai-voice"
+      ],
+      "kind": "form",
+      "fields": [
+        {
+          "key": "ai.purpose",
+          "label": {
+            "en": "AI voice purpose",
+            "es": "Propósito de voz con IA"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "reception",
+              "label": {
+                "en": "Reception, routing, or FAQs",
+                "es": "Recepción, enrutamiento o preguntas frecuentes"
+              }
+            },
+            {
+              "value": "support",
+              "label": {
+                "en": "Customer support",
+                "es": "Soporte al cliente"
+              }
+            },
+            {
+              "value": "appointments",
+              "label": {
+                "en": "Appointments and requested callbacks",
+                "es": "Citas y devoluciones solicitadas"
+              }
+            },
+            {
+              "value": "sales",
+              "label": {
+                "en": "Sales or telemarketing",
+                "es": "Ventas o telemarketing"
+              }
+            },
+            {
+              "value": "collections",
+              "label": {
+                "en": "Collections or account servicing",
+                "es": "Cobranza o gestión de cuentas"
+              }
+            },
+            {
+              "value": "other",
+              "label": {
+                "en": "Other",
+                "es": "Otro"
+              }
+            }
+          ]
+        },
+        {
+          "key": "ai.callDirection",
+          "label": {
+            "en": "Call direction",
+            "es": "Dirección de llamadas"
+          },
+          "type": "multiselect",
+          "required": true,
+          "options": [
+            {
+              "value": "inbound",
+              "label": {
+                "en": "Inbound",
+                "es": "Entrantes"
+              }
+            },
+            {
+              "value": "outbound",
+              "label": {
+                "en": "Outbound",
+                "es": "Salientes"
+              }
+            }
+          ]
+        },
+        {
+          "key": "ai.description",
+          "label": {
+            "en": "Detailed conversation flow and permitted actions",
+            "es": "Flujo detallado de conversación y acciones permitidas"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "ai.languages",
+          "label": {
+            "en": "Languages and voices",
+            "es": "Idiomas y voces"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "ai.regions",
+          "label": {
+            "en": "Operating regions",
+            "es": "Regiones operativas"
+          },
+          "type": "multiselect",
+          "required": true,
+          "options": [
+            {
+              "value": "us",
+              "label": {
+                "en": "United States",
+                "es": "Estados Unidos"
+              }
+            },
+            {
+              "value": "ca",
+              "label": {
+                "en": "Canada",
+                "es": "Canadá"
+              }
+            },
+            {
+              "value": "latam",
+              "label": {
+                "en": "Latin America and Caribbean",
+                "es": "América Latina y el Caribe"
+              }
+            },
+            {
+              "value": "eu-eea",
+              "label": {
+                "en": "European Union / EEA",
+                "es": "Unión Europea / EEE"
+              }
+            },
+            {
+              "value": "uk",
+              "label": {
+                "en": "United Kingdom",
+                "es": "Reino Unido"
+              }
+            },
+            {
+              "value": "other",
+              "label": {
+                "en": "Other",
+                "es": "Otro"
+              }
+            }
+          ]
+        },
+        {
+          "key": "ai.humanOversight",
+          "label": {
+            "en": "Human oversight and escalation design",
+            "es": "Diseño de supervisión y escalamiento humano"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "ai.sensitiveDomain",
+          "label": {
+            "en": "Does the agent operate in healthcare, finance, employment, housing, education, insurance, legal, or government services?",
+            "es": "¿Opera en salud, finanzas, empleo, vivienda, educación, seguros, asuntos legales o gobierno?"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "yes",
+              "label": {
+                "en": "Yes",
+                "es": "Sí"
+              }
+            },
+            {
+              "value": "no",
+              "label": {
+                "en": "No",
+                "es": "No"
+              }
+            }
+          ]
+        },
+        {
+          "key": "ai.decisionImpact",
+          "label": {
+            "en": "Can the agent make or materially influence eligibility, pricing, credit, employment, benefits, safety, or legal decisions?",
+            "es": "¿Puede decidir o influir materialmente en elegibilidad, precios, crédito, empleo, beneficios, seguridad o decisiones legales?"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "yes",
+              "label": {
+                "en": "Yes",
+                "es": "Sí"
+              }
+            },
+            {
+              "value": "no",
+              "label": {
+                "en": "No",
+                "es": "No"
+              }
+            }
+          ]
+        }
+      ],
+      "acknowledgments": [
+        {
+          "key": "ai.noAutonomousHighImpact",
+          "label": {
+            "en": "The agent will not make unreviewed high-impact decisions or present itself as a licensed professional.",
+            "es": "El agente no tomará decisiones de alto impacto sin revisión ni se presentará como profesional autorizado."
+          },
+          "required": true
+        },
+        {
+          "key": "ai.humanControl",
+          "label": {
+            "en": "A responsible human owner can monitor, pause, correct, and terminate the AI workflow.",
+            "es": "Un responsable humano puede monitorear, pausar, corregir y terminar el flujo de IA."
+          },
+          "required": true
+        }
+      ],
+      "legalLinks": [
+        "ai-voice",
+        "privacy",
+        "acceptable-use"
+      ]
+    },
+    {
+      "key": "ai-voice-disclosure",
+      "path": "/get-started/ai-voice/disclosure",
+      "title": {
+        "en": "AI identity, disclosure, and human handoff",
+        "es": "Identidad de IA, divulgación y transferencia humana"
+      },
+      "description": {
+        "en": "Provide the exact words used to identify the responsible business and disclose AI or synthetic voice before meaningful interaction.",
+        "es": "Proporciona las palabras exactas para identificar a la empresa responsable y divulgar IA o voz sintética antes de una interacción significativa."
+      },
+      "requiredFor": [
+        "ai-voice"
+      ],
+      "kind": "form",
+      "fields": [
+        {
+          "key": "ai.responsibleBusiness",
+          "label": {
+            "en": "Responsible business name spoken to the user",
+            "es": "Nombre de la empresa responsable comunicado al usuario"
+          },
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "ai.disclosureScript",
+          "label": {
+            "en": "Exact AI disclosure script",
+            "es": "Guion exacto de divulgación de IA"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "ai.disclosureTiming",
+          "label": {
+            "en": "When disclosure occurs",
+            "es": "Cuándo ocurre la divulgación"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "opening",
+              "label": {
+                "en": "At the opening, before meaningful interaction",
+                "es": "Al inicio, antes de interacción significativa"
+              }
+            },
+            {
+              "value": "before-ai",
+              "label": {
+                "en": "Immediately before AI takes over",
+                "es": "Inmediatamente antes de que la IA tome control"
+              }
+            },
+            {
+              "value": "other",
+              "label": {
+                "en": "Other (requires review)",
+                "es": "Otro (requiere revisión)"
+              }
+            }
+          ]
+        },
+        {
+          "key": "ai.humanTransfer",
+          "label": {
+            "en": "Human-transfer phrase and routing",
+            "es": "Frase y enrutamiento de transferencia humana"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "ai.syntheticMarking",
+          "label": {
+            "en": "Machine-readable synthetic-audio marking or provenance method, where applicable",
+            "es": "Marcado legible por máquina o método de procedencia, cuando aplique"
+          },
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "acknowledgments": [
+        {
+          "key": "ai.neverHumanImpersonation",
+          "label": {
+            "en": "The system will not falsely claim to be human or conceal the use of AI when disclosure is required.",
+            "es": "El sistema no afirmará falsamente ser humano ni ocultará el uso de IA cuando se requiera divulgación."
+          },
+          "required": true
+        },
+        {
+          "key": "ai.identityClear",
+          "label": {
+            "en": "The responsible business, purpose, and path to a human will be clear to the called or calling party.",
+            "es": "La empresa responsable, propósito y vía hacia una persona serán claros para la parte llamada o llamante."
+          },
+          "required": true
+        },
+        {
+          "key": "ai.noPublicFigureImpersonation",
+          "label": {
+            "en": "No voice will impersonate a real person, public official, customer, employee, or protected brand without documented authorization and legal review.",
+            "es": "Ninguna voz suplantará a una persona real, funcionario, cliente, empleado o marca protegida sin autorización documentada y revisión legal."
+          },
+          "required": true
+        }
+      ],
+      "legalLinks": [
+        "ai-voice",
+        "acceptable-use"
+      ]
+    },
+    {
+      "key": "ai-voice-consent",
+      "path": "/get-started/ai-voice/consent",
+      "title": {
+        "en": "AI voice consent, outreach, and voice rights",
+        "es": "Consentimiento, contacto y derechos de voz con IA"
+      },
+      "description": {
+        "en": "Document the legal and operational basis for contacting each audience and the rights to every synthetic, cloned, licensed, or recorded voice asset.",
+        "es": "Documenta la base legal y operativa para contactar cada audiencia y los derechos sobre cada voz sintética, clonada, licenciada o grabada."
+      },
+      "requiredFor": [
+        "ai-voice"
+      ],
+      "kind": "form",
+      "fields": [
+        {
+          "key": "ai.telemarketing",
+          "label": {
+            "en": "Will AI voice be used for sales, solicitation, fundraising, lead generation, or promotional outreach?",
+            "es": "¿Se usará voz con IA para ventas, solicitudes, recaudación, prospectos o promoción?"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "yes",
+              "label": {
+                "en": "Yes",
+                "es": "Sí"
+              }
+            },
+            {
+              "value": "no",
+              "label": {
+                "en": "No",
+                "es": "No"
+              }
+            }
+          ]
+        },
+        {
+          "key": "ai.consentBasis",
+          "label": {
+            "en": "Consent or other lawful-contact basis",
+            "es": "Consentimiento u otra base lícita de contacto"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "ai.writtenConsentSource",
+          "label": {
+            "en": "Written consent source and disclosure, if applicable",
+            "es": "Fuente y divulgación del consentimiento escrito, si aplica"
+          },
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "key": "ai.revocationProcess",
+          "label": {
+            "en": "Revocation, do-not-call, and opt-out process",
+            "es": "Proceso de revocación, no llamar y exclusión"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "ai.voiceSource",
+          "label": {
+            "en": "Voice source and license",
+            "es": "Origen y licencia de la voz"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "ai.voiceOwnerAuthorization",
+          "label": {
+            "en": "Voice-owner authorization evidence",
+            "es": "Evidencia de autorización del titular de la voz"
+          },
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "acknowledgments": [
+        {
+          "key": "ai.contactPermission",
+          "label": {
+            "en": "The customer can demonstrate permission or another approved lawful basis for each outbound AI-voice audience.",
+            "es": "El cliente puede demostrar permiso u otra base lícita aprobada para cada audiencia de voz con IA saliente."
+          },
+          "required": true
+        },
+        {
+          "key": "ai.voiceRights",
+          "label": {
+            "en": "Documented rights exist for every voice, likeness, recording, model, and training asset used.",
+            "es": "Existen derechos documentados para cada voz, imagen, grabación, modelo y activo de entrenamiento utilizado."
+          },
+          "required": true
+        },
+        {
+          "key": "ai.optOut",
+          "label": {
+            "en": "Requests to stop AI calls or transfer to a human will be honored and recorded.",
+            "es": "Las solicitudes para detener llamadas con IA o transferir a una persona serán respetadas y registradas."
+          },
+          "required": true
+        }
+      ],
+      "legalLinks": [
+        "ai-voice",
+        "voice-services",
+        "privacy"
+      ]
+    },
+    {
+      "key": "wholesale-overview",
+      "path": "/get-started/wholesale",
+      "title": {
+        "en": "Wholesale and reseller readiness",
+        "es": "Preparación mayorista y de reventa"
+      },
+      "description": {
+        "en": "Wholesale activation requires transparency about the contracting entity, downstream customers, traffic profile, origin and destination, sender or caller identity, mitigation, traceback, privacy roles, and policy flow-down.",
+        "es": "La activación mayorista requiere transparencia sobre la entidad contratante, clientes posteriores, perfil de tráfico, origen y destino, identidad del remitente o llamante, mitigación, trazabilidad, roles de privacidad y traslado de políticas."
+      },
+      "requiredFor": [
+        "wholesale"
+      ],
+      "kind": "overview",
+      "fields": [],
+      "acknowledgments": [],
+      "nextPath": "/get-started/wholesale/business",
+      "legalLinks": [
+        "wholesale-reseller",
+        "security-disclosure",
+        "data-processing-addendum"
+      ]
+    },
+    {
+      "key": "wholesale-business",
+      "path": "/get-started/wholesale/business",
+      "title": {
+        "en": "Wholesale business and regulatory profile",
+        "es": "Perfil empresarial y regulatorio mayorista"
+      },
+      "description": {
+        "en": "Identify the wholesale entity, registrations, trading names, network role, operating countries, compliance owner, abuse desk, and emergency contact.",
+        "es": "Identifica la entidad mayorista, registros, nombres comerciales, rol de red, países operativos, responsable de cumplimiento, mesa de abuso y contacto de emergencia."
+      },
+      "requiredFor": [
+        "wholesale"
+      ],
+      "kind": "form",
+      "fields": [
+        {
+          "key": "wholesale.legalName",
+          "label": {
+            "en": "Wholesale legal entity",
+            "es": "Entidad legal mayorista"
+          },
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "wholesale.dba",
+          "label": {
+            "en": "Trading names and brands",
+            "es": "Nombres comerciales y marcas"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "wholesale.networkRole",
+          "label": {
+            "en": "Network role",
+            "es": "Rol de red"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "carrier",
+              "label": {
+                "en": "Carrier or interconnected provider",
+                "es": "Operador o proveedor interconectado"
+              }
+            },
+            {
+              "value": "cpaaS",
+              "label": {
+                "en": "CPaaS or API platform",
+                "es": "CPaaS o plataforma API"
+              }
+            },
+            {
+              "value": "reseller",
+              "label": {
+                "en": "Reseller",
+                "es": "Revendedor"
+              }
+            },
+            {
+              "value": "aggregator",
+              "label": {
+                "en": "Messaging or voice aggregator",
+                "es": "Agregador de mensajería o voz"
+              }
+            },
+            {
+              "value": "managed-service",
+              "label": {
+                "en": "Managed communications provider",
+                "es": "Proveedor gestionado de comunicaciones"
+              }
+            }
+          ]
+        },
+        {
+          "key": "wholesale.registrations",
+          "label": {
+            "en": "Regulatory registrations, licenses, identifiers, and countries",
+            "es": "Registros regulatorios, licencias, identificadores y países"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "wholesale.complianceEmail",
+          "label": {
+            "en": "Compliance contact",
+            "es": "Contacto de cumplimiento"
+          },
+          "type": "email",
+          "required": true
+        },
+        {
+          "key": "wholesale.abuseEmail",
+          "label": {
+            "en": "24/7 abuse or fraud contact",
+            "es": "Contacto 24/7 de abuso o fraude"
+          },
+          "type": "email",
+          "required": true
+        },
+        {
+          "key": "wholesale.emergencyPhone",
+          "label": {
+            "en": "Emergency escalation phone",
+            "es": "Teléfono de escalamiento de emergencia"
+          },
+          "type": "tel",
+          "required": true
+        }
+      ],
+      "acknowledgments": [
+        {
+          "key": "wholesale.entityAccurate",
+          "label": {
+            "en": "All legal names, identifiers, registrations, and network roles are accurately disclosed.",
+            "es": "Todos los nombres legales, identificadores, registros y roles de red se divulgan con exactitud."
+          },
+          "required": true
+        },
+        {
+          "key": "wholesale.changeNotice",
+          "label": {
+            "en": "Material ownership, registration, routing, or service-model changes will be reported before traffic changes.",
+            "es": "Los cambios materiales de propiedad, registro, enrutamiento o modelo se reportarán antes de cambiar el tráfico."
+          },
+          "required": true
+        }
+      ],
+      "legalLinks": [
+        "wholesale-reseller",
+        "regulatory-fees"
+      ]
+    },
+    {
+      "key": "wholesale-downstream",
+      "path": "/get-started/wholesale/downstream-customers",
+      "title": {
+        "en": "Downstream customer verification and policy flow-down",
+        "es": "Verificación de clientes posteriores y traslado de políticas"
+      },
+      "description": {
+        "en": "Explain how every downstream customer is verified, contracted, categorized, monitored, suspended, and prevented from reselling without authorization.",
+        "es": "Explica cómo se verifica, contrata, categoriza, monitorea y suspende a cada cliente posterior, y cómo se impide la reventa no autorizada."
+      },
+      "requiredFor": [
+        "wholesale"
+      ],
+      "kind": "form",
+      "fields": [
+        {
+          "key": "wholesale.downstreamTypes",
+          "label": {
+            "en": "Downstream customer types",
+            "es": "Tipos de clientes posteriores"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "wholesale.kybProcess",
+          "label": {
+            "en": "KYB and beneficial-owner verification process",
+            "es": "Proceso de verificación comercial y beneficiarios"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "wholesale.contractFlowdown",
+          "label": {
+            "en": "Contract and policy flow-down process",
+            "es": "Proceso de traslado contractual y de políticas"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "wholesale.nestedResale",
+          "label": {
+            "en": "Will downstream customers be allowed to resell or aggregate additional customers?",
+            "es": "¿Se permitirá a clientes posteriores revender o agregar más clientes?"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "yes",
+              "label": {
+                "en": "Yes",
+                "es": "Sí"
+              }
+            },
+            {
+              "value": "no",
+              "label": {
+                "en": "No",
+                "es": "No"
+              }
+            }
+          ]
+        },
+        {
+          "key": "wholesale.monitoring",
+          "label": {
+            "en": "Traffic monitoring, anomaly detection, and complaint response",
+            "es": "Monitoreo de tráfico, detección de anomalías y respuesta a quejas"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "wholesale.suspension",
+          "label": {
+            "en": "Emergency suspension and termination process",
+            "es": "Proceso de suspensión y terminación de emergencia"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "wholesale.recordsRetention",
+          "label": {
+            "en": "Customer, consent, routing, and acceptance record retention",
+            "es": "Retención de registros de clientes, consentimiento, rutas y aceptación"
+          },
+          "type": "text",
+          "required": true
+        }
+      ],
+      "acknowledgments": [
+        {
+          "key": "wholesale.noAnonymousCustomers",
+          "label": {
+            "en": "No anonymous, unverifiable, or undisclosed downstream customer will receive production access.",
+            "es": "Ningún cliente posterior anónimo, no verificable o no divulgado recibirá acceso de producción."
+          },
+          "required": true
+        },
+        {
+          "key": "wholesale.flowdown",
+          "label": {
+            "en": "Downstream contracts will include applicable privacy, acceptable-use, consent, identity, abuse, traceback, and audit duties.",
+            "es": "Los contratos posteriores incluirán obligaciones aplicables de privacidad, uso aceptable, consentimiento, identidad, abuso, trazabilidad y auditoría."
+          },
+          "required": true
+        },
+        {
+          "key": "wholesale.resaleControlled",
+          "label": {
+            "en": "Nested resale will remain disabled unless separately disclosed and approved.",
+            "es": "La reventa anidada permanecerá deshabilitada salvo divulgación y aprobación separadas."
+          },
+          "required": true
+        }
+      ],
+      "legalLinks": [
+        "wholesale-reseller",
+        "acceptable-use",
+        "privacy"
+      ]
+    },
+    {
+      "key": "wholesale-traffic",
+      "path": "/get-started/wholesale/traffic-profile",
+      "title": {
+        "en": "Wholesale traffic profile and routing transparency",
+        "es": "Perfil de tráfico mayorista y transparencia de rutas"
+      },
+      "description": {
+        "en": "Disclose traffic type, origin, destination, volumes, sender or caller identities, route ownership, expected answer and duration patterns, and any subcontracted provider.",
+        "es": "Divulga tipo de tráfico, origen, destino, volúmenes, identidades, propiedad de rutas, patrones esperados de respuesta y duración, y cualquier proveedor subcontratado."
+      },
+      "requiredFor": [
+        "wholesale"
+      ],
+      "kind": "form",
+      "fields": [
+        {
+          "key": "wholesale.channels",
+          "label": {
+            "en": "Wholesale channels",
+            "es": "Canales mayoristas"
+          },
+          "type": "multiselect",
+          "required": true,
+          "options": [
+            {
+              "value": "voice",
+              "label": {
+                "en": "Voice",
+                "es": "Voz"
+              }
+            },
+            {
+              "value": "sms",
+              "label": {
+                "en": "SMS",
+                "es": "SMS"
+              }
+            },
+            {
+              "value": "numbers",
+              "label": {
+                "en": "Phone numbers",
+                "es": "Números telefónicos"
+              }
+            },
+            {
+              "value": "email",
+              "label": {
+                "en": "Email",
+                "es": "Correo"
+              }
+            },
+            {
+              "value": "platform",
+              "label": {
+                "en": "Private platform capacity",
+                "es": "Capacidad de plataforma privada"
+              }
+            }
+          ]
+        },
+        {
+          "key": "wholesale.trafficPurpose",
+          "label": {
+            "en": "Traffic purposes and customer journeys",
+            "es": "Propósitos del tráfico y recorridos"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "wholesale.originCountries",
+          "label": {
+            "en": "Traffic origin countries",
+            "es": "Países de origen"
+          },
+          "type": "multiselect",
+          "required": true,
+          "options": [
+            {
+              "value": "us",
+              "label": {
+                "en": "United States",
+                "es": "Estados Unidos"
+              }
+            },
+            {
+              "value": "ca",
+              "label": {
+                "en": "Canada",
+                "es": "Canadá"
+              }
+            },
+            {
+              "value": "latam",
+              "label": {
+                "en": "Latin America and Caribbean",
+                "es": "América Latina y el Caribe"
+              }
+            },
+            {
+              "value": "eu-eea",
+              "label": {
+                "en": "European Union / EEA",
+                "es": "Unión Europea / EEE"
+              }
+            },
+            {
+              "value": "uk",
+              "label": {
+                "en": "United Kingdom",
+                "es": "Reino Unido"
+              }
+            },
+            {
+              "value": "other",
+              "label": {
+                "en": "Other",
+                "es": "Otro"
+              }
+            }
+          ]
+        },
+        {
+          "key": "wholesale.destinationCountries",
+          "label": {
+            "en": "Traffic destination countries",
+            "es": "Países de destino"
+          },
+          "type": "multiselect",
+          "required": true,
+          "options": [
+            {
+              "value": "us",
+              "label": {
+                "en": "United States",
+                "es": "Estados Unidos"
+              }
+            },
+            {
+              "value": "ca",
+              "label": {
+                "en": "Canada",
+                "es": "Canadá"
+              }
+            },
+            {
+              "value": "latam",
+              "label": {
+                "en": "Latin America and Caribbean",
+                "es": "América Latina y el Caribe"
+              }
+            },
+            {
+              "value": "eu-eea",
+              "label": {
+                "en": "European Union / EEA",
+                "es": "Unión Europea / EEE"
+              }
+            },
+            {
+              "value": "uk",
+              "label": {
+                "en": "United Kingdom",
+                "es": "Reino Unido"
+              }
+            },
+            {
+              "value": "other",
+              "label": {
+                "en": "Other",
+                "es": "Otro"
+              }
+            }
+          ]
+        },
+        {
+          "key": "wholesale.monthlyVolume",
+          "label": {
+            "en": "Expected monthly volume by channel",
+            "es": "Volumen mensual esperado por canal"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "wholesale.voiceMetrics",
+          "label": {
+            "en": "Expected answer rate, average duration, and peak concurrency",
+            "es": "Tasa de respuesta, duración promedio y concurrencia máxima esperadas"
+          },
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "key": "wholesale.senderIdentity",
+          "label": {
+            "en": "Sender IDs, caller IDs, brands, and number sources",
+            "es": "Identificadores, marcas y origen de números"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "wholesale.upstreamProviders",
+          "label": {
+            "en": "Upstream, downstream, or subcontracted providers",
+            "es": "Proveedores ascendentes, posteriores o subcontratados"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "wholesale.highRiskTraffic",
+          "label": {
+            "en": "High-risk categories, if any",
+            "es": "Categorías de alto riesgo, si existen"
+          },
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "acknowledgments": [
+        {
+          "key": "wholesale.noTrafficLaundering",
+          "label": {
+            "en": "Traffic will not be re-originated, mislabeled, blended, or routed to conceal its customer, origin, purpose, or identity.",
+            "es": "El tráfico no se reoriginará, etiquetará falsamente, mezclará ni enrutará para ocultar cliente, origen, propósito o identidad."
+          },
+          "required": true
+        },
+        {
+          "key": "wholesale.routeDisclosure",
+          "label": {
+            "en": "Telnexa will receive accurate and current route, provider, customer, and identity information on request.",
+            "es": "Telnexa recibirá información exacta y actualizada de rutas, proveedores, clientes e identidades cuando la solicite."
+          },
+          "required": true
+        }
+      ],
+      "legalLinks": [
+        "wholesale-reseller",
+        "security-disclosure"
+      ]
+    },
+    {
+      "key": "wholesale-robocall",
+      "path": "/get-started/wholesale/robocall-mitigation",
+      "title": {
+        "en": "Robocall mitigation, identity, and traceback",
+        "es": "Mitigación de robollamadas, identidad y trazabilidad"
+      },
+      "description": {
+        "en": "For US voice or other regulated traffic, provide applicable registrations, mitigation status, identity-signing practices, traceback contacts, and rapid-response procedures.",
+        "es": "Para voz de EE. UU. u otro tráfico regulado, proporciona registros aplicables, estado de mitigación, prácticas de firma de identidad, contactos de trazabilidad y procedimientos de respuesta rápida."
+      },
+      "requiredFor": [
+        "wholesale"
+      ],
+      "kind": "form",
+      "fields": [
+        {
+          "key": "wholesale.usVoice",
+          "label": {
+            "en": "Will the service originate, carry, or terminate US voice traffic?",
+            "es": "¿El servicio originará, transportará o terminará tráfico de voz de EE. UU.?"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "yes",
+              "label": {
+                "en": "Yes",
+                "es": "Sí"
+              }
+            },
+            {
+              "value": "no",
+              "label": {
+                "en": "No",
+                "es": "No"
+              }
+            }
+          ]
+        },
+        {
+          "key": "wholesale.fccRegistration",
+          "label": {
+            "en": "FCC registration number / Form 499 filer ID, if applicable",
+            "es": "Número de registro FCC / identificador Form 499, si aplica"
+          },
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "wholesale.rmdStatus",
+          "label": {
+            "en": "Robocall Mitigation Database status and filing identifier, if applicable",
+            "es": "Estado e identificador en la base de mitigación de robollamadas, si aplica"
+          },
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "key": "wholesale.stirShaken",
+          "label": {
+            "en": "STIR/SHAKEN signing, verification, and attestation process",
+            "es": "Proceso STIR/SHAKEN de firma, verificación y atestación"
+          },
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "key": "wholesale.ocn",
+          "label": {
+            "en": "Operating company number or equivalent network identifiers",
+            "es": "Número de empresa operadora o identificadores equivalentes"
+          },
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "key": "wholesale.tracebackContact",
+          "label": {
+            "en": "24/7 traceback contact",
+            "es": "Contacto 24/7 de trazabilidad"
+          },
+          "type": "email",
+          "required": true
+        },
+        {
+          "key": "wholesale.mitigationPlan",
+          "label": {
+            "en": "Illegal traffic prevention and mitigation plan",
+            "es": "Plan de prevención y mitigación de tráfico ilegal"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "wholesale.responseSla",
+          "label": {
+            "en": "Traceback, abuse, and blocking response targets",
+            "es": "Objetivos de respuesta a trazabilidad, abuso y bloqueo"
+          },
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "acknowledgments": [
+        {
+          "key": "wholesale.tracebackCooperation",
+          "label": {
+            "en": "The company will respond promptly to lawful traceback, regulator, carrier, and abuse requests and preserve relevant routing records.",
+            "es": "La empresa responderá prontamente a solicitudes lícitas de trazabilidad, reguladores, operadores y abuso, y conservará registros de rutas."
+          },
+          "required": true
+        },
+        {
+          "key": "wholesale.blockIllegalTraffic",
+          "label": {
+            "en": "Known or reasonably suspected illegal, spoofed, abusive, or noncompliant traffic will be blocked or suspended.",
+            "es": "El tráfico conocido o razonablemente sospechoso de ser ilegal, suplantado, abusivo o no conforme será bloqueado o suspendido."
+          },
+          "required": true
+        },
+        {
+          "key": "wholesale.regulatoryAccuracy",
+          "label": {
+            "en": "Any registration or mitigation status submitted is current and can be verified.",
+            "es": "Todo registro o estado de mitigación presentado está vigente y puede verificarse."
+          },
+          "required": true
+        }
+      ],
+      "legalLinks": [
+        "wholesale-reseller",
+        "security-disclosure",
+        "regulatory-fees"
+      ]
+    },
+    {
+      "key": "privacy-data",
+      "path": "/get-started/privacy-data",
+      "title": {
+        "en": "Privacy, data roles, retention, and security",
+        "es": "Privacidad, roles de datos, retención y seguridad"
+      },
+      "description": {
+        "en": "Disclose the personal data, communication content, metadata, countries, retention, subprocessors, and security expectations associated with the requested services.",
+        "es": "Divulga datos personales, contenido, metadatos, países, retención, subprocesadores y expectativas de seguridad asociados con los servicios solicitados."
+      },
+      "requiredFor": [
+        "all"
+      ],
+      "kind": "form",
+      "fields": [
+        {
+          "key": "privacy.dataCategories",
+          "label": {
+            "en": "Personal-data and communications-data categories",
+            "es": "Categorías de datos personales y de comunicaciones"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "privacy.contentStored",
+          "label": {
+            "en": "Will call audio, transcripts, message content, email content, or attachments be stored?",
+            "es": "¿Se almacenará audio, transcripciones, mensajes, correo o adjuntos?"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "privacy.retention",
+          "label": {
+            "en": "Requested retention by data category",
+            "es": "Retención solicitada por categoría"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "privacy.dataRegions",
+          "label": {
+            "en": "Data-subject, processing, and storage regions",
+            "es": "Regiones de titulares, procesamiento y almacenamiento"
+          },
+          "type": "multiselect",
+          "required": true,
+          "options": [
+            {
+              "value": "us",
+              "label": {
+                "en": "United States",
+                "es": "Estados Unidos"
+              }
+            },
+            {
+              "value": "ca",
+              "label": {
+                "en": "Canada",
+                "es": "Canadá"
+              }
+            },
+            {
+              "value": "latam",
+              "label": {
+                "en": "Latin America and Caribbean",
+                "es": "América Latina y el Caribe"
+              }
+            },
+            {
+              "value": "eu-eea",
+              "label": {
+                "en": "European Union / EEA",
+                "es": "Unión Europea / EEE"
+              }
+            },
+            {
+              "value": "uk",
+              "label": {
+                "en": "United Kingdom",
+                "es": "Reino Unido"
+              }
+            },
+            {
+              "value": "other",
+              "label": {
+                "en": "Other",
+                "es": "Otro"
+              }
+            }
+          ]
+        },
+        {
+          "key": "privacy.sensitiveData",
+          "label": {
+            "en": "Sensitive or regulated data expected",
+            "es": "Datos sensibles o regulados esperados"
+          },
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "privacy.customerRole",
+          "label": {
+            "en": "Expected privacy role",
+            "es": "Rol de privacidad esperado"
+          },
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "controller",
+              "label": {
+                "en": "Customer as controller / business",
+                "es": "Cliente como responsable / empresa"
+              }
+            },
+            {
+              "value": "processor",
+              "label": {
+                "en": "Customer as processor / service provider",
+                "es": "Cliente como encargado / proveedor"
+              }
+            },
+            {
+              "value": "mixed",
+              "label": {
+                "en": "Mixed or context-dependent",
+                "es": "Mixto o dependiente del contexto"
+              }
+            },
+            {
+              "value": "unknown",
+              "label": {
+                "en": "Needs legal review",
+                "es": "Requiere revisión legal"
+              }
+            }
+          ]
+        },
+        {
+          "key": "privacy.dpaContact",
+          "label": {
+            "en": "Privacy or DPA contact",
+            "es": "Contacto de privacidad o DPA"
+          },
+          "type": "email",
+          "required": true
+        },
+        {
+          "key": "privacy.securityRequirements",
+          "label": {
+            "en": "Security, residency, audit, or contract requirements",
+            "es": "Requisitos de seguridad, residencia, auditoría o contrato"
+          },
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "acknowledgments": [
+        {
+          "key": "privacy.minimize",
+          "label": {
+            "en": "Only data necessary for the approved purpose will be collected and retained.",
+            "es": "Solo se recopilarán y conservarán datos necesarios para el propósito aprobado."
+          },
+          "required": true
+        },
+        {
+          "key": "privacy.notices",
+          "label": {
+            "en": "The customer will provide legally required notices and honor applicable data-subject and consumer requests.",
+            "es": "El cliente proporcionará avisos legalmente requeridos y atenderá solicitudes aplicables de titulares y consumidores."
+          },
+          "required": true
+        },
+        {
+          "key": "privacy.noSecretsInForms",
+          "label": {
+            "en": "Credentials, payment-card data, government identifiers, health records, and other highly sensitive data will not be placed in onboarding free-text fields.",
+            "es": "Credenciales, tarjetas, identificadores gubernamentales, historiales médicos y otros datos altamente sensibles no se introducirán en campos de texto libre."
+          },
+          "required": true
+        }
+      ],
+      "legalLinks": [
+        "privacy",
+        "data-processing-addendum",
+        "subprocessors",
+        "security-disclosure"
+      ]
+    },
+    {
+      "key": "agreements",
+      "path": "/get-started/agreements",
+      "title": {
+        "en": "Review and accept required policies",
+        "es": "Revisa y acepta las políticas requeridas"
+      },
+      "description": {
+        "en": "The exact policy key and version are recorded. Acceptance is service-specific and does not waive separate order forms, provider rules, or jurisdiction-specific requirements.",
+        "es": "Se registra la clave y versión exacta de cada política. La aceptación es específica por servicio y no sustituye pedidos, reglas de proveedores ni requisitos jurisdiccionales."
+      },
+      "requiredFor": [
+        "all"
+      ],
+      "kind": "agreements",
+      "fields": [],
+      "acknowledgments": [
+        {
+          "key": "agreements.read",
+          "label": {
+            "en": "I have read the policies displayed for the selected services.",
+            "es": "He leído las políticas mostradas para los servicios seleccionados."
+          },
+          "required": true
+        },
+        {
+          "key": "agreements.flowdown",
+          "label": {
+            "en": "I will ensure authorized users and downstream customers comply with applicable obligations.",
+            "es": "Aseguraré que usuarios autorizados y clientes posteriores cumplan las obligaciones aplicables."
+          },
+          "required": true
+        }
+      ],
+      "legalLinks": [
+        "legal-center"
+      ]
+    },
+    {
+      "key": "review",
+      "path": "/get-started/review",
+      "title": {
+        "en": "Final certification and manual-review submission",
+        "es": "Certificación final y envío a revisión manual"
+      },
+      "description": {
+        "en": "Review the complete request. Submission creates a compliance-review record only; it does not provision numbers, send messages, place calls, activate AI, or enable wholesale routing.",
+        "es": "Revisa la solicitud completa. El envío solo crea un registro de revisión de cumplimiento; no aprovisiona números, envía mensajes, realiza llamadas, activa IA ni habilita rutas mayoristas."
+      },
+      "requiredFor": [
+        "all"
+      ],
+      "kind": "review",
+      "fields": [
+        {
+          "key": "review.signerName",
+          "label": {
+            "en": "Authorized signer name",
+            "es": "Nombre del firmante autorizado"
+          },
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "review.signerTitle",
+          "label": {
+            "en": "Signer title",
+            "es": "Cargo del firmante"
+          },
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "review.signerEmail",
+          "label": {
+            "en": "Signer email",
+            "es": "Correo del firmante"
+          },
+          "type": "email",
+          "required": true
+        }
+      ],
+      "acknowledgments": [
+        {
+          "key": "review.accurate",
+          "label": {
+            "en": "I certify that the submitted information and evidence are accurate, complete, and not misleading.",
+            "es": "Certifico que la información y evidencia presentadas son exactas, completas y no engañosas."
+          },
+          "required": true
+        },
+        {
+          "key": "review.noActivation",
+          "label": {
+            "en": "I understand that submission does not activate any live capability and that Telnexa may request evidence, reject, suspend, or require changes.",
+            "es": "Entiendo que el envío no activa ninguna capacidad real y que Telnexa puede solicitar evidencia, rechazar, suspender o exigir cambios."
+          },
+          "required": true
+        },
+        {
+          "key": "review.continuingDuty",
+          "label": {
+            "en": "I will notify Telnexa before material changes to ownership, services, traffic, consent, identity, regions, providers, or downstream customers.",
+            "es": "Notificaré a Telnexa antes de cambios materiales de propiedad, servicios, tráfico, consentimiento, identidad, regiones, proveedores o clientes posteriores."
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "key": "submitted",
+      "path": "/get-started/submitted",
+      "title": {
+        "en": "Request submitted for compliance review",
+        "es": "Solicitud enviada para revisión de cumplimiento"
+      },
+      "description": {
+        "en": "The request has been accepted for review and assigned a request identifier. Live capabilities remain disabled until separate approval and controlled provisioning.",
+        "es": "La solicitud fue aceptada para revisión y recibió un identificador. Las capacidades reales permanecen deshabilitadas hasta aprobación y aprovisionamiento controlado."
+      },
+      "requiredFor": [
+        "all"
+      ],
+      "kind": "submitted",
+      "fields": [],
+      "acknowledgments": []
+    }
+  ],
+  "activationGate": {
+    "manualReviewRequired": true,
+    "activationAllowedOnSubmission": false,
+    "capabilityFlags": {
+      "LIVE_SMS_DELIVERY": false,
+      "LIVE_EMAIL_DELIVERY": false,
+      "LIVE_PSTN_DIALING": false,
+      "ENABLE_PROVIDER_SUBMISSION": false,
+      "ENABLE_AUTOMATIC_PROVISIONING": false,
+      "ODOO_DIRECT_PUBLIC_ACCESS": false,
+      "N8N_DIRECT_PUBLIC_ACCESS": false
+    },
+    "finalStates": [
+      "submitted",
+      "under-review",
+      "needs-information",
+      "approved",
+      "rejected"
+    ],
+    "approvedDoesNotAutoProvision": true
+  }
+}

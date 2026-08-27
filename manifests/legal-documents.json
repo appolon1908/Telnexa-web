@@ -1,0 +1,2322 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-08-27",
+  "publicationGate": {
+    "requiredStatus": "approved",
+    "draftStatus": "counsel-review-required",
+    "requiresLegalEntity": true,
+    "requiresEffectiveDate": true,
+    "requiresImmutableArchive": true
+  },
+  "documents": [
+    {
+      "key": "legal-center",
+      "path": "/legal",
+      "title": {
+        "en": "Legal and compliance center",
+        "es": "Centro legal y de cumplimiento"
+      },
+      "summary": {
+        "en": "The policies, disclosures, privacy choices, and service-specific requirements that govern Telnexa communications services.",
+        "es": "Las políticas, divulgaciones, opciones de privacidad y requisitos específicos de servicio que rigen los servicios de comunicaciones de Telnexa."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": false,
+      "audiences": [
+        "visitor",
+        "customer",
+        "reseller",
+        "wholesaler"
+      ],
+      "requiredFor": [],
+      "sections": [
+        {
+          "heading": {
+            "en": "Before service activation",
+            "es": "Antes de activar el servicio"
+          },
+          "paragraphs": {
+            "en": [
+              "Telnexa separates website intake, compliance review, and live service activation. Completing a form does not activate SMS, voice, AI calling, or wholesale traffic."
+            ],
+            "es": [
+              "Telnexa separa la solicitud del sitio web, la revisión de cumplimiento y la activación real del servicio. Completar un formulario no activa SMS, voz, llamadas con IA ni tráfico mayorista."
+            ]
+          },
+          "bullets": {
+            "en": [
+              "Business verification and use-case review",
+              "Service-specific consent and disclosure review",
+              "Policy acceptance using the exact published version",
+              "Manual compliance approval before provisioning"
+            ],
+            "es": [
+              "Verificación comercial y revisión del caso de uso",
+              "Revisión de consentimiento y divulgación específica del servicio",
+              "Aceptación de políticas usando la versión publicada exacta",
+              "Aprobación manual de cumplimiento antes del aprovisionamiento"
+            ]
+          }
+        },
+        {
+          "heading": {
+            "en": "Policy families",
+            "es": "Familias de políticas"
+          },
+          "paragraphs": {
+            "en": [
+              "Policies are grouped by privacy, acceptable use, messaging, voice, AI voice, wholesale/reseller obligations, data processing, security, accessibility, and commercial terms."
+            ],
+            "es": [
+              "Las políticas se agrupan por privacidad, uso aceptable, mensajería, voz, voz con IA, obligaciones mayoristas y de reventa, tratamiento de datos, seguridad, accesibilidad y términos comerciales."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Legal review status",
+            "es": "Estado de revisión legal"
+          },
+          "paragraphs": {
+            "en": [
+              "The text in this repository is a structured implementation draft. Telnexa must insert its legal entity details, approve jurisdiction-specific language, and mark each required document as approved before production deployment."
+            ],
+            "es": [
+              "El texto de este repositorio es un borrador estructurado de implementación. Telnexa debe insertar los datos de su entidad legal, aprobar el lenguaje específico por jurisdicción y marcar cada documento requerido como aprobado antes del despliegue en producción."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": [
+        "gdpr",
+        "ccpa"
+      ]
+    },
+    {
+      "key": "terms",
+      "path": "/legal/terms",
+      "title": {
+        "en": "Terms of Service",
+        "es": "Términos de servicio"
+      },
+      "summary": {
+        "en": "The commercial terms for using Telnexa websites, communications services, APIs, portals, and professional services.",
+        "es": "Los términos comerciales para usar los sitios web, servicios de comunicaciones, API, portales y servicios profesionales de Telnexa."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": true,
+      "audiences": [
+        "customer",
+        "reseller",
+        "wholesaler"
+      ],
+      "requiredFor": [
+        "all"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Scope and order of precedence",
+            "es": "Alcance y orden de prioridad"
+          },
+          "paragraphs": {
+            "en": [
+              "These terms apply to the Telnexa service identified in an order form, service schedule, or online acceptance flow. A signed order form controls over conflicting general website language."
+            ],
+            "es": [
+              "Estos términos se aplican al servicio Telnexa identificado en un formulario de pedido, anexo de servicio o flujo de aceptación en línea. Un formulario de pedido firmado prevalece sobre lenguaje general contradictorio del sitio web."
+            ]
+          },
+          "bullets": {
+            "en": [
+              "Customer must be legally able to contract",
+              "Authorized users must follow the customer account controls",
+              "Service schedules may add channel-specific obligations"
+            ],
+            "es": [
+              "El cliente debe tener capacidad legal para contratar",
+              "Los usuarios autorizados deben seguir los controles de la cuenta del cliente",
+              "Los anexos de servicio pueden añadir obligaciones específicas por canal"
+            ]
+          }
+        },
+        {
+          "heading": {
+            "en": "Account, billing, and taxes",
+            "es": "Cuenta, facturación e impuestos"
+          },
+          "paragraphs": {
+            "en": [
+              "The customer is responsible for accurate account information, authorized usage, invoices, applicable taxes, regulatory assessments, and usage-based charges disclosed before activation."
+            ],
+            "es": [
+              "El cliente es responsable de la información exacta de la cuenta, el uso autorizado, las facturas, los impuestos aplicables, las evaluaciones regulatorias y los cargos por uso divulgados antes de la activación."
+            ]
+          },
+          "bullets": {
+            "en": [
+              "No hidden activation of live traffic",
+              "Disputed charges must be raised within the period stated in the order form",
+              "Regulatory fees may change when underlying assessments change"
+            ],
+            "es": [
+              "No existe activación oculta de tráfico real",
+              "Los cargos disputados deben reclamarse dentro del plazo indicado en el pedido",
+              "Las tarifas regulatorias pueden cambiar cuando cambien las evaluaciones subyacentes"
+            ]
+          }
+        },
+        {
+          "heading": {
+            "en": "Suspension and termination",
+            "es": "Suspensión y terminación"
+          },
+          "paragraphs": {
+            "en": [
+              "Telnexa may suspend or refuse traffic that creates security, fraud, abuse, consent, emergency-service, sanctions, or network-integrity risk. Suspension does not authorize deletion of records that must be retained by law or contract."
+            ],
+            "es": [
+              "Telnexa puede suspender o rechazar tráfico que genere riesgos de seguridad, fraude, abuso, consentimiento, servicios de emergencia, sanciones o integridad de red. La suspensión no autoriza eliminar registros que deban conservarse por ley o contrato."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Warranty and liability framework",
+            "es": "Marco de garantías y responsabilidad"
+          },
+          "paragraphs": {
+            "en": [
+              "Service-specific warranties, credits, limitations, indemnities, governing law, and dispute procedures must be approved by counsel and stated in the final published version and customer order."
+            ],
+            "es": [
+              "Las garantías específicas del servicio, créditos, limitaciones, indemnizaciones, ley aplicable y procedimientos de disputa deben ser aprobados por asesores legales y figurar en la versión final publicada y en el pedido del cliente."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": []
+    },
+    {
+      "key": "privacy",
+      "path": "/legal/privacy",
+      "title": {
+        "en": "Privacy Policy",
+        "es": "Política de privacidad"
+      },
+      "summary": {
+        "en": "How Telnexa collects, uses, shares, protects, retains, and enables rights over website, account, communications, and support data.",
+        "es": "Cómo Telnexa recopila, usa, comparte, protege, conserva y permite ejercer derechos sobre datos del sitio web, cuentas, comunicaciones y soporte."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": true,
+      "audiences": [
+        "visitor",
+        "customer",
+        "reseller",
+        "wholesaler",
+        "end-user"
+      ],
+      "requiredFor": [
+        "all"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Information collected",
+            "es": "Información recopilada"
+          },
+          "paragraphs": {
+            "en": [
+              "Depending on the service and role, Telnexa may process account identifiers, business verification data, billing data, communications metadata, message or call content when enabled, device and security logs, support records, consent evidence, and compliance records."
+            ],
+            "es": [
+              "Según el servicio y la función, Telnexa puede tratar identificadores de cuenta, datos de verificación comercial, datos de facturación, metadatos de comunicaciones, contenido de mensajes o llamadas cuando esté habilitado, registros de dispositivos y seguridad, registros de soporte, pruebas de consentimiento y registros de cumplimiento."
+            ]
+          },
+          "bullets": {
+            "en": [
+              "Call detail records and messaging metadata may be sensitive",
+              "Content is processed only when required by the selected feature",
+              "Website analytics load only after applicable consent"
+            ],
+            "es": [
+              "Los registros de llamadas y los metadatos de mensajería pueden ser sensibles",
+              "El contenido se trata solo cuando lo requiere la función seleccionada",
+              "La analítica del sitio se carga únicamente después del consentimiento aplicable"
+            ]
+          }
+        },
+        {
+          "heading": {
+            "en": "Purposes and legal bases",
+            "es": "Finalidades y bases jurídicas"
+          },
+          "paragraphs": {
+            "en": [
+              "Data may be used to provide and secure services, authenticate users, route communications, create CRM records, prevent abuse, meet legal obligations, bill customers, respond to support requests, and improve services using permitted analytics."
+            ],
+            "es": [
+              "Los datos pueden usarse para prestar y proteger servicios, autenticar usuarios, enrutar comunicaciones, crear registros CRM, prevenir abusos, cumplir obligaciones legales, facturar a clientes, responder solicitudes de soporte y mejorar servicios mediante analítica permitida."
+            ]
+          },
+          "bullets": {
+            "en": [
+              "Contract performance",
+              "Legitimate interests balanced against individual rights",
+              "Consent where required",
+              "Compliance with legal obligations"
+            ],
+            "es": [
+              "Ejecución contractual",
+              "Intereses legítimos equilibrados con los derechos individuales",
+              "Consentimiento cuando corresponda",
+              "Cumplimiento de obligaciones legales"
+            ]
+          }
+        },
+        {
+          "heading": {
+            "en": "Sharing and international transfers",
+            "es": "Divulgación y transferencias internacionales"
+          },
+          "paragraphs": {
+            "en": [
+              "Telnexa may use approved infrastructure, communications providers, payment providers, identity providers, Odoo, n8n, support tools, and professional advisers. The final policy must identify categories, transfer safeguards, and the current subprocessor list."
+            ],
+            "es": [
+              "Telnexa puede utilizar infraestructura aprobada, proveedores de comunicaciones, proveedores de pago, proveedores de identidad, Odoo, n8n, herramientas de soporte y asesores profesionales. La política final debe identificar categorías, salvaguardas de transferencia y la lista actual de subencargados."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Retention, security, and rights",
+            "es": "Conservación, seguridad y derechos"
+          },
+          "paragraphs": {
+            "en": [
+              "Retention must be tied to service, fraud-prevention, billing, dispute, regulatory, and legal-hold needs. Individuals may have rights to access, correct, delete, restrict, object, opt out of sale or sharing, or obtain portability, depending on jurisdiction."
+            ],
+            "es": [
+              "La conservación debe vincularse a necesidades de servicio, prevención de fraude, facturación, disputas, regulación y retención legal. Las personas pueden tener derechos de acceso, corrección, eliminación, limitación, oposición, exclusión de venta o intercambio y portabilidad, según la jurisdicción."
+            ]
+          },
+          "bullets": {
+            "en": [
+              "Submit requests through the privacy request page",
+              "Identity verification may be required",
+              "Requests and outcomes are auditable"
+            ],
+            "es": [
+              "Presentar solicitudes mediante la página de derechos de privacidad",
+              "Puede requerirse verificación de identidad",
+              "Las solicitudes y resultados son auditables"
+            ]
+          }
+        }
+      ],
+      "sourceRefs": [
+        "gdpr",
+        "ccpa",
+        "fcc-cpni"
+      ]
+    },
+    {
+      "key": "cookies",
+      "path": "/legal/cookies",
+      "title": {
+        "en": "Cookie Policy",
+        "es": "Política de cookies"
+      },
+      "summary": {
+        "en": "The essential and optional technologies used on Telnexa websites and how visitors control them.",
+        "es": "Las tecnologías esenciales y opcionales utilizadas en los sitios web de Telnexa y cómo las controlan los visitantes."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": false,
+      "audiences": [
+        "visitor"
+      ],
+      "requiredFor": [
+        "website"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Essential technologies",
+            "es": "Tecnologías esenciales"
+          },
+          "paragraphs": {
+            "en": [
+              "Essential cookies and local storage support security, language, session state, form progress, and privacy choices. They are not used to activate communications services."
+            ],
+            "es": [
+              "Las cookies esenciales y el almacenamiento local respaldan seguridad, idioma, estado de sesión, progreso de formularios y opciones de privacidad. No se usan para activar servicios de comunicaciones."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Optional analytics",
+            "es": "Analítica opcional"
+          },
+          "paragraphs": {
+            "en": [
+              "Analytics and tag-management scripts load only after the visitor grants the applicable consent. The cookie settings page allows the visitor to change that choice."
+            ],
+            "es": [
+              "Los scripts de analítica y gestión de etiquetas se cargan únicamente después de que el visitante otorgue el consentimiento aplicable. La página de configuración de cookies permite cambiar esa elección."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Retention and controls",
+            "es": "Conservación y controles"
+          },
+          "paragraphs": {
+            "en": [
+              "The final policy must list each production cookie or storage key, provider, purpose, duration, and whether it is essential."
+            ],
+            "es": [
+              "La política final debe enumerar cada cookie o clave de almacenamiento de producción, proveedor, finalidad, duración y si es esencial."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": [
+        "gdpr",
+        "ccpa"
+      ]
+    },
+    {
+      "key": "acceptable-use",
+      "path": "/legal/acceptable-use",
+      "title": {
+        "en": "Acceptable Use Policy",
+        "es": "Política de uso aceptable"
+      },
+      "summary": {
+        "en": "The prohibited conduct and traffic patterns that protect recipients, customers, carriers, and communications networks.",
+        "es": "Las conductas y patrones de tráfico prohibidos que protegen a destinatarios, clientes, operadores y redes de comunicaciones."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": true,
+      "audiences": [
+        "customer",
+        "reseller",
+        "wholesaler"
+      ],
+      "requiredFor": [
+        "all"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Prohibited activity",
+            "es": "Actividad prohibida"
+          },
+          "paragraphs": {
+            "en": [
+              "Customers may not use Telnexa for fraud, impersonation, phishing, unlawful surveillance, harassment, threats, deceptive caller ID, unauthorized access, malware delivery, evasion of carrier controls, or communications prohibited by applicable law."
+            ],
+            "es": [
+              "Los clientes no pueden usar Telnexa para fraude, suplantación, phishing, vigilancia ilícita, acoso, amenazas, identificación de llamadas engañosa, acceso no autorizado, distribución de malware, evasión de controles de operadores o comunicaciones prohibidas por la ley aplicable."
+            ]
+          },
+          "bullets": {
+            "en": [
+              "No purchased or scraped contact lists without a lawful documented basis",
+              "No attempts to bypass opt-out or suppression controls",
+              "No emergency-service interference",
+              "No misleading AI voice identity"
+            ],
+            "es": [
+              "No usar listas compradas o extraídas sin una base legal documentada",
+              "No intentar eludir controles de exclusión o supresión",
+              "No interferir con servicios de emergencia",
+              "No usar identidad engañosa mediante voz de IA"
+            ]
+          }
+        },
+        {
+          "heading": {
+            "en": "Traffic integrity",
+            "es": "Integridad del tráfico"
+          },
+          "paragraphs": {
+            "en": [
+              "Traffic must match the approved use case, sender identity, recipient expectations, throughput, geography, and content category. Material changes require a new compliance review."
+            ],
+            "es": [
+              "El tráfico debe coincidir con el caso de uso aprobado, identidad del remitente, expectativas del destinatario, volumen, geografía y categoría de contenido. Los cambios materiales requieren una nueva revisión de cumplimiento."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Enforcement",
+            "es": "Aplicación"
+          },
+          "paragraphs": {
+            "en": [
+              "Telnexa may rate-limit, quarantine, block, investigate, suspend, preserve evidence, or report activity where required to protect recipients, networks, or legal obligations."
+            ],
+            "es": [
+              "Telnexa puede limitar, poner en cuarentena, bloquear, investigar, suspender, conservar evidencia o informar actividad cuando sea necesario para proteger a destinatarios, redes u obligaciones legales."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": [
+        "ctia-messaging",
+        "ftc-tsr"
+      ]
+    },
+    {
+      "key": "service-level",
+      "path": "/legal/service-level",
+      "title": {
+        "en": "Service Level Policy",
+        "es": "Política de nivel de servicio"
+      },
+      "summary": {
+        "en": "How availability targets, exclusions, incident response, maintenance, and service credits are defined for eligible paid services.",
+        "es": "Cómo se definen objetivos de disponibilidad, exclusiones, respuesta a incidentes, mantenimiento y créditos para servicios pagados elegibles."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": true,
+      "audiences": [
+        "customer",
+        "reseller",
+        "wholesaler"
+      ],
+      "requiredFor": [
+        "paid-services"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Eligible services and measurement",
+            "es": "Servicios elegibles y medición"
+          },
+          "paragraphs": {
+            "en": [
+              "Only services expressly identified in an order form are eligible for an SLA. Availability is measured at the Telnexa service boundary, not across the public internet, customer equipment, or third-party destinations."
+            ],
+            "es": [
+              "Solo los servicios identificados expresamente en un pedido son elegibles para un SLA. La disponibilidad se mide en el límite del servicio Telnexa, no en Internet público, equipos del cliente ni destinos de terceros."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Exclusions",
+            "es": "Exclusiones"
+          },
+          "paragraphs": {
+            "en": [
+              "Planned maintenance, customer configuration, carrier rejection caused by customer content or consent failures, force majeure, emergency actions, and unavailable third-party networks may be excluded as stated in the final schedule."
+            ],
+            "es": [
+              "El mantenimiento planificado, configuración del cliente, rechazo del operador causado por contenido del cliente o fallos de consentimiento, fuerza mayor, acciones de emergencia y redes de terceros no disponibles pueden excluirse según el anexo final."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Claims and credits",
+            "es": "Reclamaciones y créditos"
+          },
+          "paragraphs": {
+            "en": [
+              "The final policy must define claim windows, evidence, credit formulas, exclusions, and the exclusive remedy for eligible SLA failures."
+            ],
+            "es": [
+              "La política final debe definir plazos de reclamación, evidencia, fórmulas de crédito, exclusiones y el remedio exclusivo para fallos elegibles del SLA."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": []
+    },
+    {
+      "key": "messaging-policy",
+      "path": "/legal/messaging-policy",
+      "title": {
+        "en": "Messaging and SMS Policy",
+        "es": "Política de mensajería y SMS"
+      },
+      "summary": {
+        "en": "Consent, sender identity, content, opt-out, help, registration, and recordkeeping requirements for business messaging.",
+        "es": "Requisitos de consentimiento, identidad del remitente, contenido, exclusión, ayuda, registro y conservación para mensajería empresarial."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": true,
+      "audiences": [
+        "customer",
+        "reseller",
+        "wholesaler"
+      ],
+      "requiredFor": [
+        "sms"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Consent and recipient expectations",
+            "es": "Consentimiento y expectativas del destinatario"
+          },
+          "paragraphs": {
+            "en": [
+              "A sender must have a documented basis to message each recipient and must match the content, frequency, brand, and purpose presented at opt-in. Consent is not transferable between unrelated brands or materially different campaigns."
+            ],
+            "es": [
+              "El remitente debe tener una base documentada para enviar mensajes a cada destinatario y debe coincidir con el contenido, frecuencia, marca y finalidad presentados en la suscripción. El consentimiento no se transfiere entre marcas no relacionadas ni campañas materialmente distintas."
+            ]
+          },
+          "bullets": {
+            "en": [
+              "Keep timestamped opt-in evidence",
+              "Identify the sender and program",
+              "Disclose recurring-message frequency where applicable",
+              "Do not make consent a hidden condition of purchase"
+            ],
+            "es": [
+              "Conservar evidencia de suscripción con fecha y hora",
+              "Identificar al remitente y al programa",
+              "Divulgar la frecuencia de mensajes recurrentes cuando corresponda",
+              "No convertir el consentimiento en una condición oculta de compra"
+            ]
+          }
+        },
+        {
+          "heading": {
+            "en": "Opt-out and help",
+            "es": "Exclusión y ayuda"
+          },
+          "paragraphs": {
+            "en": [
+              "Programs must support clear opt-out and help instructions. STOP and equivalent recognized requests must suppress future program messages promptly, and HELP must return accurate support information."
+            ],
+            "es": [
+              "Los programas deben admitir instrucciones claras de exclusión y ayuda. STOP y solicitudes equivalentes reconocidas deben suprimir rápidamente futuros mensajes del programa, y HELP debe devolver información correcta de soporte."
+            ]
+          },
+          "bullets": {
+            "en": [
+              "Do not send promotional content after opt-out",
+              "Maintain an entity-specific suppression record",
+              "Honor requests made through reasonable channels",
+              "Provide customer-care contact information"
+            ],
+            "es": [
+              "No enviar contenido promocional después de la exclusión",
+              "Mantener un registro de supresión específico de la entidad",
+              "Atender solicitudes realizadas por canales razonables",
+              "Proporcionar información de atención al cliente"
+            ]
+          }
+        },
+        {
+          "heading": {
+            "en": "Sender and campaign registration",
+            "es": "Registro del remitente y la campaña"
+          },
+          "paragraphs": {
+            "en": [
+              "Customers must provide accurate brand, campaign, sample-message, sender-type, traffic, and support information required by carriers or registration programs. Approval of a sender does not approve unreviewed content or use cases."
+            ],
+            "es": [
+              "Los clientes deben proporcionar información exacta sobre marca, campaña, mensajes de ejemplo, tipo de remitente, tráfico y soporte requerida por operadores o programas de registro. Aprobar un remitente no aprueba contenido o casos de uso no revisados."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Records and monitoring",
+            "es": "Registros y supervisión"
+          },
+          "paragraphs": {
+            "en": [
+              "Telnexa may require opt-in samples, landing pages, terms, privacy notices, campaign screenshots, suppression logs, complaint data, and remediation evidence."
+            ],
+            "es": [
+              "Telnexa puede requerir ejemplos de suscripción, páginas de destino, términos, avisos de privacidad, capturas de campañas, registros de supresión, datos de quejas y evidencia de remediación."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": [
+        "ctia-messaging"
+      ]
+    },
+    {
+      "key": "anti-spam",
+      "path": "/legal/anti-spam",
+      "title": {
+        "en": "Anti-Spam and Commercial Communications Policy",
+        "es": "Política contra spam y comunicaciones comerciales"
+      },
+      "summary": {
+        "en": "Rules for permission-based SMS, email, and voice marketing, suppression, identification, and complaint handling.",
+        "es": "Reglas para marketing autorizado por SMS, correo y voz, supresión, identificación y gestión de quejas."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": true,
+      "audiences": [
+        "customer",
+        "reseller",
+        "wholesaler"
+      ],
+      "requiredFor": [
+        "sms",
+        "email",
+        "business-voip",
+        "ai-voice"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Permission-based communications",
+            "es": "Comunicaciones basadas en permiso"
+          },
+          "paragraphs": {
+            "en": [
+              "Commercial communications must be sent only where the sender can demonstrate the required permission or other lawful basis for the specific channel, recipient, seller, purpose, and jurisdiction."
+            ],
+            "es": [
+              "Las comunicaciones comerciales solo deben enviarse cuando el remitente pueda demostrar el permiso requerido u otra base legal para el canal, destinatario, vendedor, finalidad y jurisdicción específicos."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Truthful identification",
+            "es": "Identificación veraz"
+          },
+          "paragraphs": {
+            "en": [
+              "Headers, caller ID, sender names, subject lines, program descriptions, and AI disclosures must not mislead recipients about the sender, purpose, or origin of a communication."
+            ],
+            "es": [
+              "Los encabezados, identificación de llamada, nombres de remitente, asuntos, descripciones del programa y divulgaciones de IA no deben engañar sobre el remitente, finalidad u origen de una comunicación."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Unsubscribe and suppression",
+            "es": "Cancelación y supresión"
+          },
+          "paragraphs": {
+            "en": [
+              "Every supported channel must provide an effective way to stop future commercial communications. Suppression records must be shared across the responsible seller, campaigns, vendors, and downstream systems where required."
+            ],
+            "es": [
+              "Cada canal compatible debe proporcionar una forma eficaz de detener futuras comunicaciones comerciales. Los registros de supresión deben compartirse con el vendedor responsable, campañas, proveedores y sistemas descendentes cuando corresponda."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Third parties",
+            "es": "Terceros"
+          },
+          "paragraphs": {
+            "en": [
+              "A customer remains responsible for lead sources, affiliates, resellers, agencies, and vendors acting on its behalf. Third-party assurances do not replace evidence."
+            ],
+            "es": [
+              "El cliente sigue siendo responsable de fuentes de clientes potenciales, afiliados, revendedores, agencias y proveedores que actúen en su nombre. Las declaraciones de terceros no sustituyen la evidencia."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": [
+        "ctia-messaging",
+        "ftc-tsr",
+        "ftc-can-spam"
+      ]
+    },
+    {
+      "key": "voice-services",
+      "path": "/legal/voice-services",
+      "title": {
+        "en": "Voice Services Policy",
+        "es": "Política de servicios de voz"
+      },
+      "summary": {
+        "en": "Requirements for business VoIP, SIP, numbers, caller identity, traffic use cases, emergency calling, recordings, and abuse response.",
+        "es": "Requisitos para VoIP empresarial, SIP, números, identidad de llamada, casos de uso, llamadas de emergencia, grabaciones y respuesta a abusos."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": true,
+      "audiences": [
+        "customer",
+        "reseller",
+        "wholesaler"
+      ],
+      "requiredFor": [
+        "business-voip",
+        "ai-voice"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Approved use and caller identity",
+            "es": "Uso aprobado e identidad de llamada"
+          },
+          "paragraphs": {
+            "en": [
+              "Voice traffic must match the approved business purpose and use only telephone numbers or caller identities the customer is authorized to use. False, misleading, or inaccessible caller identity is prohibited."
+            ],
+            "es": [
+              "El tráfico de voz debe coincidir con la finalidad comercial aprobada y usar únicamente números o identidades de llamada que el cliente esté autorizado a utilizar. Se prohíbe identidad falsa, engañosa o inaccesible."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Calling permissions and suppression",
+            "es": "Permisos de llamada y supresión"
+          },
+          "paragraphs": {
+            "en": [
+              "The customer must classify each campaign as informational, transactional, service, collection, political, charitable, or marketing; identify applicable consent; screen required suppression lists; and honor entity-specific do-not-call requests."
+            ],
+            "es": [
+              "El cliente debe clasificar cada campaña como informativa, transaccional, de servicio, cobranza, política, benéfica o de marketing; identificar el consentimiento aplicable; revisar listas de supresión requeridas; y respetar solicitudes específicas de no llamar."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Network integrity and traceback",
+            "es": "Integridad de red y rastreo"
+          },
+          "paragraphs": {
+            "en": [
+              "Customers and wholesalers must maintain responsive abuse and traceback contacts, preserve routing and customer records, and cooperate with lawful carrier or regulator investigations."
+            ],
+            "es": [
+              "Clientes y mayoristas deben mantener contactos de abuso y rastreo disponibles, conservar registros de enrutamiento y clientes, y cooperar con investigaciones legales de operadores o reguladores."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Emergency and accessibility obligations",
+            "es": "Obligaciones de emergencia y accesibilidad"
+          },
+          "paragraphs": {
+            "en": [
+              "Interconnected VoIP, multi-line telephone systems, and advanced communications services may carry emergency-calling, location, notification, privacy, and accessibility obligations. Activation is blocked until the applicable model is approved."
+            ],
+            "es": [
+              "VoIP interconectado, sistemas telefónicos multilínea y servicios avanzados de comunicaciones pueden tener obligaciones de llamadas de emergencia, ubicación, notificación, privacidad y accesibilidad. La activación se bloquea hasta aprobar el modelo aplicable."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": [
+        "fcc-e911",
+        "fcc-rmd",
+        "fcc-cpni",
+        "fcc-accessibility",
+        "ftc-tsr"
+      ]
+    },
+    {
+      "key": "ai-voice",
+      "path": "/legal/ai-voice",
+      "title": {
+        "en": "AI Voice and Synthetic Speech Policy",
+        "es": "Política de voz con IA y habla sintética"
+      },
+      "summary": {
+        "en": "Transparency, consent, identity, voice-rights, human escalation, recording, and prohibited-use requirements for AI calls.",
+        "es": "Requisitos de transparencia, consentimiento, identidad, derechos de voz, escalamiento humano, grabación y usos prohibidos para llamadas con IA."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": true,
+      "audiences": [
+        "customer",
+        "reseller",
+        "wholesaler"
+      ],
+      "requiredFor": [
+        "ai-voice"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Disclosure at the start of interaction",
+            "es": "Divulgación al inicio de la interacción"
+          },
+          "paragraphs": {
+            "en": [
+              "An AI voice agent must promptly and clearly identify the responsible business and disclose that the recipient is interacting with an automated or AI-generated voice, unless a verified jurisdiction-specific exception applies."
+            ],
+            "es": [
+              "Un agente de voz con IA debe identificar de forma rápida y clara a la empresa responsable y divulgar que el destinatario interactúa con una voz automatizada o generada por IA, salvo una excepción específica de jurisdicción verificada."
+            ]
+          },
+          "bullets": {
+            "en": [
+              "Use plain language",
+              "Do not hide the disclosure in terms",
+              "Repeat or clarify on reasonable request",
+              "Provide a human-transfer or callback path where the approved use case requires it"
+            ],
+            "es": [
+              "Usar lenguaje sencillo",
+              "No ocultar la divulgación en términos",
+              "Repetir o aclarar ante una solicitud razonable",
+              "Proporcionar transferencia humana o devolución de llamada cuando el caso aprobado lo requiera"
+            ]
+          }
+        },
+        {
+          "heading": {
+            "en": "Consent and calling classification",
+            "es": "Consentimiento y clasificación de llamada"
+          },
+          "paragraphs": {
+            "en": [
+              "Use of an artificial or prerecorded voice may require prior express consent, and telemarketing uses may require a signed written agreement plus automated opt-out. The customer must document the calling classification and consent basis before launch."
+            ],
+            "es": [
+              "El uso de voz artificial o pregrabada puede requerir consentimiento expreso previo, y los usos de telemarketing pueden requerir acuerdo escrito firmado y exclusión automatizada. El cliente debe documentar la clasificación y base de consentimiento antes del lanzamiento."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Voice and identity rights",
+            "es": "Derechos de voz e identidad"
+          },
+          "paragraphs": {
+            "en": [
+              "Customers must have documented rights to every voice, persona, trademark, recording, script, and dataset used. Cloning or imitating a person without authority, impersonating government or emergency services, and deceptive caller identity are prohibited."
+            ],
+            "es": [
+              "Los clientes deben tener derechos documentados sobre cada voz, personaje, marca, grabación, guion y conjunto de datos utilizado. Se prohíbe clonar o imitar a una persona sin autorización, suplantar al gobierno o servicios de emergencia y usar identidad engañosa."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Sensitive decisions and safeguards",
+            "es": "Decisiones sensibles y salvaguardas"
+          },
+          "paragraphs": {
+            "en": [
+              "AI voice may not independently make high-impact decisions, provide emergency dispatch, or present professional medical, legal, or financial advice unless separately approved with appropriate human oversight and jurisdiction-specific controls."
+            ],
+            "es": [
+              "La voz con IA no puede tomar de forma independiente decisiones de alto impacto, proporcionar despacho de emergencia ni presentar asesoría profesional médica, legal o financiera salvo aprobación separada con supervisión humana y controles específicos por jurisdicción."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Records and incident response",
+            "es": "Registros y respuesta a incidentes"
+          },
+          "paragraphs": {
+            "en": [
+              "Telnexa may require disclosure scripts, consent evidence, model and vendor details, prompt controls, test results, recordings or transcripts, human-escalation logs, incident reports, and remediation plans."
+            ],
+            "es": [
+              "Telnexa puede requerir guiones de divulgación, evidencia de consentimiento, detalles de modelos y proveedores, controles de instrucciones, resultados de pruebas, grabaciones o transcripciones, registros de escalamiento humano, informes de incidentes y planes de remediación."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": [
+        "fcc-ai-voice",
+        "ftc-tsr",
+        "eu-ai-act"
+      ]
+    },
+    {
+      "key": "emergency-services",
+      "path": "/legal/emergency-services",
+      "title": {
+        "en": "Emergency Services and E911 Disclosure",
+        "es": "Divulgación de servicios de emergencia y E911"
+      },
+      "summary": {
+        "en": "Important limitations, address, location, power, internet, device, notification, and testing disclosures for emergency calling.",
+        "es": "Limitaciones importantes y divulgaciones sobre dirección, ubicación, energía, Internet, dispositivos, notificaciones y pruebas para llamadas de emergencia."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": true,
+      "audiences": [
+        "customer",
+        "reseller",
+        "wholesaler",
+        "end-user"
+      ],
+      "requiredFor": [
+        "business-voip"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Emergency service model",
+            "es": "Modelo de servicio de emergencia"
+          },
+          "paragraphs": {
+            "en": [
+              "The order form must state whether the service supports emergency calling, requires a registered service address, uses dynamic location, is nomadic, is outbound-only, or is not connected to the public telephone network."
+            ],
+            "es": [
+              "El pedido debe indicar si el servicio admite llamadas de emergencia, requiere una dirección registrada, usa ubicación dinámica, es nómada, solo saliente o no está conectado a la red telefónica pública."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Limitations",
+            "es": "Limitaciones"
+          },
+          "paragraphs": {
+            "en": [
+              "Emergency calling may fail or route incorrectly during power loss, internet outage, equipment failure, relocation without an updated address, VPN use, misconfiguration, blocked ports, or unsupported devices."
+            ],
+            "es": [
+              "Las llamadas de emergencia pueden fallar o dirigirse incorrectamente durante pérdida de energía, interrupción de Internet, fallo de equipo, traslado sin actualizar dirección, uso de VPN, configuración incorrecta, puertos bloqueados o dispositivos no compatibles."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Customer responsibilities",
+            "es": "Responsabilidades del cliente"
+          },
+          "paragraphs": {
+            "en": [
+              "The customer must provide accurate dispatchable location information, keep it current, distribute required labels or notices, train users, test approved emergency workflows, and ensure alternative calling methods are available where required."
+            ],
+            "es": [
+              "El cliente debe proporcionar información exacta de ubicación despachable, mantenerla actualizada, distribuir etiquetas o avisos requeridos, capacitar usuarios, probar flujos aprobados de emergencia y asegurar métodos alternativos cuando corresponda."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Acknowledgement",
+            "es": "Reconocimiento"
+          },
+          "paragraphs": {
+            "en": [
+              "No emergency-capable service may be activated until the customer acknowledges the final disclosure and the operational team verifies the supported configuration."
+            ],
+            "es": [
+              "Ningún servicio con capacidad de emergencia puede activarse hasta que el cliente reconozca la divulgación final y el equipo operativo verifique la configuración compatible."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": [
+        "fcc-e911"
+      ]
+    },
+    {
+      "key": "call-recording",
+      "path": "/legal/call-recording",
+      "title": {
+        "en": "Call Recording, Transcription, and Monitoring Policy",
+        "es": "Política de grabación, transcripción y supervisión de llamadas"
+      },
+      "summary": {
+        "en": "Customer responsibilities for notice, consent, access, retention, AI analysis, security, and jurisdiction selection.",
+        "es": "Responsabilidades del cliente sobre aviso, consentimiento, acceso, conservación, análisis con IA, seguridad y selección de jurisdicción."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": true,
+      "audiences": [
+        "customer",
+        "reseller",
+        "wholesaler"
+      ],
+      "requiredFor": [
+        "business-voip",
+        "ai-voice"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Jurisdiction and consent",
+            "es": "Jurisdicción y consentimiento"
+          },
+          "paragraphs": {
+            "en": [
+              "Recording and monitoring laws vary. The customer must identify every calling and called jurisdiction, obtain required consent, configure approved announcements or agent scripts, and maintain evidence."
+            ],
+            "es": [
+              "Las leyes de grabación y supervisión varían. El cliente debe identificar cada jurisdicción de origen y destino, obtener el consentimiento requerido, configurar anuncios o guiones aprobados y conservar evidencia."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Access and purpose limitation",
+            "es": "Acceso y limitación de finalidad"
+          },
+          "paragraphs": {
+            "en": [
+              "Recordings and transcripts may be accessed only by authorized roles for documented purposes such as quality, training, support, compliance, or customer-requested workflow automation."
+            ],
+            "es": [
+              "Las grabaciones y transcripciones solo pueden ser accedidas por funciones autorizadas para finalidades documentadas como calidad, capacitación, soporte, cumplimiento o automatización solicitada por el cliente."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Retention and deletion",
+            "es": "Conservación y eliminación"
+          },
+          "paragraphs": {
+            "en": [
+              "The customer must select and justify a retention period, legal holds, deletion workflow, export controls, and treatment of sensitive data. Indefinite retention is not the default."
+            ],
+            "es": [
+              "El cliente debe seleccionar y justificar un plazo de conservación, retenciones legales, flujo de eliminación, controles de exportación y tratamiento de datos sensibles. La conservación indefinida no es la opción predeterminada."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "AI analysis",
+            "es": "Análisis con IA"
+          },
+          "paragraphs": {
+            "en": [
+              "Use of recordings for transcription, summarization, sentiment, quality scoring, model evaluation, or training requires separate disclosure, vendor review, and data-processing controls."
+            ],
+            "es": [
+              "El uso de grabaciones para transcripción, resumen, sentimiento, puntuación de calidad, evaluación o entrenamiento de modelos requiere divulgación separada, revisión de proveedores y controles de tratamiento de datos."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": [
+        "gdpr",
+        "fcc-cpni",
+        "eu-ai-act"
+      ]
+    },
+    {
+      "key": "number-porting",
+      "path": "/legal/number-porting",
+      "title": {
+        "en": "Number Porting and Letter of Authorization Policy",
+        "es": "Política de portabilidad y carta de autorización"
+      },
+      "summary": {
+        "en": "Identity, ownership, authorization, emergency-address, losing-carrier, timing, and fraud-control requirements for telephone numbers.",
+        "es": "Requisitos de identidad, titularidad, autorización, dirección de emergencia, operador cedente, plazos y control de fraude para números telefónicos."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": true,
+      "audiences": [
+        "customer",
+        "reseller",
+        "wholesaler"
+      ],
+      "requiredFor": [
+        "business-voip"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Authority to port",
+            "es": "Autoridad para portar"
+          },
+          "paragraphs": {
+            "en": [
+              "The requester must be authorized by the subscriber of record and provide a complete letter of authorization, recent account evidence, billing telephone number, account number, PIN where applicable, service address, and exact legal name."
+            ],
+            "es": [
+              "El solicitante debe estar autorizado por el suscriptor registrado y proporcionar carta de autorización completa, evidencia reciente de cuenta, número de facturación, número de cuenta, PIN cuando corresponda, dirección de servicio y nombre legal exacto."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Timing and service continuity",
+            "es": "Plazos y continuidad"
+          },
+          "paragraphs": {
+            "en": [
+              "Requested dates are estimates until confirmed by the losing and gaining carriers. Customers must not cancel existing service prematurely and must plan for emergency calling, alarms, fax, messaging, and other dependent services."
+            ],
+            "es": [
+              "Las fechas solicitadas son estimaciones hasta confirmación de operadores. El cliente no debe cancelar el servicio existente antes de tiempo y debe planificar llamadas de emergencia, alarmas, fax, mensajería y otros servicios dependientes."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Fraud and disputes",
+            "es": "Fraude y disputas"
+          },
+          "paragraphs": {
+            "en": [
+              "Telnexa may pause a port for identity mismatch, suspected slamming, unauthorized transfer, sanctions, unpaid undisputed charges where law permits, or conflicting subscriber instructions."
+            ],
+            "es": [
+              "Telnexa puede pausar una portabilidad por discrepancia de identidad, sospecha de cambio no autorizado, transferencia no autorizada, sanciones, cargos indiscutidos pendientes cuando la ley lo permita o instrucciones contradictorias del suscriptor."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": [
+        "fcc-number-porting"
+      ]
+    },
+    {
+      "key": "wholesale-reseller",
+      "path": "/legal/wholesale-reseller",
+      "title": {
+        "en": "Wholesale and Reseller Services Policy",
+        "es": "Política de servicios mayoristas y de reventa"
+      },
+      "summary": {
+        "en": "Mandatory downstream-customer, traffic, registration, traceback, billing, branding, and compliance obligations for wholesalers and resellers.",
+        "es": "Obligaciones obligatorias sobre clientes descendentes, tráfico, registro, rastreo, facturación, marca y cumplimiento para mayoristas y revendedores."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": true,
+      "audiences": [
+        "reseller",
+        "wholesaler"
+      ],
+      "requiredFor": [
+        "wholesale"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Know your business and downstream customers",
+            "es": "Conozca su negocio y clientes descendentes"
+          },
+          "paragraphs": {
+            "en": [
+              "A wholesaler or reseller must complete business verification, identify beneficial ownership and control, maintain verified downstream customer records, and prohibit anonymous or nested resale without written approval."
+            ],
+            "es": [
+              "Un mayorista o revendedor debe completar la verificación comercial, identificar propiedad beneficiaria y control, mantener registros verificados de clientes descendentes y prohibir reventa anónima o anidada sin aprobación escrita."
+            ]
+          },
+          "bullets": {
+            "en": [
+              "Legal name and registration",
+              "Physical address and operating countries",
+              "Responsible compliance and abuse contacts",
+              "Downstream use cases and websites",
+              "Sanctions and fraud screening"
+            ],
+            "es": [
+              "Nombre legal y registro",
+              "Dirección física y países de operación",
+              "Contactos responsables de cumplimiento y abuso",
+              "Casos de uso y sitios web descendentes",
+              "Revisión de sanciones y fraude"
+            ]
+          }
+        },
+        {
+          "heading": {
+            "en": "Traffic disclosure",
+            "es": "Divulgación del tráfico"
+          },
+          "paragraphs": {
+            "en": [
+              "Before activation, the wholesaler must disclose expected origin and destination countries, call or message type, consumer or business audience, average and peak volume, answer-seizure ratio or delivery profile, duration, sender identity, and known high-risk categories."
+            ],
+            "es": [
+              "Antes de la activación, el mayorista debe divulgar países de origen y destino, tipo de llamada o mensaje, audiencia comercial o de consumidores, volumen promedio y máximo, perfil de respuesta o entrega, duración, identidad del remitente y categorías de alto riesgo conocidas."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "U.S. voice registration and robocall mitigation",
+            "es": "Registro de voz en EE. UU. y mitigación de robollamadas"
+          },
+          "paragraphs": {
+            "en": [
+              "Where applicable to the offered role or traffic, the wholesaler must provide accurate FCC registration, Form 499, Robocall Mitigation Database, STIR/SHAKEN, numbering, traceback, and mitigation information. Telnexa does not determine legal applicability for the customer."
+            ],
+            "es": [
+              "Cuando corresponda al rol o tráfico ofrecido, el mayorista debe proporcionar información exacta de registro FCC, Formulario 499, Base de Datos de Mitigación de Robollamadas, STIR/SHAKEN, numeración, rastreo y mitigación. Telnexa no determina la aplicabilidad legal por el cliente."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Flow-down controls",
+            "es": "Controles trasladados"
+          },
+          "paragraphs": {
+            "en": [
+              "The reseller must impose terms at least as protective as Telnexa policies, collect service-specific consent evidence, monitor complaints and anomalies, suspend noncompliant customers, and preserve records sufficient for traceback and investigation."
+            ],
+            "es": [
+              "El revendedor debe imponer términos al menos tan protectores como las políticas de Telnexa, recopilar evidencia de consentimiento específica del servicio, supervisar quejas y anomalías, suspender clientes incumplidores y conservar registros suficientes para rastreo e investigación."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "No unauthorized branding or representation",
+            "es": "Sin marca o representación no autorizada"
+          },
+          "paragraphs": {
+            "en": [
+              "A reseller may not claim to be Telnexa, a carrier, a government agency, or an authorized representative beyond the written reseller agreement. Regulatory filings and customer disclosures must identify the responsible entities accurately."
+            ],
+            "es": [
+              "Un revendedor no puede afirmar que es Telnexa, un operador, una agencia gubernamental o representante autorizado más allá del acuerdo escrito. Los registros regulatorios y divulgaciones deben identificar con precisión a las entidades responsables."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": [
+        "fcc-rmd",
+        "fcc-form499",
+        "fcc-cpni",
+        "ctia-messaging"
+      ]
+    },
+    {
+      "key": "data-processing-addendum",
+      "path": "/legal/data-processing-addendum",
+      "title": {
+        "en": "Data Processing Addendum",
+        "es": "Anexo de tratamiento de datos"
+      },
+      "summary": {
+        "en": "Controller, processor, security, subprocessor, transfer, assistance, deletion, and audit terms for customer personal data.",
+        "es": "Términos de responsable, encargado, seguridad, subencargados, transferencias, asistencia, eliminación y auditoría para datos personales de clientes."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": true,
+      "audiences": [
+        "customer",
+        "reseller",
+        "wholesaler"
+      ],
+      "requiredFor": [
+        "data-processing"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Roles and instructions",
+            "es": "Funciones e instrucciones"
+          },
+          "paragraphs": {
+            "en": [
+              "The final DPA must identify when each party acts as controller, processor, service provider, contractor, or independent controller and limit processing to documented instructions and lawful requirements."
+            ],
+            "es": [
+              "El DPA final debe identificar cuándo cada parte actúa como responsable, encargado, proveedor de servicios, contratista o responsable independiente y limitar el tratamiento a instrucciones documentadas y requisitos legales."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Security and incidents",
+            "es": "Seguridad e incidentes"
+          },
+          "paragraphs": {
+            "en": [
+              "The DPA must describe technical and organizational measures, personnel confidentiality, access control, encryption, resilience, vulnerability management, incident notification, and cooperation."
+            ],
+            "es": [
+              "El DPA debe describir medidas técnicas y organizativas, confidencialidad del personal, control de acceso, cifrado, resiliencia, gestión de vulnerabilidades, notificación de incidentes y cooperación."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Subprocessors and transfers",
+            "es": "Subencargados y transferencias"
+          },
+          "paragraphs": {
+            "en": [
+              "Telnexa must maintain a current subprocessor list, provide the agreed notice of changes, flow down obligations, and document lawful transfer mechanisms where required."
+            ],
+            "es": [
+              "Telnexa debe mantener una lista actual de subencargados, proporcionar el aviso acordado de cambios, trasladar obligaciones y documentar mecanismos legales de transferencia cuando corresponda."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Return, deletion, and audit",
+            "es": "Devolución, eliminación y auditoría"
+          },
+          "paragraphs": {
+            "en": [
+              "At termination, data must be returned or deleted subject to backups, legal retention, fraud, billing, and dispute requirements. Audit rights must be proportionate and protect other customers and security information."
+            ],
+            "es": [
+              "Al terminar, los datos deben devolverse o eliminarse sujetos a copias de seguridad, conservación legal, fraude, facturación y disputas. Los derechos de auditoría deben ser proporcionales y proteger a otros clientes e información de seguridad."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": [
+        "gdpr",
+        "ccpa"
+      ]
+    },
+    {
+      "key": "subprocessors",
+      "path": "/legal/subprocessors",
+      "title": {
+        "en": "Subprocessor List",
+        "es": "Lista de subencargados"
+      },
+      "summary": {
+        "en": "The production vendors authorized to process customer personal data, their purpose, location, and change-notice process.",
+        "es": "Los proveedores de producción autorizados a tratar datos personales de clientes, su finalidad, ubicación y proceso de aviso de cambios."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": false,
+      "audiences": [
+        "customer",
+        "reseller",
+        "wholesaler"
+      ],
+      "requiredFor": [
+        "data-processing"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Current status",
+            "es": "Estado actual"
+          },
+          "paragraphs": {
+            "en": [
+              "The final production list must be generated from the approved vendor inventory. It must not infer vendors from development examples or architectural plans."
+            ],
+            "es": [
+              "La lista final de producción debe generarse desde el inventario aprobado de proveedores. No debe inferir proveedores a partir de ejemplos de desarrollo o planes arquitectónicos."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Required fields",
+            "es": "Campos requeridos"
+          },
+          "paragraphs": {
+            "en": [
+              "For each subprocessor, publish the legal name, service purpose, data categories, processing location, transfer mechanism where applicable, and effective date."
+            ],
+            "es": [
+              "Para cada subencargado, publicar nombre legal, finalidad del servicio, categorías de datos, ubicación del tratamiento, mecanismo de transferencia cuando corresponda y fecha efectiva."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Change notices",
+            "es": "Avisos de cambios"
+          },
+          "paragraphs": {
+            "en": [
+              "Customers who are entitled to notice or objection must receive it through the channel and period stated in the final DPA."
+            ],
+            "es": [
+              "Los clientes con derecho a aviso u objeción deben recibirlo mediante el canal y plazo indicados en el DPA final."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": [
+        "gdpr"
+      ]
+    },
+    {
+      "key": "security-disclosure",
+      "path": "/legal/security-disclosure",
+      "title": {
+        "en": "Security and Responsible Disclosure",
+        "es": "Seguridad y divulgación responsable"
+      },
+      "summary": {
+        "en": "How Telnexa protects the platform, reports security issues, handles testing, and coordinates remediation.",
+        "es": "Cómo Telnexa protege la plataforma, recibe reportes de seguridad, gestiona pruebas y coordina remediación."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": true,
+      "audiences": [
+        "visitor",
+        "customer",
+        "researcher",
+        "reseller",
+        "wholesaler"
+      ],
+      "requiredFor": [
+        "all"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Security program",
+            "es": "Programa de seguridad"
+          },
+          "paragraphs": {
+            "en": [
+              "Telnexa uses layered identity, gateway, middleware, application, infrastructure, logging, backup, and change-management controls. Final claims must be limited to controls that are implemented and evidenced."
+            ],
+            "es": [
+              "Telnexa usa controles por capas de identidad, puerta de enlace, middleware, aplicación, infraestructura, registros, copias de seguridad y gestión de cambios. Las afirmaciones finales deben limitarse a controles implementados y evidenciados."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Responsible testing",
+            "es": "Pruebas responsables"
+          },
+          "paragraphs": {
+            "en": [
+              "Security research must avoid customer data, social engineering, denial of service, destructive testing, physical access, spam, and testing of third-party systems. Written authorization is required outside the published safe harbor."
+            ],
+            "es": [
+              "La investigación de seguridad debe evitar datos de clientes, ingeniería social, denegación de servicio, pruebas destructivas, acceso físico, spam y pruebas de sistemas de terceros. Se requiere autorización escrita fuera del puerto seguro publicado."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Reporting",
+            "es": "Reporte"
+          },
+          "paragraphs": {
+            "en": [
+              "The final page must publish a monitored security contact, required report details, encryption key if used, expected acknowledgement period, and coordinated-disclosure process."
+            ],
+            "es": [
+              "La página final debe publicar un contacto de seguridad supervisado, detalles requeridos del informe, clave de cifrado si se usa, plazo esperado de confirmación y proceso de divulgación coordinada."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Abuse versus vulnerability reports",
+            "es": "Abuso frente a vulnerabilidades"
+          },
+          "paragraphs": {
+            "en": [
+              "Spam, robocall, harassment, sender, and customer-account abuse must use the abuse process; software vulnerabilities must use the security process."
+            ],
+            "es": [
+              "Spam, robollamadas, acoso, remitentes y abuso de cuentas deben usar el proceso de abuso; las vulnerabilidades de software deben usar el proceso de seguridad."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": []
+    },
+    {
+      "key": "accessibility",
+      "path": "/legal/accessibility",
+      "title": {
+        "en": "Accessibility Statement",
+        "es": "Declaración de accesibilidad"
+      },
+      "summary": {
+        "en": "Telnexa’s approach to accessible websites, portals, communications services, support, and complaint handling.",
+        "es": "El enfoque de Telnexa para sitios, portales, servicios de comunicaciones, soporte y gestión de quejas accesibles."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": false,
+      "audiences": [
+        "visitor",
+        "customer",
+        "end-user"
+      ],
+      "requiredFor": [
+        "all"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Commitment",
+            "es": "Compromiso"
+          },
+          "paragraphs": {
+            "en": [
+              "Telnexa aims to make public websites, account experiences, documentation, support, and communications features usable by people with disabilities and compatible with common assistive technologies."
+            ],
+            "es": [
+              "Telnexa busca que los sitios públicos, experiencias de cuenta, documentación, soporte y funciones de comunicación sean utilizables por personas con discapacidad y compatibles con tecnologías de asistencia comunes."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Service accessibility",
+            "es": "Accesibilidad del servicio"
+          },
+          "paragraphs": {
+            "en": [
+              "Voice, text messaging, email, and other advanced communications services may be subject to accessibility requirements. Product design and support workflows must account for these obligations before launch."
+            ],
+            "es": [
+              "Voz, mensajes de texto, correo y otros servicios avanzados de comunicaciones pueden estar sujetos a requisitos de accesibilidad. El diseño del producto y soporte debe considerar estas obligaciones antes del lanzamiento."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Feedback and complaints",
+            "es": "Comentarios y quejas"
+          },
+          "paragraphs": {
+            "en": [
+              "The final page must publish an accessibility contact, response process, supported alternate formats, and any regulator-required company contact registration."
+            ],
+            "es": [
+              "La página final debe publicar un contacto de accesibilidad, proceso de respuesta, formatos alternativos compatibles y cualquier registro de contacto empresarial requerido por el regulador."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": [
+        "fcc-accessibility"
+      ]
+    },
+    {
+      "key": "regulatory-fees",
+      "path": "/legal/regulatory-fees",
+      "title": {
+        "en": "Taxes, Surcharges, and Regulatory Fees",
+        "es": "Impuestos, recargos y tarifas regulatorias"
+      },
+      "summary": {
+        "en": "How taxes, government assessments, carrier pass-through charges, emergency-service fees, and administrative recovery charges are disclosed.",
+        "es": "Cómo se divulgan impuestos, evaluaciones gubernamentales, cargos transferidos por operadores, tarifas de emergencia y cargos administrativos de recuperación."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": true,
+      "audiences": [
+        "customer",
+        "reseller",
+        "wholesaler"
+      ],
+      "requiredFor": [
+        "paid-services"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Charge categories",
+            "es": "Categorías de cargos"
+          },
+          "paragraphs": {
+            "en": [
+              "Invoices may include taxes, regulatory assessments, numbering or emergency-service charges, carrier pass-through charges, and separately disclosed administrative recovery charges where permitted."
+            ],
+            "es": [
+              "Las facturas pueden incluir impuestos, evaluaciones regulatorias, cargos de numeración o emergencia, cargos transferidos por operadores y cargos administrativos de recuperación divulgados por separado cuando se permita."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "No misleading labels",
+            "es": "Sin etiquetas engañosas"
+          },
+          "paragraphs": {
+            "en": [
+              "A Telnexa administrative charge must not be presented as a government-mandated tax. The final order and invoice legend must distinguish government-imposed and company-imposed amounts."
+            ],
+            "es": [
+              "Un cargo administrativo de Telnexa no debe presentarse como impuesto exigido por el gobierno. El pedido final y leyenda de factura deben distinguir importes gubernamentales y empresariales."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Provider classification",
+            "es": "Clasificación del proveedor"
+          },
+          "paragraphs": {
+            "en": [
+              "Offering interstate telecommunications or interconnected VoIP in the United States can trigger registration, reporting, and contribution obligations. The responsible legal entity must obtain telecom counsel review before commercial launch."
+            ],
+            "es": [
+              "Ofrecer telecomunicaciones interestatales o VoIP interconectado en Estados Unidos puede activar obligaciones de registro, informes y contribuciones. La entidad legal responsable debe obtener revisión de un abogado de telecomunicaciones antes del lanzamiento comercial."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": [
+        "fcc-form499"
+      ]
+    },
+    {
+      "key": "version-history",
+      "path": "/legal/version-history",
+      "title": {
+        "en": "Legal Document Version History",
+        "es": "Historial de versiones legales"
+      },
+      "summary": {
+        "en": "A record of approved policy versions, effective dates, material changes, and archived text.",
+        "es": "Un registro de versiones aprobadas, fechas efectivas, cambios materiales y texto archivado."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": true,
+      "publicationRequired": true,
+      "acceptanceRequired": false,
+      "audiences": [
+        "visitor",
+        "customer",
+        "reseller",
+        "wholesaler"
+      ],
+      "requiredFor": [],
+      "sections": [
+        {
+          "heading": {
+            "en": "Version controls",
+            "es": "Controles de versión"
+          },
+          "paragraphs": {
+            "en": [
+              "Each accepted policy must have an immutable version identifier, approval record, effective date, publication date, and archived copy."
+            ],
+            "es": [
+              "Cada política aceptada debe tener identificador de versión inmutable, registro de aprobación, fecha efectiva, fecha de publicación y copia archivada."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Customer notice",
+            "es": "Aviso al cliente"
+          },
+          "paragraphs": {
+            "en": [
+              "Material changes must follow the notice and acceptance process in the contract and applicable law. A page update alone does not retroactively create consent."
+            ],
+            "es": [
+              "Los cambios materiales deben seguir el proceso de aviso y aceptación del contrato y la ley aplicable. Actualizar una página por sí solo no crea consentimiento retroactivo."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Current draft",
+            "es": "Borrador actual"
+          },
+          "paragraphs": {
+            "en": [
+              "All documents in this implementation remain marked counsel-review-required until the responsible legal entity approves them."
+            ],
+            "es": [
+              "Todos los documentos de esta implementación permanecen marcados como pendientes de revisión legal hasta que la entidad responsable los apruebe."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": []
+    },
+    {
+      "key": "privacy-request",
+      "path": "/privacy-request",
+      "title": {
+        "en": "Privacy Rights Request",
+        "es": "Solicitud de derechos de privacidad"
+      },
+      "summary": {
+        "en": "Submit a request to access, correct, delete, restrict, object, opt out, or obtain information about personal data.",
+        "es": "Presenta una solicitud para acceder, corregir, eliminar, limitar, objetar, excluir o conocer información sobre datos personales."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": false,
+      "publicationRequired": true,
+      "acceptanceRequired": false,
+      "audiences": [
+        "visitor",
+        "customer",
+        "end-user"
+      ],
+      "requiredFor": [
+        "privacy"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Available requests",
+            "es": "Solicitudes disponibles"
+          },
+          "paragraphs": {
+            "en": [
+              "Rights vary by jurisdiction and relationship. The request form must allow the individual to identify the relevant account, service, communication, and requested action without collecting unnecessary sensitive data."
+            ],
+            "es": [
+              "Los derechos varían según jurisdicción y relación. El formulario debe permitir identificar cuenta, servicio, comunicación y acción solicitada sin recopilar datos sensibles innecesarios."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Identity verification",
+            "es": "Verificación de identidad"
+          },
+          "paragraphs": {
+            "en": [
+              "Telnexa may request proportionate information to verify identity, authority, and account relationship. Verification data is used only to process and secure the request."
+            ],
+            "es": [
+              "Telnexa puede solicitar información proporcional para verificar identidad, autoridad y relación con la cuenta. Los datos de verificación se usan únicamente para procesar y proteger la solicitud."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Response and appeals",
+            "es": "Respuesta y apelaciones"
+          },
+          "paragraphs": {
+            "en": [
+              "The final workflow must track statutory deadlines, extensions, denials, appeals, authorized agents, and evidence of completion."
+            ],
+            "es": [
+              "El flujo final debe rastrear plazos legales, extensiones, denegaciones, apelaciones, agentes autorizados y evidencia de finalización."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": [
+        "gdpr",
+        "ccpa"
+      ]
+    },
+    {
+      "key": "do-not-sell-or-share",
+      "path": "/do-not-sell-or-share",
+      "title": {
+        "en": "Do Not Sell or Share My Personal Information",
+        "es": "No vender ni compartir mi información personal"
+      },
+      "summary": {
+        "en": "Exercise applicable rights to opt out of sale or sharing and limit certain uses of sensitive personal information.",
+        "es": "Ejerce derechos aplicables para excluir la venta o intercambio y limitar ciertos usos de información personal sensible."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": false,
+      "publicationRequired": true,
+      "acceptanceRequired": false,
+      "audiences": [
+        "visitor",
+        "customer",
+        "end-user"
+      ],
+      "requiredFor": [
+        "privacy"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Telnexa’s current practice",
+            "es": "Práctica actual de Telnexa"
+          },
+          "paragraphs": {
+            "en": [
+              "The final notice must state whether Telnexa sells or shares personal information as those terms are defined by applicable law, including advertising-related disclosures and cross-context behavioral advertising."
+            ],
+            "es": [
+              "El aviso final debe indicar si Telnexa vende o comparte información personal según las definiciones legales aplicables, incluidas divulgaciones publicitarias y publicidad conductual entre contextos."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Submitting a choice",
+            "es": "Presentar una opción"
+          },
+          "paragraphs": {
+            "en": [
+              "The production page must provide a functioning request method, honor recognized browser signals where required, and avoid dark patterns or unnecessary account creation."
+            ],
+            "es": [
+              "La página de producción debe ofrecer un método funcional, respetar señales reconocidas del navegador cuando corresponda y evitar patrones oscuros o creación innecesaria de cuenta."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Authorized agents",
+            "es": "Agentes autorizados"
+          },
+          "paragraphs": {
+            "en": [
+              "Where permitted, an authorized agent may submit a request subject to verification of authority and the consumer’s identity."
+            ],
+            "es": [
+              "Cuando se permita, un agente autorizado puede presentar una solicitud sujeta a verificación de autoridad e identidad del consumidor."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": [
+        "ccpa"
+      ]
+    },
+    {
+      "key": "cookie-settings",
+      "path": "/cookie-settings",
+      "title": {
+        "en": "Cookie and Analytics Settings",
+        "es": "Configuración de cookies y analítica"
+      },
+      "summary": {
+        "en": "Review or change optional analytics choices without affecting essential website functions.",
+        "es": "Revisa o cambia opciones de analítica sin afectar funciones esenciales del sitio."
+      },
+      "version": "2026.08-draft",
+      "effectiveDate": null,
+      "status": "counsel-review-required",
+      "indexable": false,
+      "publicationRequired": true,
+      "acceptanceRequired": false,
+      "audiences": [
+        "visitor"
+      ],
+      "requiredFor": [
+        "website"
+      ],
+      "sections": [
+        {
+          "heading": {
+            "en": "Essential only",
+            "es": "Solo esenciales"
+          },
+          "paragraphs": {
+            "en": [
+              "Essential technologies support security, language, form progress, and privacy choices and cannot be disabled through this interface."
+            ],
+            "es": [
+              "Las tecnologías esenciales respaldan seguridad, idioma, progreso de formularios y opciones de privacidad, y no pueden desactivarse desde esta interfaz."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Optional analytics",
+            "es": "Analítica opcional"
+          },
+          "paragraphs": {
+            "en": [
+              "The visitor may enable or disable optional analytics. A change must update consent storage and prevent future optional loading consistent with the selected choice."
+            ],
+            "es": [
+              "El visitante puede habilitar o deshabilitar analítica opcional. El cambio debe actualizar el almacenamiento de consentimiento y evitar cargas opcionales futuras según la selección."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        },
+        {
+          "heading": {
+            "en": "Production inventory",
+            "es": "Inventario de producción"
+          },
+          "paragraphs": {
+            "en": [
+              "The final interface must be generated from the current production cookie inventory and consent categories."
+            ],
+            "es": [
+              "La interfaz final debe generarse desde el inventario actual de cookies y categorías de consentimiento de producción."
+            ]
+          },
+          "bullets": {
+            "en": [],
+            "es": []
+          }
+        }
+      ],
+      "sourceRefs": [
+        "gdpr",
+        "ccpa"
+      ]
+    }
+  ]
+}

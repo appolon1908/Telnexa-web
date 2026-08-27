@@ -1,0 +1,1 @@
+<template><ComplianceOnboarding /></template>

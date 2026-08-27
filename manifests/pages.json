@@ -1,86 +1,702 @@
 {
-  "version": "1.0.0",
-  "baseRouteCount": 68,
-  "indexableBaseRouteCount": 61,
-  "featurePageCount": 20,
+  "version": "1.1.0",
+  "baseRouteCount": 113,
+  "indexableBaseRouteCount": 78,
+  "featurePageCount": 21,
   "pages": [
-    {"path":"/","title":"Cloud communications, built around your business","category":"core","indexable":true},
-    {"path":"/platform","title":"One intelligent communications platform","category":"core","indexable":true},
-    {"path":"/pricing","title":"Flexible communications pricing","category":"core","indexable":true},
-    {"path":"/contact","title":"Contact Telnexa","category":"core","indexable":true,"form":"contact"},
-    {"path":"/demo","title":"See Telnexa in action","category":"core","indexable":true,"form":"demo"},
-    {"path":"/about","title":"About Telnexa","category":"core","indexable":true},
-    {"path":"/partners","title":"Telnexa partner program","category":"core","indexable":true,"form":"partner"},
-    {"path":"/enterprise","title":"Enterprise communications without compromise","category":"core","indexable":true,"form":"enterprise"},
-
-    {"path":"/voice/business-voip","title":"Business VoIP","category":"voice","indexable":true},
-    {"path":"/voice/cloud-pbx","title":"Cloud PBX","category":"voice","indexable":true},
-    {"path":"/voice/sip-trunking","title":"SIP Trunking","category":"voice","indexable":true},
-    {"path":"/voice/phone-numbers","title":"Business Phone Numbers","category":"voice","indexable":true},
-    {"path":"/voice/contact-center","title":"Cloud Contact Center","category":"voice","indexable":true},
-    {"path":"/voice/ivr-call-routing","title":"IVR and Call Routing","category":"voice","indexable":true},
-    {"path":"/voice/call-recording-analytics","title":"Call Recording and Analytics","category":"voice","indexable":true},
-    {"path":"/voice/voice-api","title":"Programmable Voice API","category":"voice","indexable":true},
-
-    {"path":"/messaging/business-sms","title":"Business SMS","category":"messaging","indexable":true},
-    {"path":"/messaging/sms-api","title":"Programmable SMS API","category":"messaging","indexable":true},
-    {"path":"/messaging/bulk-sms","title":"Bulk SMS","category":"messaging","indexable":true},
-    {"path":"/messaging/two-way-sms","title":"Two-Way SMS","category":"messaging","indexable":true},
-    {"path":"/messaging/omnichannel-inbox","title":"Omnichannel Inbox","category":"messaging","indexable":true},
-
-    {"path":"/email/business-email","title":"Business Email","category":"email","indexable":true},
-    {"path":"/email/transactional-email","title":"Transactional Email","category":"email","indexable":true},
-    {"path":"/email/email-api-smtp","title":"Email API and SMTP Relay","category":"email","indexable":true},
-    {"path":"/email/email-marketing","title":"Email Marketing","category":"email","indexable":true},
-
-    {"path":"/crm/communications-crm","title":"Communications CRM","category":"crm","indexable":true},
-    {"path":"/automation/n8n-workflows","title":"n8n Communication Workflows","category":"automation","indexable":true,"form":"automation"},
-    {"path":"/platform/private-communications-system","title":"Private Communications System","category":"private-platform","indexable":true,"form":"private-platform"},
-
-    {"path":"/solutions/small-business","title":"Communications for Small Business","category":"solution","indexable":true},
-    {"path":"/solutions/enterprise","title":"Communications for Enterprise","category":"solution","indexable":true},
-    {"path":"/solutions/contact-centers","title":"Communications for Contact Centers","category":"solution","indexable":true},
-    {"path":"/solutions/healthcare","title":"Communications for Healthcare","category":"solution","indexable":true},
-    {"path":"/solutions/financial-services","title":"Communications for Financial Services","category":"solution","indexable":true},
-    {"path":"/solutions/logistics","title":"Communications for Logistics","category":"solution","indexable":true},
-    {"path":"/solutions/hospitality","title":"Communications for Hospitality","category":"solution","indexable":true},
-    {"path":"/solutions/software-platforms","title":"Communications for Software Platforms","category":"solution","indexable":true},
-
-    {"path":"/developers","title":"Telnexa for Developers","category":"developer","indexable":true,"form":"developer-access"},
-    {"path":"/developers/api-reference","title":"API Reference","category":"developer","indexable":true},
-    {"path":"/developers/quickstart","title":"Developer Quickstart","category":"developer","indexable":true},
-    {"path":"/developers/webhooks","title":"Webhooks","category":"developer","indexable":true},
-    {"path":"/developers/sdks","title":"SDKs and Libraries","category":"developer","indexable":true},
-    {"path":"/integrations","title":"Telnexa Integrations","category":"integration","indexable":true,"form":"integration"},
-    {"path":"/integrations/odoo-n8n","title":"Odoo and n8n Integration","category":"integration","indexable":true},
-
-    {"path":"/security","title":"Security by Design","category":"trust","indexable":true},
-    {"path":"/reliability","title":"Reliability and Resilience","category":"trust","indexable":true},
-    {"path":"/compliance","title":"Communications Compliance","category":"trust","indexable":true},
-    {"path":"/privacy","title":"Privacy at Telnexa","category":"trust","indexable":true},
-    {"path":"/network","title":"Global Communications Network","category":"trust","indexable":true},
-    {"path":"/status","title":"Platform Status","category":"trust","indexable":true},
-
-    {"path":"/resources","title":"Telnexa Resources","category":"resource","indexable":true,"form":"newsletter"},
-    {"path":"/resources/blog","title":"Telnexa Blog","category":"resource","indexable":true},
-    {"path":"/resources/guides","title":"Communication Guides","category":"resource","indexable":true},
-    {"path":"/resources/case-studies","title":"Customer Case Studies","category":"resource","indexable":true},
-    {"path":"/resources/help-center","title":"Help Center","category":"resource","indexable":true},
-    {"path":"/resources/faq","title":"Frequently Asked Questions","category":"resource","indexable":true},
-    {"path":"/resources/glossary","title":"Communications Glossary","category":"resource","indexable":true},
-
-    {"path":"/legal/terms","title":"Terms of Service","category":"legal","indexable":true},
-    {"path":"/legal/privacy","title":"Privacy Policy","category":"legal","indexable":true},
-    {"path":"/legal/cookies","title":"Cookie Policy","category":"legal","indexable":true},
-    {"path":"/legal/acceptable-use","title":"Acceptable Use Policy","category":"legal","indexable":true},
-    {"path":"/legal/service-level","title":"Service Level Policy","category":"legal","indexable":true},
-
-    {"path":"/login","title":"Sign in to Telnexa","category":"utility","indexable":false},
-    {"path":"/signup","title":"Create a Telnexa account","category":"utility","indexable":false,"form":"signup"},
-    {"path":"/portal","title":"Open the Telnexa portal","category":"utility","indexable":false},
-    {"path":"/support","title":"Contact Support","category":"utility","indexable":false,"form":"support"},
-    {"path":"/port-number","title":"Port Your Phone Numbers","category":"utility","indexable":false,"form":"porting"},
-    {"path":"/request-quote","title":"Request a Quote","category":"utility","indexable":false,"form":"quote"},
-    {"path":"/schedule-demo","title":"Schedule a Demo","category":"utility","indexable":false,"form":"demo"}
+    {
+      "path": "/",
+      "title": "Cloud communications, built around your business",
+      "category": "core",
+      "indexable": true
+    },
+    {
+      "path": "/platform",
+      "title": "One intelligent communications platform",
+      "category": "core",
+      "indexable": true
+    },
+    {
+      "path": "/pricing",
+      "title": "Flexible communications pricing",
+      "category": "core",
+      "indexable": true
+    },
+    {
+      "path": "/contact",
+      "title": "Contact Telnexa",
+      "category": "core",
+      "indexable": true,
+      "form": "contact"
+    },
+    {
+      "path": "/demo",
+      "title": "See Telnexa in action",
+      "category": "core",
+      "indexable": true,
+      "form": "demo"
+    },
+    {
+      "path": "/about",
+      "title": "About Telnexa",
+      "category": "core",
+      "indexable": true
+    },
+    {
+      "path": "/partners",
+      "title": "Telnexa partner program",
+      "category": "core",
+      "indexable": true,
+      "form": "partner"
+    },
+    {
+      "path": "/enterprise",
+      "title": "Enterprise communications without compromise",
+      "category": "core",
+      "indexable": true,
+      "form": "enterprise"
+    },
+    {
+      "path": "/voice/business-voip",
+      "title": "Business VoIP",
+      "category": "voice",
+      "indexable": true
+    },
+    {
+      "path": "/voice/cloud-pbx",
+      "title": "Cloud PBX",
+      "category": "voice",
+      "indexable": true
+    },
+    {
+      "path": "/voice/sip-trunking",
+      "title": "SIP Trunking",
+      "category": "voice",
+      "indexable": true
+    },
+    {
+      "path": "/voice/phone-numbers",
+      "title": "Business Phone Numbers",
+      "category": "voice",
+      "indexable": true
+    },
+    {
+      "path": "/voice/contact-center",
+      "title": "Cloud Contact Center",
+      "category": "voice",
+      "indexable": true
+    },
+    {
+      "path": "/voice/ivr-call-routing",
+      "title": "IVR and Call Routing",
+      "category": "voice",
+      "indexable": true
+    },
+    {
+      "path": "/voice/call-recording-analytics",
+      "title": "Call Recording and Analytics",
+      "category": "voice",
+      "indexable": true
+    },
+    {
+      "path": "/voice/voice-api",
+      "title": "Programmable Voice API",
+      "category": "voice",
+      "indexable": true
+    },
+    {
+      "path": "/messaging/business-sms",
+      "title": "Business SMS",
+      "category": "messaging",
+      "indexable": true
+    },
+    {
+      "path": "/messaging/sms-api",
+      "title": "Programmable SMS API",
+      "category": "messaging",
+      "indexable": true
+    },
+    {
+      "path": "/messaging/bulk-sms",
+      "title": "Bulk SMS",
+      "category": "messaging",
+      "indexable": true
+    },
+    {
+      "path": "/messaging/two-way-sms",
+      "title": "Two-Way SMS",
+      "category": "messaging",
+      "indexable": true
+    },
+    {
+      "path": "/messaging/omnichannel-inbox",
+      "title": "Omnichannel Inbox",
+      "category": "messaging",
+      "indexable": true
+    },
+    {
+      "path": "/email/business-email",
+      "title": "Business Email",
+      "category": "email",
+      "indexable": true
+    },
+    {
+      "path": "/email/transactional-email",
+      "title": "Transactional Email",
+      "category": "email",
+      "indexable": true
+    },
+    {
+      "path": "/email/email-api-smtp",
+      "title": "Email API and SMTP Relay",
+      "category": "email",
+      "indexable": true
+    },
+    {
+      "path": "/email/email-marketing",
+      "title": "Email Marketing",
+      "category": "email",
+      "indexable": true
+    },
+    {
+      "path": "/crm/communications-crm",
+      "title": "Communications CRM",
+      "category": "crm",
+      "indexable": true
+    },
+    {
+      "path": "/automation/n8n-workflows",
+      "title": "n8n Communication Workflows",
+      "category": "automation",
+      "indexable": true,
+      "form": "automation"
+    },
+    {
+      "path": "/platform/private-communications-system",
+      "title": "Private Communications System",
+      "category": "private-platform",
+      "indexable": true,
+      "form": "private-platform"
+    },
+    {
+      "path": "/solutions/small-business",
+      "title": "Communications for Small Business",
+      "category": "solution",
+      "indexable": true
+    },
+    {
+      "path": "/solutions/enterprise",
+      "title": "Communications for Enterprise",
+      "category": "solution",
+      "indexable": true
+    },
+    {
+      "path": "/solutions/contact-centers",
+      "title": "Communications for Contact Centers",
+      "category": "solution",
+      "indexable": true
+    },
+    {
+      "path": "/solutions/healthcare",
+      "title": "Communications for Healthcare",
+      "category": "solution",
+      "indexable": true
+    },
+    {
+      "path": "/solutions/financial-services",
+      "title": "Communications for Financial Services",
+      "category": "solution",
+      "indexable": true
+    },
+    {
+      "path": "/solutions/logistics",
+      "title": "Communications for Logistics",
+      "category": "solution",
+      "indexable": true
+    },
+    {
+      "path": "/solutions/hospitality",
+      "title": "Communications for Hospitality",
+      "category": "solution",
+      "indexable": true
+    },
+    {
+      "path": "/solutions/software-platforms",
+      "title": "Communications for Software Platforms",
+      "category": "solution",
+      "indexable": true
+    },
+    {
+      "path": "/developers",
+      "title": "Telnexa for Developers",
+      "category": "developer",
+      "indexable": true,
+      "form": "developer-access"
+    },
+    {
+      "path": "/developers/api-reference",
+      "title": "API Reference",
+      "category": "developer",
+      "indexable": true
+    },
+    {
+      "path": "/developers/quickstart",
+      "title": "Developer Quickstart",
+      "category": "developer",
+      "indexable": true
+    },
+    {
+      "path": "/developers/webhooks",
+      "title": "Webhooks",
+      "category": "developer",
+      "indexable": true
+    },
+    {
+      "path": "/developers/sdks",
+      "title": "SDKs and Libraries",
+      "category": "developer",
+      "indexable": true
+    },
+    {
+      "path": "/integrations",
+      "title": "Telnexa Integrations",
+      "category": "integration",
+      "indexable": true,
+      "form": "integration"
+    },
+    {
+      "path": "/integrations/odoo-n8n",
+      "title": "Odoo and n8n Integration",
+      "category": "integration",
+      "indexable": true
+    },
+    {
+      "path": "/security",
+      "title": "Security by Design",
+      "category": "trust",
+      "indexable": true
+    },
+    {
+      "path": "/reliability",
+      "title": "Reliability and Resilience",
+      "category": "trust",
+      "indexable": true
+    },
+    {
+      "path": "/compliance",
+      "title": "Communications Compliance",
+      "category": "trust",
+      "indexable": true
+    },
+    {
+      "path": "/privacy",
+      "title": "Privacy at Telnexa",
+      "category": "trust",
+      "indexable": true
+    },
+    {
+      "path": "/network",
+      "title": "Global Communications Network",
+      "category": "trust",
+      "indexable": true
+    },
+    {
+      "path": "/status",
+      "title": "Platform Status",
+      "category": "trust",
+      "indexable": true
+    },
+    {
+      "path": "/resources",
+      "title": "Telnexa Resources",
+      "category": "resource",
+      "indexable": true,
+      "form": "newsletter"
+    },
+    {
+      "path": "/resources/blog",
+      "title": "Telnexa Blog",
+      "category": "resource",
+      "indexable": true
+    },
+    {
+      "path": "/resources/guides",
+      "title": "Communication Guides",
+      "category": "resource",
+      "indexable": true
+    },
+    {
+      "path": "/resources/case-studies",
+      "title": "Customer Case Studies",
+      "category": "resource",
+      "indexable": true
+    },
+    {
+      "path": "/resources/help-center",
+      "title": "Help Center",
+      "category": "resource",
+      "indexable": true
+    },
+    {
+      "path": "/resources/faq",
+      "title": "Frequently Asked Questions",
+      "category": "resource",
+      "indexable": true
+    },
+    {
+      "path": "/resources/glossary",
+      "title": "Communications Glossary",
+      "category": "resource",
+      "indexable": true
+    },
+    {
+      "path": "/legal/terms",
+      "title": "Terms of Service",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/legal/privacy",
+      "title": "Privacy Policy",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/legal/cookies",
+      "title": "Cookie Policy",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/legal/acceptable-use",
+      "title": "Acceptable Use Policy",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/legal/service-level",
+      "title": "Service Level Policy",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/login",
+      "title": "Sign in to Telnexa",
+      "category": "utility",
+      "indexable": false
+    },
+    {
+      "path": "/signup",
+      "title": "Create a Telnexa account",
+      "category": "utility",
+      "indexable": false,
+      "form": "signup"
+    },
+    {
+      "path": "/portal",
+      "title": "Open the Telnexa portal",
+      "category": "utility",
+      "indexable": false
+    },
+    {
+      "path": "/support",
+      "title": "Contact Support",
+      "category": "utility",
+      "indexable": false,
+      "form": "support"
+    },
+    {
+      "path": "/port-number",
+      "title": "Port Your Phone Numbers",
+      "category": "utility",
+      "indexable": false,
+      "form": "porting"
+    },
+    {
+      "path": "/request-quote",
+      "title": "Request a Quote",
+      "category": "utility",
+      "indexable": false,
+      "form": "quote"
+    },
+    {
+      "path": "/schedule-demo",
+      "title": "Schedule a Demo",
+      "category": "utility",
+      "indexable": false,
+      "form": "demo"
+    },
+    {
+      "path": "/voice/ai-voice",
+      "title": "AI Voice over IP",
+      "category": "voice",
+      "indexable": true
+    },
+    {
+      "path": "/wholesale",
+      "title": "Wholesale Voice, SMS and Communications",
+      "category": "solution",
+      "indexable": true
+    },
+    {
+      "path": "/legal",
+      "title": "Legal and Compliance Center",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/legal/messaging-policy",
+      "title": "Messaging and SMS Policy",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/legal/anti-spam",
+      "title": "Anti-Spam and Consent Policy",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/legal/voice-services",
+      "title": "Voice Services Policy",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/legal/ai-voice",
+      "title": "AI Voice Transparency and Use Policy",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/legal/emergency-services",
+      "title": "Emergency Services Disclosure",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/legal/call-recording",
+      "title": "Call Recording and Transcription Policy",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/legal/number-porting",
+      "title": "Number Porting and Authorization Policy",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/legal/wholesale-reseller",
+      "title": "Wholesale and Reseller Policy",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/legal/data-processing-addendum",
+      "title": "Data Processing Addendum",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/legal/subprocessors",
+      "title": "Subprocessor List",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/legal/security-disclosure",
+      "title": "Security and Responsible Disclosure Policy",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/legal/accessibility",
+      "title": "Accessibility Statement",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/legal/regulatory-fees",
+      "title": "Regulatory Fees and Surcharges Disclosure",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/legal/version-history",
+      "title": "Policy Version History",
+      "category": "legal",
+      "indexable": true
+    },
+    {
+      "path": "/privacy-request",
+      "title": "Privacy Rights Request",
+      "category": "utility",
+      "indexable": false,
+      "form": "privacy-request"
+    },
+    {
+      "path": "/do-not-sell-or-share",
+      "title": "Do Not Sell or Share My Personal Information",
+      "category": "utility",
+      "indexable": false,
+      "form": "privacy-request"
+    },
+    {
+      "path": "/cookie-settings",
+      "title": "Cookie and Analytics Settings",
+      "category": "utility",
+      "indexable": false
+    },
+    {
+      "path": "/get-started",
+      "title": "Start a governed Telnexa service request",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/business-verification",
+      "title": "Business verification",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/service-selection",
+      "title": "Select services and operating regions",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/sms",
+      "title": "Business SMS readiness",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/sms/use-case",
+      "title": "SMS use case and traffic profile",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/sms/consent",
+      "title": "SMS consent, frequency, and opt-out",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/sms/sender-registration",
+      "title": "SMS sender and campaign registration",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/voice",
+      "title": "Business VoIP readiness",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/voice/use-case",
+      "title": "Voice use case and calling profile",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/voice/emergency-services",
+      "title": "Emergency-services configuration",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/voice/caller-id",
+      "title": "Numbers, caller identity, and authorization",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/voice/call-recording",
+      "title": "Call recording, transcription, and monitoring",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/ai-voice",
+      "title": "AI voice over IP readiness",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/ai-voice/use-case",
+      "title": "AI voice use case and risk profile",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/ai-voice/disclosure",
+      "title": "AI identity, disclosure, and human handoff",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/ai-voice/consent",
+      "title": "AI voice consent, outreach, and voice rights",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/wholesale",
+      "title": "Wholesale and reseller readiness",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/wholesale/business",
+      "title": "Wholesale business and regulatory profile",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/wholesale/downstream-customers",
+      "title": "Downstream customer verification and policy flow-down",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/wholesale/traffic-profile",
+      "title": "Wholesale traffic profile and routing transparency",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/wholesale/robocall-mitigation",
+      "title": "Robocall mitigation, identity, and traceback",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/privacy-data",
+      "title": "Privacy, data roles, retention, and security",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/agreements",
+      "title": "Review and accept required policies",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/review",
+      "title": "Final certification and manual-review submission",
+      "category": "onboarding",
+      "indexable": false
+    },
+    {
+      "path": "/get-started/submitted",
+      "title": "Request submitted for compliance review",
+      "category": "onboarding",
+      "indexable": false
+    }
   ]
 }

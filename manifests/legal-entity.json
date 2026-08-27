@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "status": "draft",
+  "brandName": "Telnexa",
+  "legalName": "LEGAL_ENTITY_REQUIRED",
+  "registrationNumber": "REGISTRATION_NUMBER_REQUIRED",
+  "businessAddress": "BUSINESS_ADDRESS_REQUIRED",
+  "country": "COUNTRY_REQUIRED",
+  "privacyEmail": "privacy@telnexa.co",
+  "securityEmail": "security@telnexa.co",
+  "abuseEmail": "abuse@telnexa.co",
+  "accessibilityEmail": "accessibility@telnexa.co",
+  "regulatoryEmail": "compliance@telnexa.co",
+  "supportEmail": "support@telnexa.co",
+  "legalNoticesEmail": "legal@telnexa.co"
+}

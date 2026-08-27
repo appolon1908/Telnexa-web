@@ -5,6 +5,7 @@
     <main id="main-content" tabindex="-1">
       <slot />
     </main>
+    <ServiceActivationNotice />
     <AppFooter />
     <ConsentBanner />
   </div>

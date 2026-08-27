@@ -5,12 +5,21 @@ on:
     paths:
       - 'deployment/**'
       - 'docs/GO_LIVE_CHECKLIST.md'
+      - 'docs/COMPLIANCE_*.md'
+      - 'docs/LEGAL_COUNSEL_REVIEW.md'
+      - 'docs/ACTIVATION_MATRIX.md'
+      - 'manifests/legal-*.json'
+      - 'manifests/onboarding-gates.json'
+      - 'manifests/compliance-sources.json'
+      - 'scripts/validate-compliance.mjs'
+      - 'openapi/telnexa-compliance-onboarding.yaml'
       - '.github/workflows/deploy-production.yml'
       - '.github/workflows/release.yml'
       - '.github/workflows/ops-ci.yml'
   push:
     branches:
       - ops/production-deployment
+      - feat/compliance-onboarding-gates
 
 permissions:
   contents: read
@@ -39,6 +48,18 @@ jobs:
             exit 1
           fi
 
+      - name: Validate structural compliance and intentional production block
+        run: |
+          node scripts/validate-compliance.mjs
+          set +e
+          output="$(deployment/scripts/validate-compliance.sh 2>&1)"
+          status=$?
+          set -e
+          printf '%s\n' "$output"
+          [[ "$status" -ne 0 ]]
+          grep -q 'PRODUCTION_COMPLIANCE_GATE=BLOCKED' <<<"$output"
+          grep -q 'validate-compliance.sh' deployment/scripts/deploy.sh
+
       - name: Validate Nuxt runtime boundary and capability freeze
         run: |
           grep -q '^NUXT_MIDDLEWARE_BASE_URL=' deployment/.env.production.example
@@ -48,6 +69,7 @@ jobs:
           ! grep -Rqs 'TELNEXA_MIDDLEWARE_SERVICE_TOKEN=' deployment
           for key in LIVE_SMS_DELIVERY LIVE_EMAIL_DELIVERY LIVE_PSTN_DIALING ENABLE_PROVIDER_SUBMISSION ENABLE_AUTOMATIC_PROVISIONING ODOO_DIRECT_PUBLIC_ACCESS N8N_DIRECT_PUBLIC_ACCESS; do
             grep -q "^${key}=false$" deployment/.env.production.example
+            jq -e --arg key "$key" '.activationGate.capabilityFlags[$key] == false' manifests/onboarding-gates.json >/dev/null
           done
 
       - name: Validate loopback-only Compose rendering

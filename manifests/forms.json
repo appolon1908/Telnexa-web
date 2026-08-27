@@ -1,18 +1,154 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "forms": [
-    {"key":"contact","endpoint":"/api/v1/website/forms/contact","label":"Contact sales","required":["name","email","message"]},
-    {"key":"demo","endpoint":"/api/v1/website/forms/demo","label":"Schedule a demo","required":["name","email","company"]},
-    {"key":"quote","endpoint":"/api/v1/website/forms/quote","label":"Request a quote","required":["name","email","company","products"]},
-    {"key":"enterprise","endpoint":"/api/v1/website/forms/enterprise","label":"Talk to enterprise sales","required":["name","email","company","employees"]},
-    {"key":"partner","endpoint":"/api/v1/website/forms/partner","label":"Become a partner","required":["name","email","company","partnerType"]},
-    {"key":"developer-access","endpoint":"/api/v1/website/forms/developer-access","label":"Request developer access","required":["name","email","company","useCase"]},
-    {"key":"automation","endpoint":"/api/v1/website/forms/automation","label":"Plan an automation","required":["name","email","company","workflow"]},
-    {"key":"private-platform","endpoint":"/api/v1/website/forms/private-platform","label":"Design a private platform","required":["name","email","company","requirements"]},
-    {"key":"integration","endpoint":"/api/v1/website/forms/integration","label":"Plan an integration","required":["name","email","company","systems"]},
-    {"key":"porting","endpoint":"/api/v1/website/forms/porting","label":"Start number porting","required":["name","email","company","numberCount"]},
-    {"key":"support","endpoint":"/api/v1/website/forms/support","label":"Open a support request","required":["name","email","subject","message"]},
-    {"key":"signup","endpoint":"/api/v1/website/forms/signup","label":"Create an account","required":["name","email","company"]},
-    {"key":"newsletter","endpoint":"/api/v1/website/newsletter","label":"Subscribe for updates","required":["email"]}
+    {
+      "key": "contact",
+      "endpoint": "/api/v1/website/forms/contact",
+      "label": "Contact sales",
+      "required": [
+        "name",
+        "email",
+        "message"
+      ]
+    },
+    {
+      "key": "demo",
+      "endpoint": "/api/v1/website/forms/demo",
+      "label": "Schedule a demo",
+      "required": [
+        "name",
+        "email",
+        "company"
+      ]
+    },
+    {
+      "key": "quote",
+      "endpoint": "/api/v1/website/forms/quote",
+      "label": "Request a quote",
+      "required": [
+        "name",
+        "email",
+        "company",
+        "products"
+      ]
+    },
+    {
+      "key": "enterprise",
+      "endpoint": "/api/v1/website/forms/enterprise",
+      "label": "Talk to enterprise sales",
+      "required": [
+        "name",
+        "email",
+        "company",
+        "employees"
+      ]
+    },
+    {
+      "key": "partner",
+      "endpoint": "/api/v1/website/forms/partner",
+      "label": "Become a partner",
+      "required": [
+        "name",
+        "email",
+        "company",
+        "partnerType"
+      ]
+    },
+    {
+      "key": "developer-access",
+      "endpoint": "/api/v1/website/forms/developer-access",
+      "label": "Request developer access",
+      "required": [
+        "name",
+        "email",
+        "company",
+        "useCase"
+      ]
+    },
+    {
+      "key": "automation",
+      "endpoint": "/api/v1/website/forms/automation",
+      "label": "Plan an automation",
+      "required": [
+        "name",
+        "email",
+        "company",
+        "workflow"
+      ]
+    },
+    {
+      "key": "private-platform",
+      "endpoint": "/api/v1/website/forms/private-platform",
+      "label": "Design a private platform",
+      "required": [
+        "name",
+        "email",
+        "company",
+        "requirements"
+      ]
+    },
+    {
+      "key": "integration",
+      "endpoint": "/api/v1/website/forms/integration",
+      "label": "Plan an integration",
+      "required": [
+        "name",
+        "email",
+        "company",
+        "systems"
+      ]
+    },
+    {
+      "key": "porting",
+      "endpoint": "/api/v1/website/forms/porting",
+      "label": "Start number porting",
+      "required": [
+        "name",
+        "email",
+        "company",
+        "numberCount"
+      ]
+    },
+    {
+      "key": "support",
+      "endpoint": "/api/v1/website/forms/support",
+      "label": "Open a support request",
+      "required": [
+        "name",
+        "email",
+        "subject",
+        "message"
+      ]
+    },
+    {
+      "key": "signup",
+      "endpoint": "/api/v1/website/forms/signup",
+      "label": "Create an account",
+      "required": [
+        "name",
+        "email",
+        "company"
+      ]
+    },
+    {
+      "key": "newsletter",
+      "endpoint": "/api/v1/website/newsletter",
+      "label": "Subscribe for updates",
+      "required": [
+        "email"
+      ]
+    },
+    {
+      "key": "privacy-request",
+      "endpoint": "/api/v1/website/forms/privacy-request",
+      "label": "Submit privacy request",
+      "required": [
+        "name",
+        "email",
+        "requestType",
+        "jurisdiction",
+        "details"
+      ]
+    }
   ]
 }
