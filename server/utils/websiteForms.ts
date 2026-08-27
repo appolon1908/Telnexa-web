@@ -38,7 +38,7 @@ async function readLimitedJson(event: H3Event) {
     throw createError({ statusCode: 413, statusMessage: 'Form payload is too large' })
   }
 
-  const raw = await readRawBody(event, false)
+  const raw = await readRawBody(event, 'utf8')
   if (typeof raw !== 'string' || !raw.trim()) {
     throw createError({ statusCode: 400, statusMessage: 'A JSON object is required' })
   }
