@@ -1,5 +1,19 @@
 # Telnexa Web
 
+## Repository authority
+
+This repository is the **public Telnexa website, product-marketing and compliance/service-onboarding frontend authority**.
+
+`appolon1908-hue/telnexa` is the separate **Telnexa SMS/backend runtime authority** and owns Jasmin HTTP/SMPP, SMS routing, DLR/MO callbacks, billing/wallet/ledger state, provider credentials and SMS runtime deployment.
+
+This website must not become a second Jasmin/SMPP backend, SMS billing ledger or provider credential store. Browser/business requests cross the governed boundary through Kong/Middleware. Voice/contact-center operations are not owned by the Telnexa SMS backend; VICIdial/Asterisk integration is owned by `appolon1908-hue/Vicidialer-Codestra` and coordinated through Middleware.
+
+```text
+Browser -> Telnexa-web -> Kong -> Middleware -> telnexa/Jasmin (SMS)
+                                      |
+                                      +-> Vicidialer-Codestra (voice, separate system)
+```
+
 Production-oriented Nuxt 4 and Vue 3 website for Telnexa voice, SMS, AI voice over IP, email, CRM, automation, wholesale/reseller, and private communications systems.
 
 ## Application scope
