@@ -1,13 +1,13 @@
 export default defineNuxtConfig({
   compatibilityDate: '2026-08-26',
   devtools: { enabled: false },
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/main.css', '~/assets/css/horizon.css'],
   app: {
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1, viewport-fit=cover',
       meta: [
-        { name: 'theme-color', content: '#07111f' },
+        { name: 'theme-color', content: '#07090c' },
         { name: 'color-scheme', content: 'light dark' },
         { name: 'format-detection', content: 'telephone=no' }
       ],

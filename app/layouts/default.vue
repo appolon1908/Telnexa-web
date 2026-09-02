@@ -1,6 +1,6 @@
 <template>
-  <div class="site-shell">
-    <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="site-shell hz-page-shell">
+    <a class="skip-link hz-skip-link" href="#main-content">Skip to content</a>
     <AppHeader />
     <main id="main-content" tabindex="-1">
       <slot />
