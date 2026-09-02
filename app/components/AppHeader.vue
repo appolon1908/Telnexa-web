@@ -10,6 +10,13 @@ watch(() => route.fullPath, () => {
   menuOpen.value = false
 })
 
+const closeOnEscape = (event: KeyboardEvent) => {
+  if (event.key === 'Escape') menuOpen.value = false
+}
+
+onMounted(() => window.addEventListener('keydown', closeOnEscape))
+onBeforeUnmount(() => window.removeEventListener('keydown', closeOnEscape))
+
 const navigation = computed(() => [
   { label: locale.value === 'es' ? 'Voz' : 'Voice', to: localizePath('/voice/business-voip') },
   { label: 'SMS', to: localizePath('/messaging/business-sms') },
@@ -42,9 +49,13 @@ const navigation = computed(() => [
       </nav>
 
       <div class="header-actions hz-header-actions">
-        <NuxtLink class="text-link hz-button hz-button--secondary hz-button--small" :to="localizePath('/login')">
-          {{ locale === 'es' ? 'Ingresar' : 'Sign in' }}
-        </NuxtLink>
+        <a
+          class="text-link hz-button hz-button--secondary hz-button--small"
+          :href="telnexaDomains.portal"
+          rel="noopener noreferrer"
+        >
+          {{ locale === 'es' ? 'Portal de clientes' : 'Client portal' }}
+        </a>
         <NuxtLink class="button button-small hz-button hz-button--primary hz-button--small" :to="localizePath('/get-started')">
           {{ locale === 'es' ? 'Comenzar' : 'Get started' }}
         </NuxtLink>
@@ -61,7 +72,7 @@ const navigation = computed(() => [
       </div>
     </div>
 
-    <div id="primary-navigation-mobile" class="hz-mobile-panel" :data-open="menuOpen">
+    <div v-if="menuOpen" id="primary-navigation-mobile" class="hz-mobile-panel" data-open="true">
       <nav class="hz-container hz-mobile-panel__inner" aria-label="Mobile navigation">
         <NuxtLink
           v-for="item in navigation"
@@ -71,10 +82,10 @@ const navigation = computed(() => [
         >
           {{ item.label }}
         </NuxtLink>
-        <a class="hz-site-nav__link" :href="telnexaDomains.portal">
-          {{ locale === 'es' ? 'Portal de clientes' : 'Customer portal' }}
+        <a class="hz-site-nav__link" :href="telnexaDomains.portal" rel="noopener noreferrer">
+          {{ locale === 'es' ? 'Portal de clientes' : 'Client portal' }}
         </a>
-        <a class="hz-site-nav__link" :href="telnexaDomains.status">
+        <a class="hz-site-nav__link" :href="telnexaDomains.status" rel="noopener noreferrer">
           {{ locale === 'es' ? 'Estado del servicio' : 'Service status' }}
         </a>
       </nav>
