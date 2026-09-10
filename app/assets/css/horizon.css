@@ -105,14 +105,16 @@ html[data-horizon-root] > body {
 [data-horizon-root] *::after { box-sizing: border-box; }
 
 [data-horizon-root] :where(h1,h2,h3,h4,h5,h6) {
-  color: var(--hz-text);
   font-family: var(--hz-font-display);
   letter-spacing: -.03em;
   line-height: 1.08;
   text-wrap: balance;
 }
 
-[data-horizon-root] :where(p,li,dd) { color: inherit; }
+/* Legacy page sections keep their light-surface foregrounds. */
+#main-content { color: var(--ink); color-scheme: light; }
+:where(.hz-site-header,.hz-site-footer) :where(h1,h2,h3,h4,h5,h6) { color: var(--hz-text); }
+:where(.hz-site-header,.hz-site-footer) :where(p,li,dd) { color: inherit; }
 [data-horizon-root] :where(a) { color: inherit; text-underline-offset: .18em; }
 [data-horizon-root] :where(img,svg,video,canvas) { max-width: 100%; }
 [data-horizon-root] :where(button,input,select,textarea) { font: inherit; }
@@ -365,7 +367,7 @@ html[data-horizon-root] > body {
 @media (max-width:48rem) {
   .hz-site-header__inner { min-height:4rem; }
   .hz-brand__domain { display:none; }
-  .hz-header-actions .hz-button--secondary { display:none; }
+  .hz-header-actions .hz-button--secondary:not(.hz-menu-button) { display:none; }
   .hz-site-footer__grid { grid-template-columns:1fr; }
   .hz-site-footer__intro { grid-column:auto; }
   .hz-site-footer__bottom { align-items:flex-start; flex-direction:column; }
