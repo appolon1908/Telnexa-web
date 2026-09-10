@@ -24,7 +24,7 @@ export default defineNuxtConfig({
     public: {
       siteUrl: 'https://telnexa.co',
       apiBase: '/api',
-      portalUrl: 'https://app.telnexa.co',
+      portalUrl: 'https://api.telnexa.co/dashboard',
       statusUrl: 'https://status.telnexa.co',
       gtmId: '',
       environment: 'development',

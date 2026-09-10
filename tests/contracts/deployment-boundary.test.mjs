@@ -14,6 +14,10 @@ test('website virtual hosts and DNS checks cannot take ownership of the SMS API'
   const hosts = [...caddy.matchAll(/^([a-z0-9.-]+)\s*\{/gm)].map(match => match[1])
   assert.deepEqual(hosts, ['www.telnexa.co', 'telnexa.co'])
   assert.match(caddy, /@api path \/api\/\*/)
+  for (const name of ['nuxt.config.ts', '.env.example', '.github/workflows/deploy-production.yml']) {
+    assert.ok(source(name).includes('https://api.telnexa.co/dashboard'))
+    assert.ok(!source(name).includes('https://app.telnexa.co'))
+  }
   for (const name of ['preflight', 'smoke']) {
     const script = source(`deployment/scripts/${name}.sh`)
     const dnsHosts = script.match(/for host in ([^;]+); do/)[1].split(' ')
