@@ -96,7 +96,7 @@ jobs:
           KONG_IMAGE=$KONG_IMAGE
           NUXT_PUBLIC_SITE_URL=https://telnexa.co
           NUXT_PUBLIC_API_BASE=/api
-          NUXT_PUBLIC_PORTAL_URL=https://app.telnexa.co
+          NUXT_PUBLIC_PORTAL_URL=https://api.telnexa.co/dashboard
           NUXT_PUBLIC_STATUS_URL=https://status.telnexa.co
           NUXT_PUBLIC_GTM_ID=$GTM_ID
           NUXT_PUBLIC_ENVIRONMENT=production

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 EXPECTED_IP="${EXPECTED_IP:-49.12.145.107}"
 MIN_FREE_GIB="${MIN_FREE_GIB:-5}"
 failures=0
@@ -17,7 +18,7 @@ if docker compose version >/dev/null 2>&1; then pass docker-compose "$(docker co
 if command -v caddy >/dev/null 2>&1; then pass caddy "$(caddy version 2>/dev/null || true)"; else fail caddy missing; fi
 
 host_ips="$(hostname -I 2>/dev/null || true)"
-if grep -qw "$EXPECTED_IP" <<<"$host_ips"; then pass expected-server-ip "$EXPECTED_IP"; else info expected-server-ip "host reports: ${host_ips:-unknown}"; fi
+if grep -qw "$EXPECTED_IP" <<<"$host_ips"; then pass expected-server-ip "$EXPECTED_IP"; else fail expected-server-ip "host reports: ${host_ips:-unknown}"; fi
 
 free_kib="$(df -Pk / | awk 'NR==2 {print $4}')"
 free_gib=$((free_kib / 1024 / 1024))
@@ -31,10 +32,12 @@ for port in 3300 38000 38100; do
   fi
 done
 
-for host in telnexa.co api.telnexa.co; do
+for host in telnexa.co www.telnexa.co; do
   resolved="$(getent ahostsv4 "$host" 2>/dev/null | awk 'NR==1 {print $1}')"
   if [[ "$resolved" == "$EXPECTED_IP" ]]; then pass "dns:$host" "$resolved"; else fail "dns:$host" "resolved=${resolved:-none}, expected=$EXPECTED_IP"; fi
 done
+
+if bash "$SCRIPT_DIR/provider-health.sh"; then pass provider-api-health; else fail provider-api-health "existing SMS provider must remain ready"; fi
 
 info running-containers "$(docker ps --format '{{.Names}}' | paste -sd, -)"
 info listening-ports "read-only inventory follows"

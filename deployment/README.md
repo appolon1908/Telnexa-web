@@ -8,9 +8,11 @@ This directory deploys the reviewed Telnexa website to `49.12.145.107` without e
 Internet
   -> Caddy :80/:443
       -> telnexa.co pages -> 127.0.0.1:3300 -> Nuxt
-      -> /api and api.telnexa.co -> 127.0.0.1:38000 -> Kong -> Nuxt server API
+      -> telnexa.co/api -> 127.0.0.1:38000 -> Kong -> Nuxt server API
           -> private Codestra Middleware -> Odoo / n8n
 ```
+
+`api.telnexa.co` remains the SMS/backend endpoint owned by `appolon1908-hue/telnexa`. This website rollout must not move its DNS, install a virtual host for it, or replace its provider routes. The provider currently runs behind its existing Nginx edge; website form endpoints stay on `telnexa.co/api/v1/website/*`.
 
 The browser never receives the private middleware URL or service token and never addresses Odoo or n8n directly.
 
@@ -42,7 +44,7 @@ Do not build middleware credentials or test simulation flags into the image. The
 1. Merge the application and operations pull requests after exact-head CI.
 2. Publish the website image from the exact protected `main` SHA.
 3. Supply an approved immutable Kong digest.
-4. Verify DNS for `telnexa.co`, `www.telnexa.co`, and `api.telnexa.co` points to `49.12.145.107`.
+4. Verify website DNS for `telnexa.co` and `www.telnexa.co` points to the approved website host `49.12.145.107`. Preserve `api.telnexa.co` and all SMS/backend DNS records.
 5. Verify the server host key out of band and store it in the production environment secret.
 6. Create the protected release environment file from `.env.production.example`.
 7. Run `scripts/preflight.sh` without changing the host.
@@ -51,3 +53,11 @@ Do not build middleware credentials or test simulation flags into the image. The
 10. Run the optional Odoo/n8n canary only with explicit authorization.
 
 The deployment workflow is manual and requires the `production` GitHub environment. It never changes DNS and cannot bypass missing SSH, middleware, certificate, image, or approval gates.
+
+## Provider regression check
+
+Both preflight and public smoke run `bash scripts/provider-health.sh`. This performs bounded, certificate-verified GET requests to the existing provider `/health` and `/ready` endpoints, rejects redirects and non-200 responses, and requires readiness status `ready`. It sends no message or customer data. A provider failure blocks website rollout.
+
+The September 10 live check found website apex DNS still on the provider host and a certificate hostname mismatch. The public website has not been certified or deployed by this source repair. Source CI, compliance approval, immutable artifacts, staging and the protected production change remain required.
+
+The website account handoff uses the verified provider dashboard at `https://api.telnexa.co/dashboard`. The previous `app.telnexa.co` default had no DNS record at verification time. This changes only a public navigation URL, without introducing browser provider credentials.

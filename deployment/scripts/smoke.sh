@@ -14,7 +14,7 @@ for file in "$PAGES" "$FORMS" "$ONBOARDING"; do
   [[ -f "$file" ]] || { echo "Missing $file" >&2; exit 1; }
 done
 
-for host in telnexa.co api.telnexa.co; do
+for host in telnexa.co www.telnexa.co; do
   resolved="$(getent ahostsv4 "$host" | awk 'NR==1 {print $1}')"
   [[ "$resolved" == "$EXPECTED_IP" ]] || { echo "$host resolves to ${resolved:-none}, expected $EXPECTED_IP" >&2; exit 1; }
 done
@@ -23,7 +23,7 @@ http_code="$(curl -sS -o /dev/null -w '%{http_code}' -A "$USER_AGENT" http://tel
 [[ "$http_code" == "301" || "$http_code" == "308" ]] || { echo "HTTP redirect returned $http_code" >&2; exit 1; }
 
 curl -fsS --proto '=https' --tlsv1.2 -A "$USER_AGENT" https://telnexa.co/healthz >/dev/null
-curl -fsS --proto '=https' --tlsv1.2 -A "$USER_AGENT" https://api.telnexa.co/healthz >/dev/null
+bash "$SCRIPT_DIR/provider-health.sh"
 curl -fsS --proto '=https' --tlsv1.2 -A "$USER_AGENT" https://telnexa.co/readyz | jq -e '.status == "ready" and .checks.application == true and .checks.forms == true' >/dev/null
 
 version="$(curl -fsS --proto '=https' --tlsv1.2 -A "$USER_AGENT" https://telnexa.co/version)"

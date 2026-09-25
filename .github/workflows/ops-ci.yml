@@ -90,7 +90,8 @@ jobs:
       - name: Validate Caddy and Kong boundaries
         run: |
           grep -q '^telnexa\.co {' deployment/Caddyfile.telnexa
-          grep -q '^api\.telnexa\.co {' deployment/Caddyfile.telnexa
+          ! grep -Eq '^api\.telnexa\.co[[:space:]]*\{' deployment/Caddyfile.telnexa
+          node --test tests/contracts/deployment-boundary.test.mjs
           grep -q 'reverse_proxy 127\.0\.0\.1:3300' deployment/Caddyfile.telnexa
           grep -q 'reverse_proxy 127\.0\.0\.1:38000' deployment/Caddyfile.telnexa
           ! grep -Eqi 'reverse_proxy .*odoo|reverse_proxy .*n8n' deployment/Caddyfile.telnexa

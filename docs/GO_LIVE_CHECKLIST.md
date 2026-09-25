@@ -46,7 +46,8 @@
 
 - [ ] `telnexa.co` resolves to `49.12.145.107`.
 - [ ] `www.telnexa.co` resolves to `49.12.145.107` and redirects to the apex.
-- [ ] `api.telnexa.co` resolves to `49.12.145.107`.
+- [ ] `api.telnexa.co` remains on the existing SMS/backend host and is absent from the website Caddy configuration.
+- [ ] Provider `/health` and `/ready` pass before and after the website rollout (`bash deployment/scripts/provider-health.sh`).
 - [ ] Caddy configuration validates before reload.
 - [ ] Public certificates match each hostname and validate through a public trust chain.
 - [ ] HTTP redirects to HTTPS.
