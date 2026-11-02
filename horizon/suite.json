@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0",
+  "repository": "appolon1908-hue/Telnexa-web",
+  "visualContract": {
+    "repository": "appolon1908-hue/SDK-repository",
+    "commit": "7db4c6549a0a007922355090f03c082a308f3855"
+  },
+  "suites": [
+    {
+      "id": "telnexa-public-web",
+      "root": ".",
+      "surface": "public",
+      "theme": "telnexa",
+      "canonicalOrigin": "https://telnexa.co",
+      "domains": {
+        "public": ["https://telnexa.co"],
+        "portal": ["https://app.telnexa.co"],
+        "status": ["https://status.telnexa.co"],
+        "identity": ["https://auth.codestra.co"],
+        "corporate": ["https://codestra.co"]
+      },
+      "shell": {
+        "mode": "public",
+        "rootFile": "app/app.vue",
+        "headerFile": "app/components/AppHeader.vue",
+        "footerFile": "app/components/AppFooter.vue",
+        "tokensFile": "app/assets/css/horizon.css",
+        "requiredRootMarkers": [
+          "data-horizon-root",
+          "data-horizon-theme': 'telnexa'",
+          "data-horizon-appearance': 'dark'"
+        ],
+        "pageRoots": ["app/pages"]
+      },
+      "auth": {
+        "mode": "public-only",
+        "protectedRoutes": false,
+        "browserTokenStorage": "n/a"
+      },
+      "colorPolicy": {
+        "rejectNewRawColors": true,
+        "allowedColorFiles": [
+          "app/assets/css/main.css",
+          "app/assets/css/horizon.css",
+          "nuxt.config.ts"
+        ]
+      },
+      "newPagePolicy": {
+        "inheritsRootShell": true,
+        "usesHorizonTokens": true,
+        "requiresStateMatrix": true
+      }
+    }
+  ]
+}

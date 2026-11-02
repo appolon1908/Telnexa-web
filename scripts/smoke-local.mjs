@@ -1,6 +1,9 @@
 import { readFile } from 'node:fs/promises'
 import process from 'node:process'
 
+const portalUrl = process.env.NUXT_PUBLIC_PORTAL_URL || 'https://app.telnexa.co'
+const portalHandoffs = new Set(['/login', '/signup', '/portal', '/es/login', '/es/signup', '/es/portal'])
+
 const baseUrl = process.env.SMOKE_BASE_URL || 'http://127.0.0.1:3000'
 const pages = JSON.parse(await readFile(new URL('../manifests/pages.json', import.meta.url), 'utf8'))
 const forms = JSON.parse(await readFile(new URL('../manifests/forms.json', import.meta.url), 'utf8'))
@@ -21,6 +24,13 @@ const routeChecks = pages.pages.flatMap(page => [
   { path: page.path === '/' ? '/es' : `/es${page.path}`, indexable: page.indexable }
 ])
 for (const route of routeChecks) {
+  if (portalHandoffs.has(route.path)) {
+    const response = await fetch(`${baseUrl}${route.path}`, { redirect: 'manual' })
+    if (response.status !== 302 || response.headers.get('location') !== portalUrl) {
+      throw new Error(`${route.path} must redirect to the configured client portal`)
+    }
+    continue
+  }
   const response = await expectOk(route.path)
   const html = await response.text()
   if (route.indexable && !html.includes('Telnexa')) {
