@@ -30,6 +30,10 @@ concurrency:
 
 jobs:
   deploy:
+    # RUNTIME_MUTATION_DISABLED=true
+    # Runtime mutation is exclusively owned by Infustruction-repo. This legacy
+    # workflow remains as non-executable historical recovery context.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     environment: production
     timeout-minutes: 40

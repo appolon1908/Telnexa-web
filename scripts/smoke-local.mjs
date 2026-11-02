@@ -2,6 +2,13 @@ import { readFile } from 'node:fs/promises'
 import process from 'node:process'
 
 const baseUrl = process.env.SMOKE_BASE_URL || 'http://127.0.0.1:3000'
+const parsedBaseUrl = new URL(baseUrl)
+if (
+  parsedBaseUrl.protocol !== 'http:' ||
+  !['127.0.0.1', '::1', '[::1]', 'localhost'].includes(parsedBaseUrl.hostname)
+) {
+  throw new Error('SMOKE_BASE_URL must target the isolated loopback application')
+}
 const pages = JSON.parse(await readFile(new URL('../manifests/pages.json', import.meta.url), 'utf8'))
 const forms = JSON.parse(await readFile(new URL('../manifests/forms.json', import.meta.url), 'utf8'))
 const onboarding = JSON.parse(await readFile(new URL('../manifests/onboarding-gates.json', import.meta.url), 'utf8'))
